@@ -7,7 +7,7 @@
     <RouterLink :to="{name: 'community'}">Community</RouterLink> <br>
     <RouterLink :to="{name: 'login'}">Login</RouterLink> <br>
 
-<div style="position: relative; width: 893px; height: 502px;">
+    <div style="position: relative; width: 893px; height: 502px;">
     <iframe 
         width="893" 
         height="502" 
