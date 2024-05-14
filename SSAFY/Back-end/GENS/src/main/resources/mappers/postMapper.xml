@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gens.dao.post.PostDao">
+	
+	<!-- 전체 게시글 조회 -->
+	<select id="selectAll" resultType="Post">
+		SELECT *
+		From posts
+	</select>
+	
+	<!-- 상세 개시글 조회 -->
+	<select id="selectOne" resultType="Post" parameterType="int">
+		SELECT *
+		From posts
+		WHERE postID=#{postID}
+	</select>
+	
+	<!-- 게시글 등록 -->
+	<!-- 게시글 등록은 users 테이블에 userID가 있어야 가능, 근데 회원이면 누구나 -->
+	<insert id="insertPost" parameterType="Post" keyProperty="postID" useGeneratedKeys="true">
+		INSERT INTO posts (userID, postTitle, postContent)
+		VALUES (#{userID}, #{postTitle}, #{postContent})
+	</insert>
+	
+	
+	<!-- 게시글 수정 -->
+	<!-- 게시글 수정은 users 테이블에 userID가 있어야 가능 -->
+	<update id="updatePost" parameterType="Post">
+		UPDATE posts 
+		SET  userID=#{userID}, postTitle=#{postTitle}, postContent=#{postContent}, postFilePath=#{postFilePath}
+		WHERE postID = #{postID}		
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deletePost" parameterType="Post">
+		DELETE FROM posts
+		WHERE postID=#{postID}	
+	</delete>
+	
+	<!-- 게시글 검색 -->
+	<select id="searchPost" resultType="Post" parameterType="SearchCondition">
+		SELECT * 
+		FROM posts
+		
+		<if test="key != null">
+			WHERE ${key} LIKE concat('%', #{word}, '%')
+		</if>
+	</select>
+
+
+
+</mapper>
