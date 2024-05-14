@@ -8,7 +8,7 @@
 
 
 <script setup>
-import PostList from '@/components/community/PostList.vue';
+import PostList from '@/components/Community/PostList.vue';
 
 
 </script>
