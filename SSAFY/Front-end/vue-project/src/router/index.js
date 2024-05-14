@@ -2,13 +2,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // 만든 ~~View.vue 불러오기
-import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/LoginView.vue'
-import IntroView from '../views/IntroView.vue'
-import GameView from '../views/GameView.vue'
-import LeagueView from '../views/LeagueView.vue'
-import ClubView from '../views/ClubView.vue'
-import CommunityView from '../views/CommunityView.vue'
+import HomeView from '@/views/HomeView.vue'
+import LoginView from '@/views/LoginView.vue'
+import IntroView from '@/views/IntroView.vue'
+import GameView from '@/views/GameView.vue'
+import LeagueView from '@/views/LeagueView.vue'
+import ClubView from '@/views/ClubView.vue'
+import CommunityView from '@/views/CommunityView.vue'
+
+import GameDetailView from '@/views/GameDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +33,14 @@ const router = createRouter({
     {
       path: '/game',
       name: 'game',
-      component: GameView
+      component: GameView, 
+      children: [
+        {
+          path: ':id',
+          name: 'gameDetail',
+          component: GameDetailView
+        }, 
+      ]
     }, 
     {
       path: '/league',
