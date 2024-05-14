@@ -36,7 +36,7 @@
 	<!-- 게시글 삭제 -->
 	<delete id="deletePost" parameterType="Post">
 		DELETE FROM posts
-		WHERE postID=#{postID}	
+		WHERE postID=#{postID} AND userID=#{userID}
 	</delete>
 	
 	<!-- 게시글 검색 -->
