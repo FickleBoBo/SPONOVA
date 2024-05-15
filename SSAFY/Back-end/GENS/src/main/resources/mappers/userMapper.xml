@@ -23,4 +23,12 @@
 		VALUES(#{userID}, #{userPW}, #{username}, #{userRRN}, #{userPhonenumber}, #{userNickname}, #{userProfilePath})
 	</insert>	
 	
+	<!--중복 조회-->
+	<select id="findById" resultType="User">
+	    SELECT * 
+	    FROM user 
+	    WHERE userID = #{userId}
+	</select>
+
+	
 </mapper>
