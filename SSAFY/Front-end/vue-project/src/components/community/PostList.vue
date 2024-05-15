@@ -12,7 +12,8 @@
           </tr>
           <tr v-for="post in store.postList" :key="post.postID">
               <td>{{ post.postID }}</td>
-              <td>{{ post.postTitle }}</td>
+              <!-- <td>{{ post.postTitle }}</td> -->
+              <td><RouterLink :to="{name: 'PostDetailPage', params: { id: post.postID} }">{{ post.postTitle }}</RouterLink></td>
               <td>{{ post.userID }}</td>
               <td>{{ post.postViewCnt }}</td>
               <td>{{ post.postRegDate }}</td>
@@ -23,6 +24,9 @@
 
       <!-- 나중에 구현할 검색 기능 -->
       <!-- <BoardSearchInput/> -->
+
+      
+    <RouterView />
   </div>
 </template>
 
@@ -42,6 +46,7 @@ onMounted(() => {
 })
 
 import PostCreate from '@/components/Community/PostCreate.vue'
+import PostDetailPage from '@/components/Community/PostDetailPage.vue'
 
 </script>
 
