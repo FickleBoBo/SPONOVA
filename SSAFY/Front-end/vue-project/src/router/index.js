@@ -11,6 +11,7 @@ import ClubView from '@/views/ClubView.vue'
 import CommunityView from '@/views/CommunityView.vue'
 
 import GameDetailView from '@/views/GameDetailView.vue'
+import PostCreate from '@/components/Community/PostCreate.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,7 +56,12 @@ const router = createRouter({
     {
       path: '/community',
       name: 'community',
-      component: CommunityView
+      component: CommunityView, 
+    }, 
+    {
+      path: '/community/create',
+      name: 'PostCreate',
+      component: PostCreate
     }, 
   ]
 })

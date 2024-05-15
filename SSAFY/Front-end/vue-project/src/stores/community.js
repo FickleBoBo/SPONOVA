@@ -15,7 +15,7 @@ export const useCommunityStore = defineStore('post', () => {
       data: post
     })
     .then(()=> {
-      router.push({name: 'postList'})
+      router.push({name: 'PostList'})
     })
     .catch((err) => {
       console.log(err)

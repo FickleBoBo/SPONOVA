@@ -19,7 +19,10 @@
           </tr>
       </table>
 
-      <BoardSearchInput/>
+      <RouterLink :to="{name: 'PostCreate'}">글쓰기</RouterLink>
+
+      <!-- 나중에 구현할 검색 기능 -->
+      <!-- <BoardSearchInput/> -->
   </div>
 </template>
 
@@ -37,6 +40,8 @@ const store = useCommunityStore()
 onMounted(() => {
   store.getPostList()
 })
+
+import PostCreate from '@/components/Community/PostCreate.vue'
 
 </script>
 
