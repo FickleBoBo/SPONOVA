@@ -2,8 +2,28 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gens.dao.CommentDao">
+<mapper namespace="com.gens.dao.comment.CommentDao">
 
-
-
+	<select id="selectById" resultType="Comment" parameterType="int">
+		SELECT *
+		FROM  comments 
+		WHERE postID=#{postID}
+	</select>
+	
+	<insert id="insertComment" parameterType="Comment" keyProperty="commentID" useGeneratedKeys="true">
+		INSERT INTO comments (userID, postID, commentID, commentContent, commentRegDate)
+		VALUES (#{userID}, #{postID}, #{commentID}, #{commentContent}, #{commentRegDate})
+	</insert>
+	
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM comments 
+		WHERE commentID=#{commentID}
+	</delete>	
+	
+	<update id="updateComment" parameterType="Comment">
+		UPDATE comments 
+		SET commentContent=#{commentContent}, commentRegDate=#{commentRegDate}
+		WHERE commentID = #{commentID}
+	</update>	
+	
 </mapper>

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gens.dto.SearchCondition;
+import com.gens.dto.comment.Comment;
 import com.gens.dto.post.Post;
+import com.gens.service.comment.CommentService;
 import com.gens.service.post.PostService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,11 +30,41 @@ import io.swagger.v3.oas.annotations.Operation;
 public class PostController {
 
 	private PostService postService;
+	private CommentService commentService;
 	
 	@Autowired
-	public PostController(PostService postService) {
+	public PostController(PostService postService, CommentService commentService) {
 		this.postService = postService;
+		this.commentService = commentService;
 	}
+	
+	// 내부 클래스 사용하여 응답 데이터 포맷 정의
+    static class PostDetailResponse {
+        private Post post;
+        private List<Comment> comments;
+
+        public PostDetailResponse(Post post, List<Comment> comments) {
+            this.post = post;
+            this.comments = comments;
+        }
+
+		public Post getPost() {
+			return post;
+		}
+
+		public void setPost(Post post) {
+			this.post = post;
+		}
+
+		public List<Comment> getComments() {
+			return comments;
+		}
+
+		public void setComments(List<Comment> comments) {
+			this.comments = comments;
+		}
+
+    }
 	
 	// 전체 조회
 	@GetMapping("/posts")
@@ -46,10 +78,12 @@ public class PostController {
 	// 상세 조회(게시글 번호)
 	@GetMapping("posts/{postID}")
 	@Operation(summary="상세 조회")
-	public ResponseEntity<Post> detail(@PathVariable("postID") int postID){
-		Post post = postService.readPost(postID);
-		return new ResponseEntity<Post>(post, HttpStatus.OK);
-	}
+	public ResponseEntity<PostDetailResponse> getPostDetailWithComments(@PathVariable int postID) {
+        Post post = postService.readPost(postID);
+        List<Comment> comments = commentService.getCommentList(postID);
+        PostDetailResponse response = new PostDetailResponse(post, comments);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 	
 	
 	// 게시글 작성
