@@ -9,14 +9,18 @@ public class User {
 	 private String userPhonenumber;
 	 private String userNickname;
 	 private String userProfilePath;
-	 private String clubID;
+	 private String clubID1;
+	 private String clubID2;
+	 private String clubID3;
  
 	 public User() {
 	 }
 	
-	 public User(String userID, String userPW, String username, String userRRN, String userPhonenumber, String userNickname,
-			String userProfilePath, String clubID) {
-	 	super();
+	 
+
+	public User(String userID, String userPW, String username, String userRRN, String userPhonenumber,
+			String userNickname, String userProfilePath, String clubID1, String clubID2, String clubID3) {
+		super();
 		this.userID = userID;
 		this.userPW = userPW;
 		this.username = username;
@@ -24,8 +28,12 @@ public class User {
 		this.userPhonenumber = userPhonenumber;
 		this.userNickname = userNickname;
 		this.userProfilePath = userProfilePath;
-		this.clubID = clubID;
-	 }
+		this.clubID1 = clubID1;
+		this.clubID2 = clubID2;
+		this.clubID3 = clubID3;
+	}
+
+
 
 	public String getUserID() {
 		return userID;
@@ -82,21 +90,37 @@ public class User {
 	public void setUserProfilePath(String userProfilePath) {
 		this.userProfilePath = userProfilePath;
 	}
-	
-	public String getClubID() {
-		return clubID;
+
+	public String getClubID1() {
+		return clubID1;
 	}
-	
-	public void setClubID(String clubID) {
-		this.clubID = clubID;
+
+	public void setClubID1(String clubID1) {
+		this.clubID1 = clubID1;
+	}
+
+	public String getClubID2() {
+		return clubID2;
+	}
+
+	public void setClubID2(String clubID2) {
+		this.clubID2 = clubID2;
+	}
+
+	public String getClubID3() {
+		return clubID3;
+	}
+
+	public void setClubID3(String clubID3) {
+		this.clubID3 = clubID3;
 	}
 
 	@Override
 	public String toString() {
 		return "User [userID=" + userID + ", userPW=" + userPW + ", username=" + username + ", userRRN=" + userRRN
 				+ ", userPhonenumber=" + userPhonenumber + ", userNickname=" + userNickname + ", userProfilePath="
-				+ userProfilePath + ", clubID=" + clubID + "]";
+				+ userProfilePath + ", clubID1=" + clubID1 + ", clubID2=" + clubID2 + ", clubID3=" + clubID3 + "]";
 	}
-  
+
 
 }

@@ -10,7 +10,10 @@ public interface UserDao {
 	// 전체 회원 조회
 	List<User> selectAll();
 	
-	// 회원 조회, 로그인
+	// 회원 가입
+	void insertUser(User user);
+	
+	// 로그인
 	User selectOne(Map<String, String> info);
 
 }
