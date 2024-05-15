@@ -6,22 +6,22 @@
 
 	<select id="selectById" resultType="Comment" parameterType="int">
 		SELECT *
-		FROM  comments 
+		FROM  comment 
 		WHERE postID=#{postID}
 	</select>
 	
 	<insert id="insertComment" parameterType="Comment" keyProperty="commentID" useGeneratedKeys="true">
-		INSERT INTO comments (userID, postID, commentID, commentContent, commentRegDate)
+		INSERT INTO comment (userID, postID, commentID, commentContent, commentRegDate)
 		VALUES (#{userID}, #{postID}, #{commentID}, #{commentContent}, #{commentRegDate})
 	</insert>
 	
 	<delete id="deleteComment" parameterType="int">
-		DELETE FROM comments 
+		DELETE FROM comment 
 		WHERE commentID=#{commentID}
 	</delete>	
 	
 	<update id="updateComment" parameterType="Comment">
-		UPDATE comments 
+		UPDATE comment 
 		SET commentContent=#{commentContent}, commentRegDate=#{commentRegDate}
 		WHERE commentID = #{commentID}
 	</update>	
