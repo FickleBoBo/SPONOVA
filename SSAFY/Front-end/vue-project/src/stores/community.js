@@ -15,7 +15,7 @@ export const useCommunityStore = defineStore('post', () => {
       data: post
     })
     .then(()=> {
-      router.push({name: 'home'})
+      router.push({name: 'community'})
     })
     .catch((err) => {
       console.log(err)
@@ -35,13 +35,15 @@ export const useCommunityStore = defineStore('post', () => {
     axios.get(`${GENS_API}/${postID}`)
     .then((response) => {
       post.value = response.data
+      console.log(post.value)
+      console.log(`${GENS_API}/${postID}`)
     })
   }
 
   const updatePost = function(searchCondition){
     axios.put(GENS_API, post.value)
     .then(() => {
-      router.push({name: 'home'})
+      router.push({name: 'community'})
     })
   }
 

@@ -11,7 +11,9 @@ import ClubView from '@/views/ClubView.vue'
 import CommunityView from '@/views/CommunityView.vue'
 
 import GameDetailView from '@/views/GameDetailView.vue'
+import PostList from '@/components/Community/PostList.vue'
 import PostCreate from '@/components/Community/PostCreate.vue'
+import PostDetailPage from '@/components/Community/PostDetailPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,12 +59,29 @@ const router = createRouter({
       path: '/community',
       name: 'community',
       component: CommunityView, 
+      // children: [
+      //   {
+      //     path: ':id',
+      //     name: 'PostDetailPage',
+      //     component: PostDetailPage
+      //   }, 
+      // ], 
+    }, 
+    {
+      path: '/commutiny/:id',
+      name: 'PostDetailPage',
+      component: PostDetailPage
     }, 
     {
       path: '/community/create',
       name: 'PostCreate',
-      component: PostCreate
+      component: PostCreate,
     }, 
+    // {
+    //   path: '/community/:id',
+    //   name: 'PostDetailPage',
+    //   component: PostDetailPage
+    // }, 
   ]
 })
 
