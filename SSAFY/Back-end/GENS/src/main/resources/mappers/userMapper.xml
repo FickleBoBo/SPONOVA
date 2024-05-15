@@ -2,8 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gens.dao.UserDao">
+<mapper namespace="com.gens.dao.user.UserDao">
 
-
-
+	<!--회원 전체 조회-->
+	<select id="selectAll" resultType="User">
+		SELECT *
+		FROM users;
+	</select>
+	
+	<!--회원 상세 조회-->
+	<select id="selectOne" parameterType="Map" resultType="User">
+		SELECT *
+		FROM users 
+		WHERE userID+#{userID} AND userPW=#{userPW}
+	</select>
+	
 </mapper>
