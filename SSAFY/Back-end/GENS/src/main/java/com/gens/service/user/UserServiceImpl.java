@@ -39,6 +39,12 @@ public class UserServiceImpl implements UserService{
 		info.put("userPW", userPW);
 		return userDao.selectOne(info);
 	}
+	
+	@Override
+	public boolean existsById(String userId) {
+	    return userDao.findById(userId) != null;
+	}
+
 
 //	// front에서 처리하는게 낫지만 임시방편
 //	@Override

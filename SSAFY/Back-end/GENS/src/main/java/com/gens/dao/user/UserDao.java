@@ -16,4 +16,9 @@ public interface UserDao {
 	// 로그인
 	User selectOne(Map<String, String> info);
 
+	User findById(String userId);
+	
+	// 중복 ID 검사
+	
+
 }

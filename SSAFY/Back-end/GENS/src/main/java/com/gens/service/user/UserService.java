@@ -14,5 +14,7 @@ public interface UserService {
 	
 	// 로그인 하기
 	User login(String userID, String userPW);
+	
+	boolean existsById(String userId);
 
 }
