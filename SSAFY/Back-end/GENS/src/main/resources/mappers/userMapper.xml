@@ -7,14 +7,20 @@
 	<!--회원 전체 조회-->
 	<select id="selectAll" resultType="User">
 		SELECT *
-		FROM users;
+		FROM user;
 	</select>
 	
-	<!--회원 상세 조회-->
+	<!--로그인-->
 	<select id="selectOne" parameterType="Map" resultType="User">
 		SELECT *
-		FROM users 
-		WHERE userID+#{userID} AND userPW=#{userPW}
+		FROM user
+		WHERE userID=#{userID} AND userPW=#{userPW}
 	</select>
+	
+	<!--회원가입-->
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO user (userID, userPW, username, userRRN, userPhonenumber, userNickname,userProfilePath)
+		VALUES(#{userID}, #{userPW}, #{username}, #{userRRN}, #{userPhonenumber}, #{userNickname}, #{userProfilePath})
+	</insert>	
 	
 </mapper>
