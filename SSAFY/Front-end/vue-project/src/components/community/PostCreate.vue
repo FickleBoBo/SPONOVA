@@ -4,15 +4,15 @@
           <legend>게시글 등록</legend>
           <div>
               <label for="title">제목 : </label>
-              <input type="text" id="title" v-model="post.title">
+              <input type="text" id="title" v-model="post.postTitle">
           </div>
           <div>
               <label for="writer">쓰니 : </label>
-              <input type="text" id="writer" v-model="post.writer">
+              <input type="text" id="writer" v-model="post.userID">
           </div>
           <div>
               <label for="content">내용 : </label>
-              <textarea id="content" cols="30" rows="10" v-model="post.content"></textarea>
+              <textarea id="content" cols="30" rows="10" v-model="post.postContent"></textarea>
           </div>
           <div>
               <!--createBoard는 메서드 명-->
@@ -32,12 +32,17 @@ import {ref} from 'vue'
 const store = useCommunityStore()
 
 const post = ref({
-  title: '',
-  content: ''
+  postTitle: '',
+  userID: '',
+  postContent: ''
 })
 
 
 const createPost = function () {
+  // const postData = {
+  //   postTitle: post.postTitle,
+  //   postContent: post.postContent
+  // }
   store.createPost(post.value)
 }
 
