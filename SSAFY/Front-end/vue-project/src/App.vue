@@ -1,4 +1,5 @@
 <template>
+    <div v-if="true"><h1>{{ store2.loginInfo.userNickname }}</h1></div>
     <RouterLink :to="{name: 'home'}">Home</RouterLink> <br>
     <RouterLink :to="{name: 'intro'}">Intro</RouterLink> <br>
     <RouterLink :to="{name: 'game'}" class="game-container">
@@ -11,7 +12,11 @@
     <RouterLink :to="{name: 'club'}">Club</RouterLink> <br>
     <RouterLink :to="{name: 'community'}">Community</RouterLink> <br>
 
-    <RouterLink :to="{name: 'login'}">Login</RouterLink> <br>
+    <div>
+        <RouterLink v-if="!store2.login" :to="{name: 'login'}">Login</RouterLink> <br>
+        <RouterLink v-if="store2.login" :to="{name: 'login'}">Logout</RouterLink> <br>
+    </div>
+
 
 
 
@@ -30,6 +35,9 @@ import { RouterLink, RouterView } from 'vue-router'
 // pinia 불러오기
 import { gameInfoStore } from '@/stores/gameInfo'
 const store = gameInfoStore()
+
+import { userInfoStore } from '@/stores/userInfo'
+const store2 = userInfoStore()
 
 </script>
 
