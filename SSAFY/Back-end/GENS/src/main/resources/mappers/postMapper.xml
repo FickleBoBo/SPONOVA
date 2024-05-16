@@ -45,7 +45,7 @@
 		FROM post
 		
 		<if test="key != null">
-			WHERE ${key} LIKE concat('%', #{word}, '%')
+			WHERE postTitle LIKE concat('%', #{word}, '%')
 		</if>
 	</select>
 	

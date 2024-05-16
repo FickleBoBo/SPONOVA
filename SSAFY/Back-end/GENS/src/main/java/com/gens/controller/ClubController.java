@@ -35,7 +35,7 @@ public class ClubController {
 	}
 	
 	// 종목 검색
-	@GetMapping("/club/search")
+	@GetMapping("/search")
 	public ResponseEntity<?> searchClub(@RequestParam String key, @RequestParam String word){
 		SearchCondition condition = new SearchCondition();
 		condition.setKey(key);
