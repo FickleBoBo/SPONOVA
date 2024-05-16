@@ -134,6 +134,7 @@ public class PostController {
 	}
 	
 	// 조회수 증가
+//	@GetMapping("/posts/{postID}")
 	public ResponseEntity<Void> increasePostView(@PathVariable int postID){
 		postService.increaseViewCnt(postID);
 		return new ResponseEntity<Void>(HttpStatus.OK);

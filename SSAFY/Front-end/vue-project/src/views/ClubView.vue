@@ -3,17 +3,17 @@
     <div>
       <h3>Club List</h3>
     </div>
-  
-    <div class="club-card" v-for="club in clubStore.clubList" :key="club.clubID">
+
+    <div>
+      <ClubSearchInput/>
+      
+      <div class="club-card" v-for="club in clubStore.clubList" :key="club.clubID">
         <div>팀명: {{ club.clubID }}</div>
         <div>종목: {{ club.gameID}}</div>
         <div>소개: {{ club.clubContent }}</div>
         <div>일단이미지경로: {{ club.clubLogoPath }}</div>
+      </div>
     </div>
-        
-  
-        <!-- 나중에 구현할 검색 기능 -->
-        <!-- <BoardSearchInput/> -->
   
         
       <RouterView />
@@ -23,6 +23,7 @@
   
   <script setup>
   
+  import ClubSearchInput from '@/components/Club/ClubSearchInput.vue';
   import { useClubStore } from '@/stores/club'
   import{onMounted} from 'vue'
   

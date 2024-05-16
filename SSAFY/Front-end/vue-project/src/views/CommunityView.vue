@@ -14,7 +14,7 @@
             <tr v-for="post in communityStore.postList" :key="post.postID">
                 <td>{{ post.postID }}</td>
                 <!-- <td>{{ post.postTitle }}</td> -->
-                <td><RouterLink :to="{name: 'PostDetailPage', params: { id: post.postID} }">{{ post.postTitle }}</RouterLink></td>
+                <td><RouterLink :to="{name: 'PostDetailPage', params: { 'id': post.postID} }">{{ post.postTitle }}</RouterLink></td>
                 <td>{{ post.userID }}</td>
                 <td>{{ post.postViewCnt }}</td>
                 <td>{{ post.postRegDate }}</td>
@@ -22,21 +22,16 @@
         </table>
   
         <RouterLink :to="{name: 'PostCreate'}">글쓰기</RouterLink>
-  
-        <!-- 나중에 구현할 검색 기능 -->
-        <!-- <BoardSearchInput/> -->
-  
-        
-      <RouterView />
+
     </div>
   </template>
   
   
   
-  
-  
+
   <script setup>
   
+  import PostSearchInput from '@/components/Community/PostSearchInput.vue'
   import { useCommunityStore } from '@/stores/community'
   import{onMounted} from 'vue'
   
@@ -46,7 +41,6 @@
     communityStore.getPostList()
   })
   
-  import PostSearchInput from '@/components/Community/PostSearchInput.vue'
   import PostCreate from '@/components/Community/PostCreate.vue'
   import PostDetailPage from '@/components/Community/PostDetailPage.vue'
   
