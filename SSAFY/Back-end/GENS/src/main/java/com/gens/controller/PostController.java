@@ -133,6 +133,12 @@ public class PostController {
 		return new ResponseEntity<List<Post>>(list, HttpStatus.OK);
 	}
 	
+	// 조회수 증가
+	public ResponseEntity<Void> increasePostView(@PathVariable int postID){
+		postService.increaseViewCnt(postID);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
 	
 	
 	
