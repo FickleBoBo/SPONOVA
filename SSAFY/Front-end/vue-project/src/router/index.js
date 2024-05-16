@@ -68,7 +68,7 @@ const router = createRouter({
       // ], 
     }, 
     {
-      path: '/commutiny/:id',
+      path: '/community/:id',
       name: 'PostDetailPage',
       component: PostDetailPage
     }, 
