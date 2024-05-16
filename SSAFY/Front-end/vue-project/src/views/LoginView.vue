@@ -12,6 +12,7 @@
                 </div>
                 <button @click="submitToPinia">로그인</button>
                 <button @click="resetToPinia">로그아웃</button>
+                <button @click="localStorageInfo">로컬 아이디 확인</button>
             </div>
         </form>
 
@@ -41,6 +42,20 @@ const submitToPinia = (() => {
 const resetToPinia = (() => {
     userStore.loginInfo = ""
 })
+
+
+const localStorageInfo = (() => {
+    const storedUserData = localStorage.getItem('user');
+    if (storedUserData) {
+    const userData = JSON.parse(storedUserData);
+    console.log(userData.userID); // 저장된 userID 출력
+    console.log(userData.userPW); // 저장된 userPW 출력
+    } else {
+    console.log('No user data found in localStorage');
+    }
+})
+
+
 
 </script>
 
