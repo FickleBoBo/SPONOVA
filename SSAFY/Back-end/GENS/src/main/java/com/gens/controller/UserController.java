@@ -1,8 +1,11 @@
 package com.gens.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +21,7 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/newsports")
+@CrossOrigin("*")
 public class UserController {
 
 	private final UserService userService;
@@ -29,13 +33,17 @@ public class UserController {
 	
 	// 로그인: 게시글 검색을 참고함
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestParam String userID, @RequestParam String userPW, HttpServletRequest request){
-		User user = userService.login(userID, userPW);
+	public ResponseEntity<?> login(@RequestBody Map<String, String> loginData, HttpServletRequest request){
+		String userID = loginData.get("userID");
+	    String userPW = loginData.get("userPW");
+
+	    User user = userService.login(userID, userPW);
 		
 		// 로그인 정보가 없는 경우
 		if (user == null) {
 	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login Failed");
 	    }
+		
 		// 로그인 가능
 //		return new ResponseEntity<User>(user, HttpStatus.OK);
 //		return ResponseEntity.ok(user); // 아래 주석 참조

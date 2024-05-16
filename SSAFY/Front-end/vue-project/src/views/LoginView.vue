@@ -15,8 +15,9 @@
             </div>
         </form>
 
-        <div>로그인 아이디 : {{ store.userId }}</div>
-        <div>로그인 비밀번호 : {{ store.userPw }}</div>
+        <!-- <div>로그인 아이디 : {{ store.userId }}</div>
+        <div>로그인 비밀번호 : {{ store.userPw }}</div> -->
+
     </div>
 </template>
 
@@ -24,22 +25,22 @@
 
 <script setup>
 
-// import { userInfoStore }  from '@/stores/userInfo'
-// const store = userInfoStore()
-// import { ref } from 'vue'
+import { userInfoStore }  from '@/stores/userInfo'
+const store = userInfoStore()
+import { ref } from 'vue'
 
-// const id = ref("")
-// const pw = ref("")
+const id = ref("")
+const pw = ref("")
 
-// const submitToPinia = (() => {
-//     store.setLoginInfo(id.value, pw.value)
-//     id.value = ""
-//     pw.value = ""
-// })
+const submitToPinia = (() => {
+    store.sendLoginData(id.value, pw.value)
+    id.value = ""
+    pw.value = ""
+})
 
-// const resetToPinia = (() => {
-//     store.setLoginInfo("", "")
-// })
+const resetToPinia = (() => {
+    store.loginInfo = ""
+})
 
 </script>
 
