@@ -82,6 +82,7 @@ public class PostController {
         Post post = postService.readPost(postID);
         List<Comment> comments = commentService.getCommentList(postID);
         PostDetailResponse response = new PostDetailResponse(post, comments);
+        postService.increaseViewCnt(postID);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 	
@@ -133,11 +134,7 @@ public class PostController {
 		return new ResponseEntity<List<Post>>(list, HttpStatus.OK);
 	}
 	
-	// 조회수 증가
-	public ResponseEntity<Void> increasePostView(@PathVariable int postID){
-		postService.increaseViewCnt(postID);
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
+
 	
 	
 	
