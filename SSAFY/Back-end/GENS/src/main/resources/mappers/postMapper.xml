@@ -45,8 +45,7 @@
 		FROM post
 		
 		<if test="key != null">
-			WHERE postTitle LIKE concat('%', #{word}, '%') 
-			<!-- WHERE ${key} LIKE concat('%', #{word}, '%')를 바꿈  -->
+			WHERE ${key} LIKE concat('%', #{word}, '%')
 		</if>
 	</select>
 	

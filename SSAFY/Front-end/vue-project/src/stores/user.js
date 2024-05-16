@@ -20,7 +20,8 @@ export const useUserStore = defineStore('userInfo', () => {
       data: {userID, userPW}
     })
     .then((response)=> {
-      console.log(response.data)
+      const userData = { userID: response.data.userID, userPW: response.data.userPW };
+localStorage.setItem('user', JSON.stringify(userData))
       loginInfo.value = response.data
       console.log(loginInfo.value)
       if(loginInfo.value){

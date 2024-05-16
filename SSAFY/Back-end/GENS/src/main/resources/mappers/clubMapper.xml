@@ -17,7 +17,7 @@
 		FROM club
 		
 		<if test="key != null">
-			WHERE gameID LIKE concat('%', #{word}, '%')
+			WHERE ${key} LIKE concat('%', #{word}, '%')
 		</if>
 	</select>
 
