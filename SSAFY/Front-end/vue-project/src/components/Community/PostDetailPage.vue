@@ -10,7 +10,7 @@
             <div>{{ communityStore.post.post.userID }}</div>
             <div>{{ communityStore.post.post.postTitle }}</div>
             <div>{{ communityStore.post.post.postContent }}</div>
-            <div>{{ communityStore.post.post.postViewCnt }}</div>
+            <div>{{ communityStore.post.post.postViewCnt + 1 }}</div>
             <div>{{ communityStore.post.post.postLikeCnt }}</div>
             <div>{{ communityStore.post.post.postRegDate }}</div>
         </div>
