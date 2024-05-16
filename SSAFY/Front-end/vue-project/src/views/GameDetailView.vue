@@ -1,12 +1,23 @@
 <template>
     <div>
-        <h3>GameDetailView</h3>
+    <div>
+      <h3>{{ gameStore.gameInfo[$route.params.id-1].koName }}</h3>
     </div>
-</template>
+  
+    <div>번호 : {{ $route.params.id }}</div>
+    <div>한글 이름 : {{ gameStore.gameInfo[$route.params.id-1].koName }}</div>
+    <div>영어 이름 : {{ gameStore.gameInfo[$route.params.id-1].enName }}</div>
+        
+  
+    </div>
+  </template>
+  
+  
+<script setup>
 
+import { useGameStore } from '@/stores/game'
 
-
-<script>
+const gameStore = useGameStore()
 
 </script>
 

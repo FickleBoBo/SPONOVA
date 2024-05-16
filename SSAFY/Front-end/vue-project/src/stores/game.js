@@ -1,5 +1,7 @@
-import { computed, ref } from 'vue'
+import router from '@/router'
+import axios from 'axios'
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 // store 
 export const useGameStore = defineStore('gameInfo', () => { 
