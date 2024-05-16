@@ -48,14 +48,23 @@ export const useCommunityStore = defineStore('postInfo', () => {
   }
 
   const searchPostList = function(searchCondition) {
-    axios.get(`GENS_API/search`, {
+
+    let url=GENS_API
+    // 검색어가 있을 때만 검색 기능을 작동시킬 수 있다
+    if (searchCondition.key !== 'none' && searchCondition.word) {
+      url += `/search`; 
+    }
+
+    axios.get(url, {
       params: searchCondition
     })
     .then((response) => {
       postList.value = response.data
       console.log(postList.value)
-      console.log(response.value)
     })
+     .catch((error) => {
+    console.error('Error searching posts:', error);
+  });
   }
 
 
