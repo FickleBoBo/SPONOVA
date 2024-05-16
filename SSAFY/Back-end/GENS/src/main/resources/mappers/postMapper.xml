@@ -48,6 +48,13 @@
 			WHERE ${key} LIKE concat('%', #{word}, '%')
 		</if>
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateViewCnt" parameterType="int">
+		UPDATE post
+		SET postViewCnt = postViewCnt+1
+		WHERE postID=#{postID}
+	</update>
 
 
 

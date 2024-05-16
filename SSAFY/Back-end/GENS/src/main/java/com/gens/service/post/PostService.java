@@ -26,6 +26,7 @@ public interface PostService {
 	List<Post> retrievePost(SearchCondition searchCondition);
 	
 	// 조회수 증가
+	void increaseViewCnt(int postID);
 	
 	
 	// 이미지 파일 처리

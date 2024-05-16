@@ -58,5 +58,12 @@ public class PostServiceImpl implements PostService{
 	public List<Post> retrievePost(SearchCondition searchCondition) {
 		return postDao.searchPost(searchCondition);
 	}
+	
+
+	// 조회수 증가
+	@Override
+	public void increaseViewCnt(int postID) {
+		postDao.updateViewCnt(postID);
+	}
 
 }
