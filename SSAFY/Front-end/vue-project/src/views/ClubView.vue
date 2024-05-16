@@ -7,11 +7,12 @@
     <div>
       <ClubSearchInput/>
       
-      <div class="club-card" v-for="club in clubStore.clubList" :key="club.clubID">
+      <div v-for="club in clubStore.clubList" :key="club.clubID" class="club-card">
+        <img :src="club.clubLogoPath" alt="LOGO"/>
         <div>팀명: {{ club.clubID }}</div>
         <div>종목: {{ club.gameID}}</div>
         <div>소개: {{ club.clubContent }}</div>
-        <div>일단이미지경로: {{ club.clubLogoPath }}</div>
+        <!-- <div>이미지경로: {{ club.clubLogoPath }}</div> -->
       </div>
     </div>
   
@@ -26,8 +27,11 @@
   import ClubSearchInput from '@/components/Club/ClubSearchInput.vue';
   import { useClubStore } from '@/stores/club'
   import{onMounted} from 'vue'
+  import {ref} from 'vue'
   
   const clubStore = useClubStore()
+
+
   
   onMounted(() => {
     clubStore.getClubList()
