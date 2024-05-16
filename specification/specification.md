@@ -29,4 +29,4 @@
 - 뉴스포츠 라는 느낌과 어울리게 페이지를 동적으로 꾸미고 싶음(ex 2028 LA) https://la28.org/
 
 ## ERD 
-<img src="./assets/diagram.jpg">
+<img src="./assets/erd.jpg">
