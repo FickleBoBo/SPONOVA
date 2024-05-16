@@ -6,7 +6,7 @@ import { ref } from 'vue'
 
 const GENS_API=`http://localhost:8080/newsports/community/posts`
 
-export const useCommunityStore = defineStore('post', () => {
+export const useCommunityStore = defineStore('postInfo', () => {
 
   const createPost = function(post){
     axios({
@@ -47,8 +47,27 @@ export const useCommunityStore = defineStore('post', () => {
     })
   }
 
+  const searchPostList = function(searchCondition) {
+    axios.get(`GENS_API/search`, {
+      params: searchCondition
+    })
+    .then((response) => {
+      postList.value = response.data
+      console.log(postList.value)
+      console.log(response.value)
+    })
+  }
 
-  return { createPost, postList, getPostList, post, getPost, updatePost}
+
+  return { 
+    createPost, 
+    postList, 
+    getPostList, 
+    post, 
+    getPost, 
+    updatePost,
+    searchPostList,
+  }
 
 
 

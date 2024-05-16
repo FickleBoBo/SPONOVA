@@ -13,13 +13,13 @@
 	<!--로그인-->
 	<select id="selectOne" parameterType="Map" resultType="User">
 		SELECT *
-		FROM users
+		FROM user
 		WHERE userID=#{userID} AND userPW=#{userPW}
 	</select>
 	
 	<!--회원가입-->
 	<insert id="insertUser" parameterType="User">
-		INSERT INTO users (userID, userPW, username, userRRN, userPhonenumber, userNickname,userProfilePath)
+		INSERT INTO user (userID, userPW, username, userRRN, userPhonenumber, userNickname,userProfilePath)
 		VALUES(#{userID}, #{userPW}, #{username}, #{userRRN}, #{userPhonenumber}, #{userNickname}, #{userProfilePath})
 	</insert>	
 	

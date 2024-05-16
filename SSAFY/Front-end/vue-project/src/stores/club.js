@@ -30,7 +30,11 @@ export const useClubStore = defineStore('club', () => {
   }
 
 
-  return { clubList, getClubList, club }
+  return { 
+    clubList, 
+    getClubList, 
+    club 
+  }
 
 
 

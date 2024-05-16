@@ -2,7 +2,7 @@ import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 
 // store 
-export const gameInfoStore = defineStore('gameInfo', () => { 
+export const useGameStore = defineStore('gameInfo', () => { 
 
     // 뉴 스포츠 정보
     const gameInfo = ref([

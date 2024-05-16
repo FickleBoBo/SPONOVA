@@ -23,7 +23,7 @@
 
 <script setup>
 
-import { useClubStore } from '@/stores/clubInfo'
+import { useClubStore } from '@/stores/club'
 import{onMounted} from 'vue'
 
 const store = useClubStore()

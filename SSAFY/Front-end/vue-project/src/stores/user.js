@@ -6,10 +6,12 @@ import { ref } from 'vue'
 
 const GENS_API=`http://localhost:8080/newsports/login`
 
-export const userInfoStore = defineStore('userInfo', () => {
+let is_authenticated = false
+
+export const useUserStore = defineStore('userInfo', () => {
 
   const loginInfo = ref('')
-  const login = ref(false)
+  const loginStatus = ref(false)
 
   const sendLoginData = function(userID, userPW){
     axios({
@@ -20,8 +22,9 @@ export const userInfoStore = defineStore('userInfo', () => {
     .then((response)=> {
       console.log(response.data)
       loginInfo.value = response.data
+      console.log(loginInfo.value)
       if(loginInfo.value){
-        login.value = true
+        loginStatus.value = true
       }
       router.push({name: 'home'})
     })
@@ -32,8 +35,9 @@ export const userInfoStore = defineStore('userInfo', () => {
 
 
 
-  return { loginInfo, sendLoginData, login }
-
-
-
+  return { 
+    loginInfo, 
+    loginStatus,
+    sendLoginData, 
+  }
 })

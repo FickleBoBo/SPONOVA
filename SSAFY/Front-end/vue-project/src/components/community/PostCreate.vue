@@ -29,7 +29,7 @@
 import { useCommunityStore } from '@/stores/community'
 import {ref} from 'vue'
 
-const store = useCommunityStore()
+const communityStore = useCommunityStore()
 
 const post = ref({
   postTitle: '',
@@ -43,7 +43,7 @@ const createPost = function () {
   //   postTitle: post.postTitle,
   //   postContent: post.postContent
   // }
-  store.createPost(post.value)
+  communityStore.createPost(post.value)
 }
 
 </script>

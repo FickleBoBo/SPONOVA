@@ -20,13 +20,13 @@
     <div>
     <h4>게시글 상세</h4>
     <hr>
-    <div v-if="store.post.post">
-      <div>{{ store.post.post.userID }}</div>
-      <div>{{ store.post.post.postTitle }}</div>
-      <div>{{ store.post.post.postContent }}</div>
-      <div>{{ store.post.post.postViewCnt }}</div>
-      <div>{{ store.post.post.postLikeCnt }}</div>
-      <div>{{ store.post.post.postRegDate }}</div>
+    <div v-if="communityStore.postInfo.post">
+      <div>{{ communityStore.postInfo.post.userID }}</div>
+      <div>{{ communityStore.postInfo.post.postTitle }}</div>
+      <div>{{ communityStore.postInfo.post.postContent }}</div>
+      <div>{{ communityStore.postInfo.post.postViewCnt }}</div>
+      <div>{{ communityStore.postInfo.post.postLikeCnt }}</div>
+      <div>{{ communityStore.postInfo.post.postRegDate }}</div>
     </div>
     <div v-else>
       Loading...
@@ -46,13 +46,13 @@ import {useRoute} from 'vue-router'
 import {useRouter} from 'vue-router'
 import axios from 'axios'
 
-const store = useCommunityStore()
+const communityStore = useCommunityStore()
 
 const route = useRoute() // 얘도 import가 필요 // 얘는 상세 페이지 이동 용
 const router  = useRouter() // 얘는 삭제 후 페이지 이동용
 
 onMounted(() => {
-    store.getPost(route.params.id)
+    communityStore.getPost(route.params.id)
 })
 
 
