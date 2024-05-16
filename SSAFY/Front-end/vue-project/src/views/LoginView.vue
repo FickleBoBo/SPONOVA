@@ -25,21 +25,21 @@
 
 <script setup>
 
-import { userInfoStore }  from '@/stores/userInfo'
-const store = userInfoStore()
+import { useUserStore }  from '@/stores/user'
+const userStore = useUserStore()
 import { ref } from 'vue'
 
 const id = ref("")
 const pw = ref("")
 
 const submitToPinia = (() => {
-    store.sendLoginData(id.value, pw.value)
+    userStore.sendLoginData(id.value, pw.value)
     id.value = ""
     pw.value = ""
 })
 
 const resetToPinia = (() => {
-    store.loginInfo = ""
+    userStore.loginInfo = ""
 })
 
 </script>

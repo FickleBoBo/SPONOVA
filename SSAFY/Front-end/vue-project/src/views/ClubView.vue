@@ -4,7 +4,7 @@
       <h3>Club List</h3>
     </div>
   
-    <div class="club-card" v-for="club in store.clubList" :key="club.clubID">
+    <div class="club-card" v-for="club in clubStore.clubList" :key="club.clubID">
         <div>팀명: {{ club.clubID }}</div>
         <div>종목: {{ club.gameID}}</div>
         <div>소개: {{ club.clubContent }}</div>
@@ -23,13 +23,13 @@
   
   <script setup>
   
-  import { useClubStore } from '@/stores/clubInfo'
+  import { useClubStore } from '@/stores/club'
   import{onMounted} from 'vue'
   
-  const store = useClubStore()
+  const clubStore = useClubStore()
   
   onMounted(() => {
-    store.getClubList()
+    clubStore.getClubList()
   })
   
   
