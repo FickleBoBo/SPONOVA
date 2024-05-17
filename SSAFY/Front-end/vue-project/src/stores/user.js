@@ -4,9 +4,8 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 
-const GENS_API=`http://localhost:8080/newsports/login`
 
-let is_authenticated = false
+const GENS_API=`http://localhost:8080/newsports/login`
 
 export const useUserStore = defineStore('userInfo', () => {
 
@@ -21,7 +20,7 @@ export const useUserStore = defineStore('userInfo', () => {
     })
     .then((response)=> {
       const userData = { userID: response.data.userID, userPW: response.data.userPW };
-localStorage.setItem('user', JSON.stringify(userData))
+      localStorage.setItem('user', JSON.stringify(userData))
       loginInfo.value = response.data
       console.log(loginInfo.value)
       if(loginInfo.value){
@@ -34,11 +33,17 @@ localStorage.setItem('user', JSON.stringify(userData))
     })
   }
 
-
+  const clearData = (() => {
+    loginInfo.value = ''
+    loginStatus.value = false
+  })
 
   return { 
     loginInfo, 
     loginStatus,
     sendLoginData, 
+    clearData
   }
-})
+
+}, { persist: true }
+)

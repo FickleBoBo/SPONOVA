@@ -1,6 +1,6 @@
 <template>
-    <div v-if="userStore.loginStatus"><h1>{{ userStore.loginInfo.userNickname }}</h1></div>
-    <div v-else><h1>로그인을 해주세요</h1></div>
+    
+    <!-- 네비게이션 바 고정 영역 -->
     <RouterLink :to="{name: 'home'}">Home</RouterLink> <br>
     <RouterLink :to="{name: 'intro'}">Intro</RouterLink> <br>
     <RouterLink :to="{name: 'game'}" class="game-container">
@@ -13,16 +13,19 @@
     <RouterLink :to="{name: 'club'}">Club</RouterLink> <br>
     <RouterLink :to="{name: 'community'}">Community</RouterLink> <br>
 
+
+
+    <!-- 네비게이션 바 동적 영역 -->
+    <!-- 로그인 안했으면 "로그인" / "회원가입" -->
+    <!-- 로그인 했으면 "로그아웃" / "닉네임"-->
     <div>
-        <RouterLink v-if="!userStore.loginStatus" :to="{name: 'login'}">Login</RouterLink> <br>
-        <RouterLink v-if="userStore.loginStatus" :to="{name: 'login'}">Logout</RouterLink> <br>
+        <RouterLink v-if="!userStore.loginStatus" :to="{name: 'login'}">Login</RouterLink>
+        <RouterLink v-if="userStore.loginStatus" :to="{name: 'logout'}">Logout</RouterLink>
+        <br>
+        <RouterLink v-if="!userStore.loginStatus" :to="{name: 'login'}">회원가입</RouterLink>
+        <RouterLink v-if="userStore.loginStatus" :to="{name: 'login'}">{{ userStore.loginInfo.userNickname }}</RouterLink>
     </div>
 
-
-
-
-
-    
     <RouterView />
 </template>
 
@@ -40,6 +43,7 @@ const gameStore = useGameStore()
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
 
+console.log(userStore.loginStatus)
 </script>
 
 

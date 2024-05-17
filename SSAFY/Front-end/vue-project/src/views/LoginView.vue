@@ -2,6 +2,7 @@
     <div>
         <h1>LoginView</h1>
 
+        <!-- 로그인 폼 양식 -->
         <form @submit.prevent>
             <div class="loginForm">
                 <div>
@@ -11,14 +12,8 @@
                     <input type="password" name="pw" placeholder="비밀번호" v-model="pw" required>
                 </div>
                 <button @click="submitToPinia">로그인</button>
-                <button @click="resetToPinia">로그아웃</button>
-                <button @click="localStorageInfo">로컬 아이디 확인</button>
             </div>
         </form>
-
-        <!-- <div>로그인 아이디 : {{ store.userId }}</div>
-        <div>로그인 비밀번호 : {{ store.userPw }}</div> -->
-
     </div>
 </template>
 
@@ -26,10 +21,13 @@
 
 <script setup>
 
+// pinia의 user로 보낼거라 세팅
 import { useUserStore }  from '@/stores/user'
 const userStore = useUserStore()
 import { ref } from 'vue'
 
+// 임시 변수 id, pw를 만들어서 로그인 폼의 input 태그와 동기화
+// 로그인 버튼 누르면 id, pw 값을 pinia로 보내주고 id, pw는 초기화
 const id = ref("")
 const pw = ref("")
 
@@ -39,46 +37,47 @@ const submitToPinia = (() => {
     pw.value = ""
 })
 
-const resetToPinia = (() => {
-    userStore.loginInfo = ""
-})
-
-
-const localStorageInfo = (() => {
-    const storedUserData = localStorage.getItem('user');
-    if (storedUserData) {
-    const userData = JSON.parse(storedUserData);
-    console.log(userData.userID); // 저장된 userID 출력
-    console.log(userData.userPW); // 저장된 userPW 출력
-    } else {
-    console.log('No user data found in localStorage');
-    }
-})
-
-
-
 </script>
 
 
 
 <style scoped>
 
+/* chatGPT로 함 */
+
 .loginForm {
     width: 30rem;
-    border: 1px solid lightgray;
-    text-align: center;
-    align-items: center;
-    padding: 1rem;
+    margin: 0 auto; /* 가운데 정렬 */
+    border-radius: 10px;
+    background-color: #f8f9fa; /* 배경색 */
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
 
 input {
-    width: 20rem;
-    height: 2rem;
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 1rem; /* 각 input 사이 간격 */
+    padding: 0.5rem;
+    border: 1px solid #ced4da; /* 테두리 */
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
 button {
-    width: 10rem;
+    width: 100%;
     height: 3rem;
+    background-color: #007bff; /* 배경색 */
+    color: #fff; /* 글자색 */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s; /* hover 효과 */
+}
+
+button:hover {
+    background-color: #0056b3; /* hover 시 배경색 변경 */
 }
 
 </style>

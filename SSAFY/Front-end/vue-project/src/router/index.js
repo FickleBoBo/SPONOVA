@@ -15,6 +15,8 @@ import PostList from '@/components/Community/PostList.vue'
 import PostCreate from '@/components/Community/PostCreate.vue'
 import PostDetailPage from '@/components/Community/PostDetailPage.vue'
 
+import { useUserStore } from '@/stores/user'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -27,6 +29,15 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView
+    }, 
+    {
+      path: '/',
+      name: 'logout',
+      component: HomeView, 
+      beforeEnter: ((to, from) => {
+        const userStore = useUserStore()
+        userStore.clearData()
+      })
     }, 
     {
       path: '/intro',
