@@ -2,7 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gens.dao.LeagueDao">
+<mapper namespace="com.gens.dao.league.LeagueDao">
+	
+	<!-- 전체 조회 -->
+	<select id="selectAll" resultType="League">
+		SELECT *
+		From league
+	</select>
 
 
 
