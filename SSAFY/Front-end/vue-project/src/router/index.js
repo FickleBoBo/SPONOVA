@@ -37,6 +37,7 @@ const router = createRouter({
       beforeEnter: ((to, from) => {
         const userStore = useUserStore()
         userStore.clearData()
+        alert('로그아웃 되었습니다.');
       })
     }, 
     {
