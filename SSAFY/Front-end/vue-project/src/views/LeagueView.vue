@@ -8,8 +8,9 @@
       <div>리그: {{ league.leagueID }}</div>
         <div>홈팀: {{ league.ClubId }}</div>
         <div>원정팀: {{ league.clubID }}</div>
-        <div>경기장소: {{ league.clubID }}</div>
+        <div>경기장소: {{ league.location }}</div>
         <div>승팀: {{ league.clubID }}</div>
+        <hr>
     </div>
 </template>
 

@@ -46,6 +46,7 @@ CREATE TABLE Post (
 CREATE TABLE Comment (
     UserID VARCHAR(30) NOT NULL,                              # 유저 아이디
     PostID INT NOT NULL,                                      # 게시글 아이디
+    # UserNickname VARCHAR(10) NOT NULL,
     CommentID INT AUTO_INCREMENT PRIMARY KEY,                 # 댓글 아이디
     CommentContent TEXT NOT NULL,                             # 댓글 내용
     CommentRegDate DATETIME DEFAULT CURRENT_TIMESTAMP,        # 댓글 등록 시간
@@ -54,7 +55,8 @@ CREATE TABLE Comment (
 );
 
 CREATE TABLE League(
-    LeagueID VARCHAR(30) PRIMARY KEY,        		# 고유키
+	MatchID INT AUTO_INCREMENT PRIMARY KEY,			# 그냥 경기 번호
+    LeagueID VARCHAR(30),        					# 고유키
     GameID VARCHAR(20) NOT NULL,            		# 경기 종목명
     GameDay DATE NOT NULL,                   		# 경기 날짜
     Location VARCHAR(100),                   		# 경기 장소
