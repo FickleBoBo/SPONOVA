@@ -96,11 +96,19 @@ public class PostController {
 	}
 	
 	
+//	// 게시글 수정
+//	@PutMapping("/posts/{postID}")
+//	@Operation(summary="수정")
+//	public ResponseEntity<Void> updatePost(@PathVariable("postID") int postID ,@RequestBody Post post){
+//		post.setPostID(postID);
+//		postService.modifyPost(post);
+//		return new ResponseEntity<Void>(HttpStatus.OK);
+//	}
+	
 	// 게시글 수정
-	@PutMapping("/posts/{postID}")
+	@PutMapping("/posts")
 	@Operation(summary="수정")
-	public ResponseEntity<Void> updatePost(@PathVariable("postID") int postID ,@RequestBody Post post){
-		post.setPostID(postID);
+	public ResponseEntity<Void> updatePost(@RequestBody Post post){
 		postService.modifyPost(post);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}

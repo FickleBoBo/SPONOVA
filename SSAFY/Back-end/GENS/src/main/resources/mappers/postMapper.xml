@@ -30,6 +30,7 @@
 	<update id="updatePost" parameterType="Post">
 		UPDATE post 
 		SET  userID=#{userID}, postTitle=#{postTitle}, postContent=#{postContent}, postFilePath=#{postFilePath}
+		<!-- SET  userID=#{userID}, postTitle=#{postTitle}, postContent=#{postContent}, postFilePath=#{postFilePath} -->
 		WHERE postID = #{postID}		
 	</update>
 	

@@ -47,10 +47,32 @@ export const useCommunityStore = defineStore('postInfo', () => {
   // 이거 추가
   const getPostInfo = computed(() => post.value)
 
-  const updatePost = function(searchCondition){
-    axios.put(GENS_API, post.value)
-    .then(() => {
+  // 게시글 수정
+
+  // const createPost = function(post){
+  //   axios({
+  //     url: GENS_API,
+  //     method: 'POST',
+  //     data: post
+  //   })
+  //   .then(()=> {
+  //     router.push({name: 'community'})
+  //   })
+  //   .catch((err) => {
+  //     console.log()
+  //     console.log(err)
+  //   })
+  // }
+
+  const updatePost = function(post){
+    axios.put(GENS_API, post)
+    .then((response) => {
+      console.log(response.data)
+      alert('수정되었습니다.')
       router.push({name: 'community'})
+    })
+    .catch((err) => {
+      console.log(err)
     })
   }
 
