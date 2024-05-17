@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gens.dto.league.League;
+import com.gens.dto.league.LeagueRanking;
 import com.gens.service.league.LeagueService;
 
 @RestController
@@ -30,6 +31,12 @@ public class LeagueController {
 	public ResponseEntity<?> list(){
 		List<League> list = leagueService.getLeagueList();
 		return new ResponseEntity<List<League>>(list, HttpStatus.OK);
+	}
+	
+	@GetMapping("/rankings")
+	public ResponseEntity<List<LeagueRanking>> rankings(){
+		// leagueService에서 사용할 메서드를 직접 호출한다.
+		return new ResponseEntity<>(leagueService.getLeagueRankings(), HttpStatus.OK);
 	}
 
 }

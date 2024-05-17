@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gens.dao.league.LeagueDao;
 import com.gens.dto.league.League;
+import com.gens.dto.league.LeagueRanking;
 
 @Service
 public class LeagueServiceImpl implements LeagueService{
@@ -18,10 +19,17 @@ public class LeagueServiceImpl implements LeagueService{
 		this.leagueDao = leagueDao;
 	}
 	
-	
+	// League 객체를 전체 조회한다.
 	@Override
 	public List<League> getLeagueList() {
 		return leagueDao.selectAll();
+	}
+
+
+	// LeagueRanking 클래스를 통해 리그 랭킹을 전체 출력한다.
+	@Override
+	public List<LeagueRanking> getLeagueRankings() {
+		return leagueDao.selectRankings();
 	}
 
 }
