@@ -7,7 +7,7 @@
     <div>번호 : {{ $route.params.id }}</div>
     <div>한글 이름 : {{ gameStore.gameInfo[$route.params.id-1].koName }}</div>
     <div>영어 이름 : {{ gameStore.gameInfo[$route.params.id-1].enName }}</div>
-        
+    <div>Info : {{ gameStore.gameInfo[$route.params.id-1].info }}</div>   
   
     </div>
   </template>
