@@ -11,7 +11,7 @@
         <img :src="club.clubLogoPath" alt="LOGO"/>
         <div>팀명: {{ club.clubID }}</div>
         <div>종목: {{ club.gameID}}</div>
-        <div>소개: {{ club.clubContent }}</div>
+        <!-- <div>소개: {{ club.clubContent }}</div> -->
         <!-- <div>이미지경로: {{ club.clubLogoPath }}</div> -->
       </div>
     </div>
