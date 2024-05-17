@@ -23,7 +23,7 @@
             <RouterLink v-if="!userStore.loginStatus" :to="{name: 'login'}">Login </RouterLink>
             <RouterLink v-if="userStore.loginStatus" :to="{name: 'logout'}">Logout </RouterLink>
             <RouterLink v-if="!userStore.loginStatus" :to="{name: 'login'}">회원가입 </RouterLink>
-            <RouterLink v-if="userStore.loginStatus" :to="{name: 'login'}">{{ userStore.loginInfo.userNickname }}</RouterLink>
+            <RouterLink v-if="userStore.loginStatus" :to="{name: 'home'}">{{ userStore.loginInfo.userNickname }}</RouterLink>
         </div>
     </nav>
     <RouterView />
