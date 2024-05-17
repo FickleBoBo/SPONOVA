@@ -1,7 +1,7 @@
 import router from '@/router'
 import axios from 'axios'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 
 const GENS_API=`http://localhost:8080/newsports/community/posts`
@@ -18,6 +18,7 @@ export const useCommunityStore = defineStore('postInfo', () => {
       router.push({name: 'community'})
     })
     .catch((err) => {
+      console.log()
       console.log(err)
     })
   }
@@ -32,13 +33,19 @@ export const useCommunityStore = defineStore('postInfo', () => {
 
   const post = ref({})
   const getPost = function(postID){
-    axios.get(`${GENS_API}/${postID}`)
+    return axios.get(`${GENS_API}/${postID}`)
     .then((response) => {
       post.value = response.data
       console.log(post.value)
       console.log(`${GENS_API}/${postID}`)
     })
+    .catch((error) => {
+      console.error(error)
+    })
   }
+
+  // 이거 추가
+  const getPostInfo = computed(() => post.value)
 
   const updatePost = function(searchCondition){
     axios.put(GENS_API, post.value)
@@ -74,6 +81,7 @@ export const useCommunityStore = defineStore('postInfo', () => {
     getPostList, 
     post, 
     getPost, 
+    getPostInfo, 
     updatePost,
     searchPostList,
   }
