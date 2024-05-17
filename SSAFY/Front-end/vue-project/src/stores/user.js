@@ -1,7 +1,7 @@
 import router from '@/router'
 import axios from 'axios'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 
 
@@ -13,6 +13,9 @@ export const useUserStore = defineStore('userInfo', () => {
   // loginStatus : 로그인 여부를 저장하는 변수
   const loginInfo = ref('')
   const loginStatus = ref(false)
+
+  const getLoginInfo = computed(() => loginInfo.value)
+  const getLoginStatus = computed(() => loginStatus.value)
 
   // 로그인 성공 시 local stoage에 아이디, 패스워드 저장하고 home으로 보내줌
   const sendLoginData = function(userID, userPW){
@@ -43,6 +46,8 @@ export const useUserStore = defineStore('userInfo', () => {
   return { 
     loginInfo, 
     loginStatus,
+    getLoginInfo, 
+    getLoginStatus, 
     sendLoginData, 
     clearData
   }

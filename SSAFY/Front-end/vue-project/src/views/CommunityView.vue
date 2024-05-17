@@ -7,7 +7,7 @@
             <tr>
                 <th>번호</th>
                 <th>제목</th>
-                <th>user</th>
+                <th>글쓴이</th>
                 <th>조회수</th>
                 <th>등록일</th>
             </tr>
@@ -17,38 +17,33 @@
                 <td><RouterLink :to="{name: 'PostDetailPage', params: { 'id': post.postID} }">{{ post.postTitle }}</RouterLink></td>
                 <td>{{ post.userID }}</td>
                 <td>{{ post.postViewCnt }}</td>
-                <td>{{ post.postRegDate }}</td>
+                <td>{{ post.postRegDate.slice(0, 10) }}</td>
             </tr>
         </table>
   
         <RouterLink :to="{name: 'PostCreate'}">글쓰기</RouterLink>
 
     </div>
-  </template>
-  
-  
-  
+</template>
 
-  <script setup>
-  
-  import PostSearchInput from '@/components/Community/PostSearchInput.vue'
-  import { useCommunityStore } from '@/stores/community'
-  import{onMounted} from 'vue'
-  
-  const communityStore = useCommunityStore()
-  
-  onMounted(() => {
+
+
+<script setup>
+
+import PostSearchInput from '@/components/Community/PostSearchInput.vue'
+import { useCommunityStore } from '@/stores/community'
+import{ onMounted } from 'vue'
+
+const communityStore = useCommunityStore()
+
+onMounted(() => {
     communityStore.getPostList()
-  })
-  
-  import PostCreate from '@/components/Community/PostCreate.vue'
-  import PostDetailPage from '@/components/Community/PostDetailPage.vue'
-  
-  </script>
-  
-  
-  
-  
-  
-  <style scoped>
-  </style>
+})
+
+</script>
+
+
+
+<style scoped>
+
+</style>

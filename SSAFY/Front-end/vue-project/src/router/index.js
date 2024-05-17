@@ -14,6 +14,7 @@ import GameDetailView from '@/views/GameDetailView.vue'
 import PostList from '@/components/Community/PostList.vue'
 import PostCreate from '@/components/Community/PostCreate.vue'
 import PostDetailPage from '@/components/Community/PostDetailPage.vue'
+import PostUpdatePage from '@/components/Community/PostUpdatePage.vue'
 
 import { useUserStore } from '@/stores/user'
 
@@ -37,7 +38,7 @@ const router = createRouter({
       beforeEnter: ((to, from) => {
         const userStore = useUserStore()
         userStore.clearData()
-        alert('로그아웃 되었습니다.');
+        alert('로그아웃 되었습니다.')
       })
     }, 
     {
@@ -88,6 +89,18 @@ const router = createRouter({
       path: '/community/create',
       name: 'PostCreate',
       component: PostCreate,
+      beforeEnter: ((to, from) => {
+        const userStore = useUserStore()
+        if(!userStore.loginStatus) {
+          alert('로그인 하세요')
+          router.push({name: 'login'})
+        }
+      })
+    }, 
+    {
+      path: '/community/update',
+      name: 'PostUpdatePage',
+      component: PostUpdatePage,
     }, 
     // {
     //   path: '/community/:id',

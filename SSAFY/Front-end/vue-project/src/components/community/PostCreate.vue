@@ -8,7 +8,7 @@
           </div>
           <div>
               <label for="writer">쓰니 : </label>
-              <input type="text" id="writer" v-model="post.userID">
+              <input type="text" id="writer" readonly v-model="post.userID">
           </div>
           <div>
               <label for="content">내용 : </label>
@@ -24,16 +24,17 @@
 
 
 
-
 <script setup>
+import { useUserStore } from '@/stores/user';
 import { useCommunityStore } from '@/stores/community'
 import {ref} from 'vue'
 
+const userStore = useUserStore()
 const communityStore = useCommunityStore()
 
 const post = ref({
   postTitle: '',
-  userID: '',
+  userID: userStore.loginInfo.userID,
   postContent: ''
 })
 
