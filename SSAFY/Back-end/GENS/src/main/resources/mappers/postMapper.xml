@@ -33,10 +33,9 @@
 		WHERE postID = #{postID}		
 	</update>
 	
-	<!-- 게시글 삭제 -->
-	<delete id="deletePost" parameterType="Post">
-		DELETE FROM post
-		WHERE postID=#{postID}
+	<delete id="deletePost" parameterType="int">
+	    DELETE FROM post 
+	    WHERE PostID = #{postID}
 	</delete>
 	
 	<!-- 게시글 검색 -->

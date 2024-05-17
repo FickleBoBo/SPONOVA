@@ -10,7 +10,8 @@
             <div>추천수 : {{ communityStore.post.post.postLikeCnt }}</div>
             <div>등록일 : {{ communityStore.post.post.postRegDate }}</div>
         </div>
-
+        <hr>
+        
             <!-- 아래의 delete/update Board는 메서드명
         (board.js의 메서드가 아닌 현재 컴포넌트의 메서드이다) -->
         <div v-if="isAuthenticated">
@@ -54,9 +55,11 @@ onMounted(async () => {
 const deletePost = function(){
     axios.delete(`http://localhost:8080/newsports/community/posts/${route.params.id}`)
     .then(() => {
-        router.push({name: 'CommunityView'})
+        alert('게시글이 삭제 되었습니다.');
+        router.push({name: 'community'})
     })
     .catch((err) => {
+        console.log(err)
       alert('게시글 삭제 실패');
     })
 }
