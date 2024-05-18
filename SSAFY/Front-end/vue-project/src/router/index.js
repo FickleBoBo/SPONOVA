@@ -11,8 +11,7 @@ import ClubView from '@/views/ClubView.vue'
 import CommunityView from '@/views/CommunityView.vue'
 
 import GameDetailView from '@/views/GameDetailView.vue'
-import PostList from '@/components/Community/PostList.vue'
-import PostCreate from '@/components/Community/PostCreate.vue'
+import PostCreatePage from '@/components/Community/PostCreatePage.vue'
 import PostDetailPage from '@/components/Community/PostDetailPage.vue'
 import PostUpdatePage from '@/components/Community/PostUpdatePage.vue'
 
@@ -68,27 +67,17 @@ const router = createRouter({
       name: 'club',
       component: ClubView
     }, 
+
+    // community 관련 URL
     {
-      path: '/community',
-      name: 'community',
+      path: '/community', 
+      name: 'community', 
       component: CommunityView, 
-      // children: [
-      //   {
-      //     path: ':id',
-      //     name: 'PostDetailPage',
-      //     component: PostDetailPage
-      //   }, 
-      // ], 
     }, 
     {
-      path: '/community/:id',
-      name: 'PostDetailPage',
-      component: PostDetailPage
-    }, 
-    {
-      path: '/community/create',
-      name: 'PostCreate',
-      component: PostCreate,
+      path: '/community/create', 
+      name: 'PostCreatePage', 
+      component: PostCreatePage, 
       beforeEnter: ((to, from) => {
         const userStore = useUserStore()
         if(!userStore.loginStatus) {
@@ -98,15 +87,15 @@ const router = createRouter({
       })
     }, 
     {
+      path: '/community/:id',
+      name: 'PostDetailPage',
+      component: PostDetailPage
+    }, 
+    {
       path: '/community/update',
       name: 'PostUpdatePage',
       component: PostUpdatePage,
     }, 
-    // {
-    //   path: '/community/:id',
-    //   name: 'PostDetailPage',
-    //   component: PostDetailPage
-    // }, 
   ]
 })
 
