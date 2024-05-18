@@ -10,7 +10,7 @@
             </div>
             <div>
                 <label for="writer">쓰니 : </label>
-                <input type="text" id="writer" readonly v-model="communityStore.post.post.userID">
+                <input type="text" id="writer" readonly v-model="communityStore.post.post.userNickname">
             </div>
             <div>
                 <label for="content">내용 : </label>

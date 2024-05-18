@@ -51,7 +51,7 @@ CREATE TABLE Comment (
     CommentContent TEXT NOT NULL,                             # 댓글 내용
     CommentRegDate DATETIME DEFAULT CURRENT_TIMESTAMP,        # 댓글 등록 시간
     FOREIGN KEY (UserID) REFERENCES User(UserID),
-    FOREIGN KEY (PostID) REFERENCES Post(PostID)
+    FOREIGN KEY (PostID) REFERENCES Post(PostID) ON DELETE CASCADE
 );
 
 CREATE TABLE League(

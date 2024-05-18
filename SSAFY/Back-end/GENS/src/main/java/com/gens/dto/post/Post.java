@@ -6,6 +6,7 @@ public class Post {
 	
 	private int postID;
 	private String userID;
+	private String userNickname;
 	private String postTitle;
 	private String postContent;
 	private int postViewCnt;
@@ -16,11 +17,12 @@ public class Post {
 	public Post() {
 	}
 
-	public Post(int postID, String userID, String postTitle, String postContent, int postViewCnt, int postLikeCnt,
+	public Post(int postID, String userID, String userNickname, String postTitle, String postContent, int postViewCnt, int postLikeCnt,
 			LocalDateTime postRegDate, String postFilePath) {
 		super();
 		this.postID = postID;
 		this.userID = userID;
+		this.userNickname = userNickname;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
 		this.postViewCnt = postViewCnt;
@@ -47,6 +49,15 @@ public class Post {
 
 	public void setUserID(String userID) {
 		this.userID = userID;
+	}
+	
+	public String getUserNickname() {
+		return userNickname;
+	}
+
+
+	public void setUserNickName(String userNickname) {
+		this.userNickname = userNickname;
 	}
 
 
