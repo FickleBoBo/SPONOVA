@@ -20,8 +20,8 @@
 	<!-- 게시글 등록 -->
 	<!-- 게시글 등록은 users 테이블에 userID가 있어야 가능, 근데 회원이면 누구나 -->
 	<insert id="insertPost" parameterType="Post" keyProperty="postID" useGeneratedKeys="true">
-		INSERT INTO post (postTitle, userID, postContent)
-		VALUES (#{postTitle}, #{userID}, #{postContent})
+		INSERT INTO post (postTitle, userID, userNickname, postContent)
+		VALUES (#{postTitle}, #{userID}, #{userNickname}, #{postContent})
 	</insert>
 	
 	

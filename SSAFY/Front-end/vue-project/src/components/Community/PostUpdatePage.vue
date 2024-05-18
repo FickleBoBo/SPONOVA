@@ -26,20 +26,16 @@
 
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import{ useCommunityStore } from '@/stores/community'
+
 const communityStore = useCommunityStore()
 
-onMounted(() => {
-    communityStore.getPostInfo.post
-})
-
-
 const post = ref({
-  userID: communityStore.getPostInfo.post.userID, 
-  postID: communityStore.getPostInfo.post.postID, 
-  postTitle: communityStore.getPostInfo.post.postTitle,
-  postContent: communityStore.getPostInfo.post.postContent,
+  userID: communityStore.post.post.userID, 
+  postID: communityStore.post.post.postID, 
+  postTitle: communityStore.post.post.postTitle,
+  postContent: communityStore.post.post.postContent,
   postFilePath : null
 })
 

@@ -1,33 +1,22 @@
 <template>
     <div>
-        <h4>게시글 상세</h4>
-        <hr>
-        <div>글쓴이 : {{ communityStore.postList[$route.params.id-1].userNickname }}</div>
-        <div>제목 : {{ communityStore.postList[$route.params.id-1].postTitle }}</div>
-        <div>내용 : {{ communityStore.postList[$route.params.id-1].postContent }}</div>
-        <div>조회수 : {{ communityStore.postList[$route.params.id-1].postViewCnt + 1 }}</div>
-        <div>추천수 : {{ communityStore.postList[$route.params.id-1].postLikeCnt }}</div>
-        <div>등록일 : {{ communityStore.postList[$route.params.id-1].postRegDate }}</div>
-        <!-- <div v-if="communityStore.post.post">
-            <div>글쓴이 : {{ communityStore.post.post.userNickname }}</div>
-            <div>제목 : {{ communityStore.post.post.postTitle }}</div>
-            <div>내용 : {{ communityStore.post.post.postContent }}</div>
-            <div>조회수 : {{ communityStore.post.post.postViewCnt + 1 }}</div>
-            <div>추천수 : {{ communityStore.post.post.postLikeCnt }}</div>
-            <div>등록일 : {{ communityStore.post.post.postRegDate }}</div>
-        </div> -->
-        <hr>
-        
-            <!-- 아래의 delete/update Board는 메서드명
-        (board.js의 메서드가 아닌 현재 컴포넌트의 메서드이다) -->
-        <div v-if="isAuthenticated">
-            <button @click="updatePost">수정</button>
-            <button @click="deletePost">삭제</button>
+        <div v-if="isDataLoaded">
+            <h4>{{ communityStore.post.post.postTitle }}</h4>
+            <hr>
+                <div>작성자 : {{ communityStore.post.post.userNickname }}</div>
+                <div>내용 : {{ communityStore.post.post.postContent }}</div>
+                <div>조회수 : {{ communityStore.post.post.postViewCnt + 1 }}</div>
+                <div>추천수 : {{ communityStore.post.post.postLikeCnt }}</div>
+                <div>등록일 : {{ communityStore.post.post.postRegDate.slice(0, 10) }} {{ communityStore.post.post.postRegDate.slice(11, 19) }}</div>
+            <hr>
+            
+            <div v-if="isAuthenticated">
+                <button @click="updatePost">수정</button>
+                <button @click="deletePost">삭제</button>
+            </div>
+
+            <div v-for="comment, index in communityStore.post.comments">{{index+1}}번 {{ comment.commentContent }}</div>
         </div>
-
-        <div v-for="comment, index in communityStore.post.comments">{{index+1}}번 {{ comment.commentContent }}</div>
-        <!-- <div v-if="communityStore.post"> -->
-
     </div>
 </template>
 
@@ -35,46 +24,43 @@
 import { useUserStore } from '@/stores/user'
 import{ useCommunityStore } from '@/stores/community'
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import  {useRouter } from 'vue-router'
-import axios from 'axios'
+import { useRoute, useRouter } from 'vue-router'
 
+const route = useRoute()
+const router = useRouter()
 const userStore = useUserStore()
 const communityStore = useCommunityStore()
-const route = useRoute() // 얘도 import가 필요 // 얘는 상세 페이지 이동 용
-const router  = useRouter() // 얘는 삭제 후 페이지 이동용
 
+// 작성자와 로그인한 유저가 동일인이면 true, 아니면 false
 const isAuthenticated = ref(false)
-onMounted(async () => {
-    await communityStore.getPost(route.params.id)
-    if(userStore.getLoginStatus){
-        if(communityStore.getPostInfo){
-            if(userStore.getLoginInfo.userID === communityStore.getPostInfo.post.userID){
-                isAuthenticated.value = true
-            }
-        }
-    }  
-})
 
-
-
-const deletePost = function(){
-    axios.delete(`http://localhost:8080/newsports/community/posts/${route.params.id}`)
-    .then(() => {
-        alert('게시글이 삭제 되었습니다.');
-        router.push({name: 'community'})
-    })
-    .catch((err) => {
-        console.log(err)
-      alert('게시글 삭제 실패');
-    })
-}
+// 데이터가 로딩되면 게시글 상세페이지를 보여주도록 설정 (이전에 렌더링 된 값이 잠깐 보이는 문제 해결)
+const isDataLoaded = ref(false)
 
 const updatePost = function(){
     router.push({ name: 'PostUpdatePage' })
 }
 
+const deletePost = function(){
+    communityStore.deletePost(route.params.id)
+}
+
+onMounted(async () => {
+    await communityStore.getPost(route.params.id)
+
+    if(userStore.getLoginStatus){
+        if(userStore.getLoginInfo.userID === communityStore.post.post.userID){
+            isAuthenticated.value = true
+        }
+    }
+
+    isDataLoaded.value = true
+})
 
 </script>
 
-<style scoped></style>
+
+
+<style scoped>
+
+</style>

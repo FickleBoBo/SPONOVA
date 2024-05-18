@@ -1,7 +1,7 @@
-import router from '@/router'
-import axios from 'axios'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import axios from 'axios'
+import router from '@/router'
 
 
 
@@ -9,7 +9,7 @@ const GENS_API=`http://localhost:8080/newsports/login`
 
 export const useUserStore = defineStore('userInfo', () => {
 
-  // loginInfo : user의 정보를 저장하는 변수하고 로그인 성공 시 local storage에도 저장
+  // loginInfo : user의 정보를 저장하는 변수
   // loginStatus : 로그인 여부를 저장하는 변수
   const loginInfo = ref('')
   const loginStatus = ref(false)
@@ -22,10 +22,9 @@ export const useUserStore = defineStore('userInfo', () => {
     axios({
       url: GENS_API,
       method: 'POST',
-      data: {userID, userPW}
+      data: { userID, userPW }
     })
-    .then((response)=> {
-      const userData = { userID: response.data.userID, userPW: response.data.userPW };
+    .then((response) => {
       loginInfo.value = response.data
       if(loginInfo.value){
         loginStatus.value = true
@@ -34,6 +33,7 @@ export const useUserStore = defineStore('userInfo', () => {
     })
     .catch((err) => {
       alert('로그인에 실패했습니다. 다시 시도해주세요.');
+      console.log(err)
     })
   }
 

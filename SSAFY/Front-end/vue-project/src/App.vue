@@ -42,7 +42,6 @@ const gameStore = useGameStore()
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
 
-console.log(userStore.loginStatus)
 </script>
 
 <style scoped>
