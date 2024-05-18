@@ -3,7 +3,7 @@ import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-const GENS_API=`http://localhost:8080/newsports/league`
+const GENS_API=`http://localhost:8080/newsports/league/rankings`
 
 export const useLeagueStore = defineStore('leagueInfo', () => {
 
