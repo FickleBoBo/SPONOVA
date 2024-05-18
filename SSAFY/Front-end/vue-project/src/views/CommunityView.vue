@@ -15,9 +15,10 @@
                 <td>{{ post.postID }}</td>
                 <!-- <td>{{ post.postTitle }}</td> -->
                 <td><RouterLink :to="{name: 'PostDetailPage', params: { 'id': post.postID} }">{{ post.postTitle }}</RouterLink></td>
-                <td>{{ post.userID }}</td>
+                <td>{{ post.userNickname }}</td>
                 <td>{{ post.postViewCnt }}</td>
-                <td>{{ post.postRegDate.slice(0, 10) }}</td>
+                <td v-if="todayPosted(post.postRegDate)">{{ post.postRegDate.slice(0, 10) }}</td>
+                <td v-else>{{ post.postRegDate.slice(11, 19) }}</td>
             </tr>
         </table>
   
@@ -35,6 +36,19 @@ import { useCommunityStore } from '@/stores/community'
 import{ onMounted } from 'vue'
 
 const communityStore = useCommunityStore()
+const todayPosted = ((regDate) => {
+    var today = new Date()
+    var year = today.getFullYear().toString()
+    var month = (today.getMonth() + 1).toString().padStart(2, '0')
+    var day = today.getDate().toString().padStart(2, '0')
+    var todayString = year + '-' + month + '-' + day
+    if(regDate.slice(0, 10) === todayString){
+        return false
+    }
+    else{
+        return true
+    }
+})
 
 onMounted(() => {
     communityStore.getPostList()

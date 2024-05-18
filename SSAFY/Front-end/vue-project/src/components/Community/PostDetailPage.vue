@@ -2,14 +2,20 @@
     <div>
         <h4>게시글 상세</h4>
         <hr>
-        <div v-if="communityStore.post.post">
-            <div>글쓴이 : {{ communityStore.post.post.userID }}</div>
+        <div>글쓴이 : {{ communityStore.postList[$route.params.id-1].userNickname }}</div>
+        <div>제목 : {{ communityStore.postList[$route.params.id-1].postTitle }}</div>
+        <div>내용 : {{ communityStore.postList[$route.params.id-1].postContent }}</div>
+        <div>조회수 : {{ communityStore.postList[$route.params.id-1].postViewCnt + 1 }}</div>
+        <div>추천수 : {{ communityStore.postList[$route.params.id-1].postLikeCnt }}</div>
+        <div>등록일 : {{ communityStore.postList[$route.params.id-1].postRegDate }}</div>
+        <!-- <div v-if="communityStore.post.post">
+            <div>글쓴이 : {{ communityStore.post.post.userNickname }}</div>
             <div>제목 : {{ communityStore.post.post.postTitle }}</div>
             <div>내용 : {{ communityStore.post.post.postContent }}</div>
             <div>조회수 : {{ communityStore.post.post.postViewCnt + 1 }}</div>
             <div>추천수 : {{ communityStore.post.post.postLikeCnt }}</div>
             <div>등록일 : {{ communityStore.post.post.postRegDate }}</div>
-        </div>
+        </div> -->
         <hr>
         
             <!-- 아래의 delete/update Board는 메서드명

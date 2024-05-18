@@ -8,7 +8,7 @@
           </div>
           <div>
               <label for="writer">쓰니 : </label>
-              <input type="text" id="writer" readonly v-model="post.userID">
+              <input type="text" id="writer" readonly v-model="post.userNickname">
           </div>
           <div>
               <label for="content">내용 : </label>
@@ -35,9 +35,9 @@ const communityStore = useCommunityStore()
 const post = ref({
   postTitle: '',
   userID: userStore.loginInfo.userID,
+  userNickname : userStore.loginInfo.userNickname, 
   postContent: ''
 })
-
 
 const createPost = function () {
   // const postData = {

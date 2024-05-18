@@ -15,6 +15,7 @@ export const useCommunityStore = defineStore('postInfo', () => {
       data: post
     })
     .then(()=> {
+      alert('게시글이 등록 되었습니다.')
       router.push({name: 'community'})
     })
     .catch((err) => {
