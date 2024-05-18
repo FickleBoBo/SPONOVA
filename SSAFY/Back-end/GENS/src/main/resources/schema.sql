@@ -33,6 +33,7 @@ CREATE TABLE User (
 CREATE TABLE Post (
     PostID INT AUTO_INCREMENT PRIMARY KEY,                 # 게시글 아이디
     UserID VARCHAR(30) NOT NULL,                           # 유저 아이디
+    UserNickname VARCHAR(10) NOT NULL,
     PostTitle VARCHAR(50) NOT NULL,                        # 게시글 제목
     PostContent TEXT NOT NULL,                             # 게시글 내용
     PostViewCnt INT DEFAULT 0,                             # 게시글 조회 수
@@ -46,7 +47,7 @@ CREATE TABLE Post (
 CREATE TABLE Comment (
     UserID VARCHAR(30) NOT NULL,                              # 유저 아이디
     PostID INT NOT NULL,                                      # 게시글 아이디
-    # UserNickname VARCHAR(10) NOT NULL,
+    UserNickname VARCHAR(10) NOT NULL,
     CommentID INT AUTO_INCREMENT PRIMARY KEY,                 # 댓글 아이디
     CommentContent TEXT NOT NULL,                             # 댓글 내용
     CommentRegDate DATETIME DEFAULT CURRENT_TIMESTAMP,        # 댓글 등록 시간
