@@ -24,7 +24,7 @@ export const useCommunityStore = defineStore('postInfo', () => {
       method: 'POST',
       data: post
     })
-    .then(()=> {
+    .then(() => {
       alert('게시글이 등록 되었습니다.')
       router.push({name: 'community'})
     })
@@ -113,6 +113,43 @@ export const useCommunityStore = defineStore('postInfo', () => {
     })
   }
 
+  // 댓글 등록 (CREATE)
+  const createComment = function(comment, postID){
+    axios({
+      url: `${GENS_API}/${postID}`,
+      method: 'POST',
+      data: comment
+    })
+    .then(() => {
+      alert('댓글이 등록 되었습니다.')
+      router.push({name: 'PostDetailPage', params: { id: postID.toString() }})
+      window.location.reload()
+    })
+    .catch((err) => {
+      alert('댓글 등록에 실패했습니다.')
+      console.log(err)
+    })
+  }
+
+  // 댓글 삭제
+  const deleteComment = function(postID, commentID){
+    axios({
+      url: `${GENS_API}/${postID}/${commentID}`,
+      method: 'DELETE',
+      data: commentID
+    })
+    .then(() => {
+      alert('댓글이 삭제 되었습니다.')
+      router.push({name: 'PostDetailPage', params: { id: postID.toString() }})
+      window.location.reload()
+    })
+    .catch((err) => {
+      alert('댓글 삭제에 실패했습니다.')
+      console.log(err)
+    })
+  }
+
+
 
   return {
     postList, 
@@ -124,6 +161,9 @@ export const useCommunityStore = defineStore('postInfo', () => {
     updatePost, 
     deletePost, 
     searchPostList,
+
+    createComment, 
+    deleteComment, 
   }
 
 })
