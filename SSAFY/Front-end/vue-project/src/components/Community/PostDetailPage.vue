@@ -15,7 +15,24 @@
                 <button @click="deletePost">삭제</button>
             </div>
 
-            <div v-for="comment, index in communityStore.post.comments">{{index+1}}번 {{ comment.commentContent }}</div>
+            <hr>
+
+            <!-- 댓글 폼 -->
+            <div>
+                <form @submit.prevent="createComment">
+                    <div>
+                        <label for="comment">댓글 : </label>
+                        <input type="text" id="comment" v-model="comment.commentContent">
+                    </div>
+                    <div>
+                        <button>등록</button>
+                    </div>
+                </form>
+            </div>
+
+            <div v-for="comment, index in communityStore.post.comments">
+                {{ comment.userNickname }} | {{ comment.commentContent }} | <span v-if="userStore.loginInfo.userID===comment.userID"><button @click="deleteComment(comment.commentID)">삭제</button></span>
+            </div>
         </div>
     </div>
 </template>
@@ -43,6 +60,24 @@ const updatePost = function(){
 
 const deletePost = function(){
     communityStore.deletePost(route.params.id)
+}
+
+// 댓글
+const comment = ref({
+    userID: userStore.loginInfo.userID, 
+    userNickname : userStore.loginInfo.userNickname, 
+    postID: parseInt(route.params.id),
+    commentContent: ''
+})
+
+// 댓글 생성
+const createComment = function(){
+    communityStore.createComment(comment.value, route.params.id)
+}
+
+// 댓글 삭제
+const deleteComment = function(commentID){
+    communityStore.deleteComment(route.params.id, parseInt(commentID))
 }
 
 onMounted(async () => {

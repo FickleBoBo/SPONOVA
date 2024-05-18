@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.gens.service.comment.CommentService;
 
 @RestController
 @RequestMapping("/newsports/community/posts/{postID}")
+@CrossOrigin("*")
 public class CommentController {
 	
 	private final CommentService commentService;
@@ -37,15 +39,14 @@ public class CommentController {
 	
 	// 댓글 작성
     @PostMapping
-    public ResponseEntity<Comment> createComment(@PathVariable int postID, @RequestBody Comment comment) {
-        comment.setPostID(postID);
+    public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
         commentService.addComment(comment);
         return new ResponseEntity<>(comment, HttpStatus.CREATED);
     }
     
     // 댓글 삭제
     @DeleteMapping("/{commentID}")
-    public ResponseEntity<Void> deleteComment(@PathVariable int postID, @PathVariable int commentID) {
+    public ResponseEntity<Void> deleteComment(@PathVariable int commentID) {
         commentService.removeComment(commentID);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
