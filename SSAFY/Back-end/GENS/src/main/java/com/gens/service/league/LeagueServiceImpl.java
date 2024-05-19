@@ -32,4 +32,9 @@ public class LeagueServiceImpl implements LeagueService{
 		return leagueDao.selectRankings();
 	}
 
+	@Override
+	public List<LeagueRanking> getLeagueRankingByGameID(String gameID) {
+		return leagueDao.selectRankingByGameID(gameID);
+	}
+
 }

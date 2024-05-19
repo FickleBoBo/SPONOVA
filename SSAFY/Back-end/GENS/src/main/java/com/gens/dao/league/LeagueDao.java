@@ -13,4 +13,6 @@ public interface LeagueDao {
 	// 랭킹 조회
 	List<LeagueRanking> selectRankings();
 
+	List<LeagueRanking> selectRankingByGameID(String gameID);
+
 }
