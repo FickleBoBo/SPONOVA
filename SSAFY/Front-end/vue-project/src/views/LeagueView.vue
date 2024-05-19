@@ -1,38 +1,27 @@
-<!-- <template>
-  <div>
-    <h1>League Rankings</h1>
-    <ul>
-      <li v-for="ranking in leagueStore.leagueRankings" :key="ranking.clubID">
-        {{ranking.ranking }}: {{ ranking.clubID }}: {{ ranking.totalPoints }} 점
-      </li>
-    </ul>
-  </div>
-</template> -->
-
 <template>
   <div>
     <h1>League Rankings</h1>
-    <button @click="selectGameID('티볼')">티볼 리그</button>
-    <button @click="selectGameID('빅발리볼')">빅발리볼 리그</button>
-    <button @click="selectGameID('인디아카')">인디아카 리그</button>
-    <button @click="selectGameID('츄크볼')">츄크볼 리그</button>
-    <button @click="selectGameID('플로어볼')">플로어볼 리그</button>
-    <button @click="selectGameID('스포츠스태킹')">스포츠스태킹 리그</button>
+    <button @click="selectGameID('티볼')">티볼</button>
+    <button @click="selectGameID('빅발리볼')">빅발리볼</button>
+    <button @click="selectGameID('인디아카')">인디아카</button>
+    <button @click="selectGameID('츄크볼')">츄크볼</button>
+    <button @click="selectGameID('플로어볼')">플로어볼</button>
+    <button @click="selectGameID('스포츠스태킹')">스포츠스태킹</button>
 
     <div v-if="leagueRankings.length > 0">
-      <ul>
-        <li v-for="ranking in leagueRankings" :key="ranking.clubID">
-          {{ranking.ranking}}: {{ ranking.clubID }}: {{ ranking.totalPoints }} points
-        </li>
-      </ul>
+      
+        <div v-for="ranking in leagueRankings" :key="ranking.clubID">
+          {{ranking.ranking}}: {{ ranking.clubID }}: {{ ranking.totalPoints }} (승점)
+        </div>
+      
     </div>
     <div v-else>
-      No rankings available.
+      종목을 선택해주세요. (사진?)
     </div>
   </div>
 
 
-  <div>
+  <div class="today-match">
     <h1>Today's Matches</h1>
     <div v-if="todaysGames.length > 0">
       <ul>
@@ -42,7 +31,7 @@
       </ul>
     </div>
     <div v-else>
-      No games today.
+      오늘 예정된 경기가 없습니다.
     </div>
   </div>
 </template>
@@ -69,14 +58,19 @@ const todaysGames = ref([])
 // }
 function selectGameID(gameID) {
   leagueStore.getLeagueRankingByGameID(gameID).then(() => {
-    leagueRankings.value = leagueStore.leagueRankings;  // 스토어 업데이트 후 로컬 상태를 갱신
+    leagueRankings.value = leagueStore.leagueRankings;
   })
 }     
 
+// 오늘의 경기 띄우기
 // function filterTodaysGames(games) {
-//   const today = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
-//   return games.filter(game => game.gameDay === today);
+//   const today = new Date().toLocaleDateString(); // 로컬 시간대 기반 "MM/DD/YYYY"
+//   return games.filter(game => {
+//     const gameDate = new Date(game.gameDay).toLocaleDateString(); // 데이터의 날짜도 동일한 형식으로 변환
+//     return gameDate === today;
+//   });
 // }
+
 
 
 // onMounted(async () => {
