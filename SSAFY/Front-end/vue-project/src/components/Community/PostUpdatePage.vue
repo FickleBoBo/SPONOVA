@@ -9,7 +9,7 @@
                     <input type="text" id="title" v-model="post.postTitle" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="writer">쓰니 : </label>
+                    <label for="writer">글쓴이 : </label>
                     <input type="text" id="writer" readonly v-model="communityStore.post.post.userNickname" class="form-control">
                 </div>
                 <div class="form-group">

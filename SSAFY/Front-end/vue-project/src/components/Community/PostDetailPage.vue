@@ -4,11 +4,11 @@
         <h2>{{ communityStore.post.post.postTitle }}</h2>
         <hr>
         <div class="post-meta">
-          <div><strong>작성자:</strong> {{ communityStore.post.post.userNickname }}</div>
+          <div><strong>글쓴이:</strong> {{ communityStore.post.post.userNickname }}</div>
           <div><strong>내용:</strong> {{ communityStore.post.post.postContent }}</div>
           <div><strong>조회수:</strong> {{ communityStore.post.post.postViewCnt + 1 }}</div>
-          <div><strong>추천수:</strong> {{ communityStore.post.post.postLikeCnt }}</div>
-          <div><strong>등록일:</strong> {{ formatDate(communityStore.post.post.postRegDate) }}</div>
+          <div><strong>댓글수:</strong> {{ communityStore.post.comments.length }}</div>
+          <div><strong>작성일:</strong> {{ formatDate(communityStore.post.post.postRegDate) }}</div>
         </div>
         <hr>
   
@@ -21,7 +21,7 @@
         <!-- 댓글 폼 -->
         <form @submit.prevent="createComment(comment.commentContent)" class="comment-form">
           <div class="form-group">
-            <label for="comment">댓글:</label>
+            <label for="comment">댓글</label>
             <input type="text" id="comment" v-model="comment.commentContent" class="form-control">
           </div>
           <div class="form-group">
