@@ -11,9 +11,9 @@
                 </div>
             </div>
         </div>
-        <RouterLink class="nav-tap" :to="{name: 'league'}">League</RouterLink>
-        <RouterLink class="nav-tap" :to="{name: 'club'}">Club</RouterLink>
         <RouterLink class="nav-tap" :to="{name: 'community'}">Community</RouterLink>
+        <RouterLink class="nav-tap" :to="{name: 'club'}">Club</RouterLink>
+        <RouterLink class="nav-tap" :to="{name: 'league'}">League</RouterLink>
 
 
         <!-- 네비게이션 바 동적 영역 -->
@@ -47,11 +47,12 @@ const userStore = useUserStore()
 <style scoped>
 nav {
     /* position: relative; */
+    font-family: 'LA28 Text', sans-serif;
     display: flex;
     justify-content: space-around;
     align-items: center;
 
-    position: relative; /**fixed로 하면 여백 없음 */
+    position: fixed; /**fixed로 하면 여백 없음 */
     width: 100%;
     height: 4%;
     top: 0;
@@ -59,9 +60,8 @@ nav {
     right: 0;
 
     background-color: #010101;
-    font-weight: 600;
-    font-family: 'Courier New', Courier, monospace;
-
+    /* font-weight: 600; */
+    
     z-index: 1000;
     padding: 10px 0;
 }
