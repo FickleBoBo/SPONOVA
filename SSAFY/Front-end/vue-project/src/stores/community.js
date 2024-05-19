@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import axios from 'axios'
 import router from '@/router'
 
@@ -15,7 +15,8 @@ export const useCommunityStore = defineStore('postInfo', () => {
   // 게시글
   const post = ref({})
 
-
+  // 페이지 수
+  const pages = computed(() => Math.ceil(postList.value.length / 50))
 
   // 게시글 등록 (CREATE)
   const createPost = function(post){
@@ -154,6 +155,7 @@ export const useCommunityStore = defineStore('postInfo', () => {
   return {
     postList, 
     post, 
+    pages, 
 
     createPost, 
     getPostList, 
