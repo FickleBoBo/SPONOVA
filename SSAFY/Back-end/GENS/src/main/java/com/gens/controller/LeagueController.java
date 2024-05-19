@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,6 +38,11 @@ public class LeagueController {
 	public ResponseEntity<List<LeagueRanking>> rankings(){
 		// leagueService에서 사용할 메서드를 직접 호출한다.
 		return new ResponseEntity<>(leagueService.getLeagueRankings(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/rankings/{gameID}")
+	public ResponseEntity<List<LeagueRanking>> rankingByGame(@PathVariable String gameID){
+		return new ResponseEntity<>(leagueService.getLeagueRankingByGameID(gameID), HttpStatus.OK);
 	}
 
 }

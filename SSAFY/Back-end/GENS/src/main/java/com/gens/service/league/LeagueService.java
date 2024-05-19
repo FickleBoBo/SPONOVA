@@ -12,5 +12,8 @@ public interface LeagueService {
 	
 	// Ranking
 	List<LeagueRanking> getLeagueRankings();
+	
+	// 리그별 랭킹
+	List<LeagueRanking> getLeagueRankingByGameID(String gameID);
 
 }

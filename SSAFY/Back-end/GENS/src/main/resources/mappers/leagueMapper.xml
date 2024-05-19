@@ -12,12 +12,14 @@
 	
 	<!--rankings-->
 	<!--별도의 클래스 사용으로 인하여 resultType이 League가 아닌 LeagueRanking임을 주의-->
-	<select id="selectRankings" resultType="LeagueRanking">
+	<select id="selectRankingByGameID" resultType="LeagueRanking">
 	    SELECT 
 	        RANK() OVER (ORDER BY SUM(Points) DESC) AS ranking,
 	        ClubID,
 	        SUM(Points) AS totalPoints
 	    FROM League
+	    <!--게임별로 순위 출력-->
+	    WHERE GameID = #{gameID}
 	    GROUP BY ClubID
 	    ORDER BY totalPoints DESC
 	</select>
