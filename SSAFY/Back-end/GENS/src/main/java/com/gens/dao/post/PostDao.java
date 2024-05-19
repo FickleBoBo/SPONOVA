@@ -1,6 +1,7 @@
 package com.gens.dao.post;
 
 import java.util.List;
+import java.util.Map;
 
 import com.gens.dto.SearchCondition;
 import com.gens.dto.post.Post;
@@ -29,6 +30,12 @@ public interface PostDao {
 	
 	// 조회수 증가
 	void updateViewCnt(int postID);
+	
+	// 댓글 수 
+	List<Post> selectCommentCnt();
+
+	// 정렬(전체 조회 or 검색 시)
+	List<Post> selectAll(Map<String, Object> params);
 	
 	// 이미지 파일 저장
 

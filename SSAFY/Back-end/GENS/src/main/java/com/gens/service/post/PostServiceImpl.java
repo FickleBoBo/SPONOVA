@@ -1,6 +1,8 @@
 package com.gens.service.post;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,5 +67,14 @@ public class PostServiceImpl implements PostService{
 	public void increaseViewCnt(int postID) {
 		postDao.updateViewCnt(postID);
 	}
+	
+	// 조회수 정렬 (작성일/조회수 , asc/desc)
+	public List<Post> getPostList(String orderBy, String orderByDir) {
+	    Map<String, Object> params = new HashMap<>();
+	    params.put("orderBy", orderBy);
+	    params.put("orderByDir", orderByDir);
+	    return postDao.selectAll(params);
+	}
+
 
 }
