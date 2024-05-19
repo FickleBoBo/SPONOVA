@@ -11,8 +11,8 @@
 	</select>
 	
 	<insert id="insertComment" parameterType="Comment" keyProperty="commentID" useGeneratedKeys="true">
-		INSERT INTO comment (userID, postID, commentID, commentContent, commentRegDate)
-		VALUES (#{userID}, #{postID}, #{commentID}, #{commentContent}, #{commentRegDate})
+		INSERT INTO comment (userID, userNickname, postID, commentContent)
+		VALUES (#{userID}, #{userNickname}, #{postID}, #{commentContent})
 	</insert>
 	
 	<delete id="deleteComment" parameterType="int">
