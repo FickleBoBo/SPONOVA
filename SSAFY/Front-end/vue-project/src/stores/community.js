@@ -95,11 +95,11 @@ export const useCommunityStore = defineStore('postInfo', () => {
   // 게시글 검색
   const searchPostList = function(searchCondition) {
 
-    let url=GENS_API
-    // 검색어가 있을 때만 검색 기능을 작동시킬 수 있다
-    if (searchCondition.key !== 'none' && searchCondition.word) {
-      url += `/search`
-    }
+    let url=GENS_API+'/search'
+    // 검색어가 있을 때만 검색 기능을 작동시킬 수 있다 --> 기본적으로 작동
+    // if (searchCondition.key !== 'none' && searchCondition.word) {
+    //   url += `/search`
+    // }
 
     axios.get(url, {
       params: searchCondition

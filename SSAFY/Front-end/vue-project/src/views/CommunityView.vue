@@ -12,6 +12,8 @@
                 <th>작성자</th>
                 <th>조회수</th>
                 <th>등록일</th>
+                <th>댓글수</th>
+
             </tr>
             <tr v-for="post in communityStore.postList" :key="post.postID">
                 <td>{{ post.postID }}</td>
@@ -20,6 +22,7 @@
                 <td>{{ post.postViewCnt }}</td>
                 <td v-if="todayPosted(post.postRegDate)">{{ post.postRegDate.slice(0, 10) }}</td>
                 <td v-else>{{ post.postRegDate.slice(11, 19) }}</td>
+                <td>{{ post.commentCnt }}</td>
             </tr>
         </table>
   
