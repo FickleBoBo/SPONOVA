@@ -14,7 +14,7 @@
       <div>
           <label>정렬 기준 :</label>
           <select v-model="searchInfo.orderBy">
-              <option value='none'>없음</option>
+              <option value='postID'>작성일</option>
               <option value="postViewCnt">조회수</option>
           </select>
       </div>
@@ -38,14 +38,16 @@ import {ref} from 'vue'
 
 const searchInfo = ref({
   key: 'postTitle', // title일까 postTitle일까 -> postTitle이었다
-  word: '', 
-  orderBy: 'postViewCnt',
-  orderByDir: 'asc'
+  word: '', // 나의 검색
+  orderBy: 'postID',  // 작성번호를 기준으로 최신순 검색 가능
+  orderByDir: 'desc' // 기본은 내림차순(작성순)
 })
 
 const communityStore = useCommunityStore()
 const searchPostList = function(){
   communityStore.searchPostList(searchInfo.value)
+  searchInfo.value.orderBy,
+  searchInfo.value.orderByDir
 }
 
 </script>

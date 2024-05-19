@@ -13,12 +13,14 @@ public class Post {
 	private int postLikeCnt;
 	private LocalDateTime postRegDate; //LocalDateTime 사용: 날짜와 시간을 함께 다루기 위한 클래스, 하단 상세 설명
 	private String postFilePath;
+	private int commentCnt; // 각 게시물에 대한 댓글 수
 	
 	public Post() {
 	}
 
-	public Post(int postID, String userID, String userNickname, String postTitle, String postContent, int postViewCnt, int postLikeCnt,
-			LocalDateTime postRegDate, String postFilePath) {
+
+	public Post(int postID, String userID, String userNickname, String postTitle, String postContent, int postViewCnt,
+			int postLikeCnt, LocalDateTime postRegDate, String postFilePath, int commentCnt) {
 		super();
 		this.postID = postID;
 		this.userID = userID;
@@ -29,6 +31,7 @@ public class Post {
 		this.postLikeCnt = postLikeCnt;
 		this.postRegDate = postRegDate;
 		this.postFilePath = postFilePath;
+		this.commentCnt = commentCnt;
 	}
 
 
@@ -118,13 +121,25 @@ public class Post {
 	public void setPostFilePath(String postFilePath) {
 		this.postFilePath = postFilePath;
 	}
+	
+
+	public int getCommentCnt() {
+		return commentCnt;
+	}
+
+	public void setCommentCnt(int commentCnt) {
+		this.commentCnt = commentCnt;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Post [postID=" + postID + ", userID=" + userID + ", postTitle=" + postTitle + ", postContent="
-				+ postContent + ", postViewCnt=" + postViewCnt + ", postLikeCnt=" + postLikeCnt + ", postRegDate="
-				+ postRegDate + ", postFilePath=" + postFilePath + "]";
+		return "Post [postID=" + postID + ", userID=" + userID + ", userNickname=" + userNickname + ", postTitle="
+				+ postTitle + ", postContent=" + postContent + ", postViewCnt=" + postViewCnt + ", postLikeCnt="
+				+ postLikeCnt + ", postRegDate=" + postRegDate + ", postFilePath=" + postFilePath + ", commentCnt="
+				+ commentCnt + "]";
 	}
+
 	
 	
 	

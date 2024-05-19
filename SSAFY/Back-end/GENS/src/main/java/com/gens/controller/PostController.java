@@ -127,11 +127,13 @@ public class PostController {
 	// swagger 테스트 시 입력 예시(제목에 barca라는 단어가 포함되는지?): (key: postTitle, word: barca)
 	@GetMapping("/posts/search")
 	@Operation(summary="검색")
-	public ResponseEntity<?> searchPost(@RequestParam String key, @RequestParam String word){
+	public ResponseEntity<?> searchPost(@RequestParam String key, @RequestParam String word, @RequestParam String orderBy, @RequestParam String orderByDir){
 		
 		SearchCondition condition = new SearchCondition();
 		condition.setKey(key);
 		condition.setWord(word);
+		condition.setOrderBy(orderBy);
+		condition.setOrderByDir(orderByDir);
 		
 		List<Post> list = postService.retrievePost(condition);
 		
