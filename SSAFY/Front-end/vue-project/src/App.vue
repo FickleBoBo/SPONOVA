@@ -27,6 +27,13 @@
         </div>
     </nav>
     <RouterView />
+
+    <footer>
+        <div>로고는 왼쪽에</div>
+        <div>오시는 길: 멀티캠퍼스 주소</div>
+        <div>문의 contact us: 누군가의 이메일 주소</div>
+        &copy; 2024. All Rights Reserved
+    </footer>
 </template>
 
 
@@ -116,4 +123,14 @@ nav {
 .game-container:hover .game-detail {
     display: block; /* 블록 레벨 요소로 만든다 */
 }
+
+footer {
+    position: relative;
+    bottom: 0;
+
+    width: 100%;
+    background-color: black;
+    color: gray;
+}
+
 </style>
