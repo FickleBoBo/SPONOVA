@@ -44,5 +44,4 @@
 	    WHERE userNickname = #{userNickname}
 	</select>
 
-	
 </mapper>
