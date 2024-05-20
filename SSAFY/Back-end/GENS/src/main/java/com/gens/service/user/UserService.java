@@ -16,5 +16,9 @@ public interface UserService {
 	User login(String userID, String userPW);
 	
 	boolean existsById(String userId);
+	
+	boolean existsByPhonenumber(String userPhonenumber);
+	
+	boolean existsByNickname(String userNickname);
 
 }

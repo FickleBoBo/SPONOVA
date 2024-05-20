@@ -10,6 +10,7 @@ import LeagueView from '@/views/LeagueView.vue'
 import ClubView from '@/views/ClubView.vue'
 import CommunityView from '@/views/CommunityView.vue'
 
+import SignUpView from '@/views/SignUpView.vue'
 import GameListView from '@/views/GameListView.vue'
 import GameDetailView from '@/views/GameDetailView.vue'
 import PostCreatePage from '@/components/Community/PostCreatePage.vue'
@@ -25,6 +26,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    }, 
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignUpView
     }, 
     {
       path: '/login',

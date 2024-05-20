@@ -19,5 +19,11 @@ public interface UserDao {
 	// 중복 ID 검사
 	User findById(String userId);
 	
+	// 중복 폰번호 검사
+	User findByPhonenumber(String userPhonenumber);
+	
+	// 중복 닉네임 검사
+	User findByNickname(String userNickname);
+	
 
 }

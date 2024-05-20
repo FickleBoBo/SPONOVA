@@ -44,6 +44,16 @@ public class UserServiceImpl implements UserService{
 	public boolean existsById(String userId) {
 	    return userDao.findById(userId) != null;
 	}
+	
+	@Override
+	public boolean existsByPhonenumber(String userPhonenumber) {
+	    return userDao.findByPhonenumber(userPhonenumber) != null;
+	}
+	
+	@Override
+	public boolean existsByNickname(String userNickname) {
+	    return userDao.findByNickname(userNickname) != null;
+	}
 
 
 //	// front에서 처리하는게 낫지만 임시방편
