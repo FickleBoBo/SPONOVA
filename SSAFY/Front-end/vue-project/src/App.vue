@@ -22,7 +22,7 @@
             <!-- 로그인 했으면 "로그아웃" / "닉네임"-->
             <RouterLink v-if="!userStore.loginStatus" :to="{name: 'login'}">Login </RouterLink>
             <RouterLink v-if="userStore.loginStatus" :to="{name: 'logout'}">Logout </RouterLink>
-            <RouterLink v-if="!userStore.loginStatus" :to="{name: 'login'}">회원가입 </RouterLink>
+            <RouterLink v-if="!userStore.loginStatus" :to="{name: 'signup'}">회원가입 </RouterLink>
             <RouterLink v-if="userStore.loginStatus" :to="{name: 'home'}">{{ userStore.loginInfo.userNickname }}</RouterLink>
         </div>
     </nav>

@@ -68,15 +68,21 @@ public class UserController {
 	
 	
 	
-//	// 회원가입 : 게시글 작성을 참고함
-//	@PostMapping("/signup")
-//	public ResponseEntity<User> signup(@RequestBody User user){
-//		if (userService.existsById(user.getUserID())) {
-//	        return ResponseEntity.status(HttpStatus.CONFLICT).body("UserID already exists.");
-//	    }
-//		userService.signup(user);
-//		return new ResponseEntity<User>(user, HttpStatus.CREATED);
-//	}
+	// 회원가입 : 게시글 작성을 참고함
+	@PostMapping("/signup")
+	public ResponseEntity<?> signup(@RequestBody User user){
+		if (userService.existsById(user.getUserID())) {
+	        return ResponseEntity.status(HttpStatus.CONFLICT).body("DuplicatedID");
+	    }
+		if (userService.existsByPhonenumber(user.getUserPhonenumber())) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("DuplicatedPhonenumber");
+		}
+		if (userService.existsByNickname(user.getUserNickname())) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("DuplicatedNickname");
+		}
+		userService.signup(user);
+		return new ResponseEntity<User>(user, HttpStatus.CREATED);
+	}
 	
 	
 }
