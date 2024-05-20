@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="league-view">
     <h1>League Rankings</h1>
     <button @click="selectGameID('티볼')">티볼</button>
     <button @click="selectGameID('빅발리볼')">빅발리볼</button>
@@ -84,6 +84,11 @@ function selectGameID(gameID) {
 
 
 <style scoped>
+
+.league-view{
+  /* position: relative; */
+  margin-top: 2em;
+}
 button {
   padding: 10px;
   background-color: blue;

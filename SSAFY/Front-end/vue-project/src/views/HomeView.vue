@@ -62,12 +62,12 @@
     </div>
     
 
-    <footer>
+    <!-- <footer>
         <div>로고는 왼쪽에</div>
         <div>오시는 길: 멀티캠퍼스 주소</div>
         <div>문의 contact us: 누군가의 이메일 주소</div>
         &copy; 2024. All Rights Reserved
-    </footer>
+    </footer> -->
 </template>
 
 
@@ -173,13 +173,13 @@ onMounted(() => {
     /* margin-top: 5em; */
 }
 
-footer {
+/* footer {
     position: relative;
     bottom: 0;
 
     width: 100%;
     background-color: black;
     color: gray;
-}
+} */
 
 </style>
