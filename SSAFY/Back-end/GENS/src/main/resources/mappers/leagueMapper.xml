@@ -10,8 +10,8 @@
 		From league
 	</select>
 	
-	<!--rankings-->
-	<!--별도의 클래스 사용으로 인하여 resultType이 League가 아닌 LeagueRanking임을 주의-->
+	<!--rankings
+		별도의 클래스 사용으로 인하여 resultType이 League가 아닌 LeagueRanking임을 주의-->
 	<select id="selectRankingByGameID" resultType="LeagueRanking">
 	    SELECT 
 	        RANK() OVER (ORDER BY SUM(Points) DESC) AS ranking,
@@ -23,7 +23,20 @@
 	    GROUP BY ClubID
 	    ORDER BY totalPoints DESC
 	</select>
-
-
+	
+	<!-- 오늘의 경기
+	<select id="selectTodaysGames" resultType="LeagueToday">
+	    SELECT *
+	    FROM League
+	    WHERE GameDay = #{today}
+	</select> -->
+	
+	<!-- 연산 시 : '==' 나 '==='가 아니라 '='임을 주의 -->
+	<select id="selectTodaysGamesByGameID" parameterType="Map" resultType="LeagueToday">
+	    SELECT *
+	    FROM League
+	    WHERE GameDay = #{date} AND GameID = #{gameID} AND matchID%2=0
+	</select>
+	
 
 </mapper>

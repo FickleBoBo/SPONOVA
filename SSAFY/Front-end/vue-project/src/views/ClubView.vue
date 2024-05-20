@@ -1,23 +1,25 @@
 <template>
-    <div>
-    <div>
-      <h3>Club List</h3>
-    </div>
-
-    <div>
-      <ClubSearchInput/>
-      
-      <div v-for="club in clubStore.clubList" :key="club.clubID" class="club-card">
-        <img :src="club.clubLogoPath" alt="LOGO"/>
-        <div>팀명: {{ club.clubID }}</div>
-        <div>종목: {{ club.gameID}}</div>
-        <!-- <div>소개: {{ club.clubContent }}</div> -->
-        <!-- <div>이미지경로: {{ club.clubLogoPath }}</div> -->
+    <div class="club-view">
+      <div>
+        <h3>Club List</h3>
       </div>
-    </div>
-  
+
+      <div>
+        <div class="club-view-search">
+          <ClubSearchInput/>
+        </div>
         
-      <RouterView />
+        <div class="club-view-all">
+          <div  class="club-view-individual" v-for="club in clubStore.clubList" :key="club.clubID">
+            <div class="club-view-img"><img :src="club.clubLogoPath" alt="LOGO"/></div>
+            <div class="club-view-clubid">{{ club.clubID }}</div>
+            <div class="club-view-game">{{ club.gameID}}</div>
+          </div>
+        </div>
+      </div>
+    
+          
+        <RouterView />
     </div>
   </template>
   
@@ -41,22 +43,73 @@
   </script>
   
   <style scoped>
-  .club-card {
+
+  .club-view{
+    margin-top: 3em;
+  }
+
+  h3{
+    font-size: xx-large;
+    font-family: "LA28 Display";
+    text-align: center;
+  }
+
+  .club-view-search{
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+  }
+
+  .club-view-all{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+  }
+  .club-view-individual{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    overflow: hidden;
+    border: 1px solid black;
+    padding: 1em;
+    margin: 1em;
+    height: 13em;
+    width: 13em;
+
+    transition: transform 0.5s ease-in-out;
+  }
+  /* 호버링 시 반응형 */
+  .club-view-individual:hover {
+    transform: scale(1.1); 
+    color: white;
+    background-color: black;
     
-    width: 30%;
-    height: 50%;
-    border: #bbddfc 0.2px solid;
-    padding: 0.5rem;
-    margin: 0.2rem;
-    
+  }
+
+
+  .club-view-img{
+    margin: auto 0;
+  }
+
+  .club-view-clubid{
+    font-weight: 700;
+    align-items: center;
+    text-align: center;
+  }
+
+  .club-view-game{
+    font-size: small;
   }
 
   img {
     width: 10em; /* em은 부모 기준. rem은 root 기준 (html에서 root는 <html>) */
-    height: 5em;
+    height: auto;
   }
   </style>
