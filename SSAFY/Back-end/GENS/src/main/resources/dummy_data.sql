@@ -5,59 +5,59 @@ use ssafit;
 INSERT INTO club (ClubID, GameID, Location, ClubLogoPath, ClubContent) 
 
 VALUES  # teeball clubs
-		('느려터진 거북이', '티볼', '서울 성북구', 'https://www.fcbarcelona.com/photo-resources/2020/08/07/c958691d-3268-4df9-8fec-e5290f7d814e/comunicat.jpg?width=1200&height=750', 'laliga'),
-		('레전드홍쪽이예절주입기신승호', '티볼', '서울 강남구', 'https://img.chelseafc.com/image/upload/v1666011045/Site%20Chelsea%20Badges/Main_Website_Badge_-_Colour.png', 'premier'),
-		('논란제조기 육민우', '티볼', '서울 동작구','https://i.namu.wiki/i/NuVR7neFequ12CKait0llyWiCG7cIJ0Nmjt1_VGzg4ZqoAduVyLpogESXePJb94T07idc3dC8_458e_dPTrQ6w.svg', 'ohjh'),
-		('김윤홍왼쪽팔 최힘찬', '티볼', '서울 송파구','https://upload.wikimedia.org/wikipedia/ko/8/8a/LG_%ED%8A%B8%EC%9C%88%EC%8A%A4_%EB%A1%9C%EA%B3%A0.png', 'beer'),
-		('어금니절도범 배성진', '티볼', '서울 마포구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('Haley 추종자', '티볼', '서울 서초구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('신암초일짱이재영', '티볼', '서울 종로구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('한남더힐입주자모임', '티볼', '서울 용산구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
+		('느려터진 거북이', '티볼', '서울 성북구', 'https://i.namu.wiki/i/ykT3c71F6tEoEUvT_00gfbMvkrnFyKUmeU7bnXXbfJMDM9e9NnDIgr18thf29jjafHGYBJ5k0EPIvxdRaqiNzg.webp', 'laliga'),
+		('레전드홍쪽이예절주입기신승호', '티볼', '서울 강남구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROltHpz-8dDFrwNvLDYuVUIMbSVYmO8Ma5WA&s', 'premier'),
+		('논란제조기 육민우', '티볼', '서울 동작구','httpvg', 'ohjh'),
+		('김윤홍왼쪽팔 최힘찬', '티볼', '서울 송파구','httg', 'beer'),
+		('어금니절도범 배성진', '티볼', '서울 마포구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNmbFVL9-zICpWk5uwlbNtztKlXHR-FOBcuw&s','island'),
+		('Haley 추종자', '티볼', '서울 서초구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmJvdCn-XGBT7_T_ZE73fuZrmu45FpxZjFDA&s','island'),
+		('신암초일짱이재영', '티볼', '서울 종로구', 'httpebp','island'),
+		('한남더힐입주자모임', '티볼', '서울 용산구', 'httebp','island'),
 		# vicvollleyball 클럽
-		('강서 김피탕', '빅발리볼', '서울 강서구','', 'lalighttps://mobile.fcseoul.com/resources/front/images/sub/club/img_club_emblem01.jpga'),
+		('강서 김피탕', '빅발리볼', '서울 강서구','', 'https://mobile.fcseoul.com/resources/front/images/sub/club/img_club_emblem01.jpg'),
 		('송파 파워레인저', '빅발리볼', '서울 송파구','logopath', 'premier'),
 		('강북 불주먹', '빅발리볼', '서울 강북구', 'logopath','ohjh'),
-		('헬로키티송창용', '빅발리볼', '서울 관악구', 'logopath','beer'),
-		('치이카와', '빅발리볼', '서울 강동구', 'logopath','island'),
-		('유캔콜미택', '빅발리볼', '서울 중구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('이세돌화이팅', '빅발리볼', '서울 서초구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('윈터좋아하는김재현', '빅발리볼', '서울 마포구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
+		('헬로키티송창용', '빅발리볼', '서울 관악구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoaEUBk4wT9pagZL0rD38ikVdZMU6ZiYhCzA&s','beer'),
+		('치이카와', '빅발리볼', '서울 강동구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjfjKihVIzpZxLUQKfdcJoyusyOU6bldO5WQ&s','island'),
+		('유캔콜미택', '빅발리볼', '서울 중구', 'httpwebp','island'),
+		('이세돌화이팅', '빅발리볼', '서울 서초구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGETshQUqMWtpuNgkTNl2bK-FpdoAFBS0VPg&s','island'),
+		('윈터좋아하는김재현', '빅발리볼', '서울 마포구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbLSIfv2ir_L31OQUKMlmbQRl0mlfrAOyqPg&s','island'),
 		# indiaca 클럽
-		('수원 FC', '인디아카', '서울 마포구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlQ3n7IjG3-gxVbSbdqll9cuiRFJI8nhJJmoY9NQ8veQ&s','laliga'),
-		('SSG', '인디아카', '서울 노원구','https://blog.kakaocdn.net/dn/KSL1k/btqymMhre8M/P0L8qfkVwKgrFvkyac4Ns0/img.jpg', 'premier'),
-		('넥스트레벨', '인디아카', '서울 도봉구', 'https://blog.kakaocdn.net/dn/PxtsX/btqymgdgqFV/qiWabkcNeIfirJIkksG2oK/img.jpg','ohjh'),
-		('핑크 블러드', '인디아카', '서울 광진구','https://logos-world.net/wp-content/uploads/2020/05/Arsenal-Logo.png', 'beer'),
-		('Aespa', '인디아카', '서울 용산구', 'https://www.liverpool-one.com/wp-content/uploads/2022/04/Liverpool-FC-Store-Liverpool-ONE.jpg','island'),
-		('Supernova', '인디아카', '서울 성동구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('카리나S2한도형', '인디아카', '서울 동대문구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('유지민사랑해-육민우', '인디아카', '서울 동작구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
+		('수원 FC', '인디아카', '서울 마포구', 'hs','laliga'),
+		('SSG', '인디아카', '서울 노원구','httppg', 'premier'),
+		('넥스트레벨', '인디아카', '서울 도봉구', 'httpg','ohjh'),
+		('핑크 블러드', '인디아카', '서울 광진구','httng', 'beer'),
+		('Aespa', '인디아카', '서울 용산구', 'httppg','island'),
+		('Supernova', '인디아카', '서울 성동구', 'httpebp','island'),
+		('카리나S2한도형', '인디아카', '서울 동대문구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjmvbP0pBEDw02M8LcYG7iMzd17SKLVXp5RA&s','island'),
+		('유지민사랑해-육민우', '인디아카', '서울 동작구', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQccmXHHgeTokXkhvTtTThihJEX2SgHSwDyCQ&s','island'),
 		# tchouball 클럽
 		('맨스티어 파이팅', '츄크볼', '서울 서초구','logopath', 'laliga'),
 		('프응TV좋아요구독', '츄크볼', '서울 종로구','logopath', 'premier'),
 		('붉은남자송창용', '츄크볼', '서울 중구','logopath', 'ohjh'),
 		('달려라 티볼', '츄크볼', '서울 은평구','logopath', 'beer'),
 		('김치 너무 매워요', '츄크볼', '서울 구로구','logopath', 'island'),
-		('나루토사스케', '츄크볼', '서울 마포구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('모루모루쨩', '츄크볼', '서울 도봉구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('인성고등학교총동문회', '츄크볼', '서울 강북구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
+		('나루토사스케', '츄크볼', '서울 마포구', 'hbp','island'),
+		('모루모루쨩', '츄크볼', '서울 도봉구', 'htbp','island'),
+		('인성고등학교총동문회', '츄크볼', '서울 강북구', 'httebp','island'),
 		# floorball 클럽
 		('경산실버타운일동', '플로어볼', '서울 광진구', 'logopath','laliga'),
 		('카리나닝닝지젤원터', '플로어볼', '서울 성동구', 'logopath','premier'),
 		('오이안먹는모임', '서울 서대문구', 'seoul','logopath', 'ohjh'),
 		('힛 앤 런', '플로어볼', '서울 중랑구','logopath', 'beer'),
 		('티볼 갤러리', '플로어볼', '서울 관악구', 'logopath','island'),
-		('영차 영차', '플로어볼', '서울 영등포구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('베이컨토마토디럭스', '플로어볼', '서울 마포구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('오징어낙지', '플로어볼', '서울 송파구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
+		('영차 영차', '플로어볼', '서울 영등포구', 'httpbp','island'),
+		('베이컨토마토디럭스', '플로어볼', '서울 마포구', 'httpsebp','island'),
+		('오징어낙지', '플로어볼', '서울 송파구', 'httpbp','island'),
 		# sportstacking 클럽
 		('오마이걸 미라클', '스포츠스태킹', '서울 금천구','logopath', 'laliga'),
 		('아이브공식팬클럽', '스포츠스태킹', '서울 양천구', 'logopath','premier'),
 		('원숭이 킬러', '스포츠스태킹', '서울 강남구', 'logopath','ohjh'),
 		('차가운 청년들', '스포츠스태킹', '서울 동대문구','logopath', 'beer'),
 		('정처기탈락클럽', '스포츠스태킹', '서울 성동구','logopath', 'island'),
-		('A형 클럽', '스포츠스태킹', '서울 강남구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('아침부터모하닝', '스포츠스태킹', '서울 관악구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island'),
-		('6630', '스포츠스태킹', '서울 노원구', 'https://i.namu.wiki/i/42QzsEggqJ4q-Ux_D5-addiBzmM-EL26zzLXwh0kA8UVTdQ6WsfuVuyhkKaA83Ss0kQJX3PvSgX7jPDN0wjYVQ.webp','island');
+		('A형 클럽', '스포츠스태킹', '서울 강남구', 'httpbp','island'),
+		('아침부터모하닝', '스포츠스태킹', '서울 관악구', 'httpsebp','island'),
+		('6630', '스포츠스태킹', '서울 노원구', 'httpebp','island');
 
 # select * from club;
 
@@ -132,6 +132,8 @@ VALUES
 
 
 # 댓글 더미 데이터
+INSERT INTO Comment(UserID,PostID, UserNickname, CommentContent)
+VALUES('j990809@naver.com', 1, 'zl존재영S2', '폼 미쳤다'); 
 
 
 
