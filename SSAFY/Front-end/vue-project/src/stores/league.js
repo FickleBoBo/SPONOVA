@@ -1,4 +1,4 @@
-
+// 1개만 있었을 때
 // export const useLeagueStore = defineStore('leagueInfo', () => {
   
 //   // const leagueList = ref([])
@@ -40,60 +40,64 @@
         //   }
         
         // })
-   
-        
-// 이거 되긴 됨
-// import axios from 'axios'
+
+
+// // 여러 종목
 // import { defineStore } from 'pinia'
-// // import router from '@/router'
-// // import { ref } from 'vue'
+// import { ref } from 'vue'
+// import axios from 'axios'
+// import dayjs from 'dayjs'
 
 // const GENS_API = `http://localhost:8080/newsports/league/rankings`
 
-// export const useLeagueStore = defineStore('leagueInfo', {
-//   state: () => ({
-//     leagueRankings: [],  // 리그 랭킹을 저장할 상태
-//   }),
+// export const useLeagueStore = defineStore('leagueInfo', () => {
+//   const leagueRankings = ref([])
 
-//   actions: {
-//     // 특정 게임 ID에 따른 리그 랭킹을 가져오는 메서드
-//     getLeagueRankingByGameID(gameID) {
-//       return axios.get(`${GENS_API}/${encodeURIComponent(gameID)}`)
+//   // 특정 게임 ID에 따른 리그 랭킹
+//   function getLeagueRankingByGameID(gameID) {
+//     return axios.get(`${GENS_API}/${encodeURIComponent(gameID)}`) // 게임ID가 한글로 되어있어서 encode--를 붙여줌
 //       .then(response => {
-//         this.leagueRankings = response.data; // 응답 데이터를 상태에 저장
-//         console.log(response.data);
-//         })
-//         .catch(error => {
-//           console.error('Error fetching rankings:', error);
-//         });
-//     }
+//         leagueRankings.value = response.data;
+//         console.log(response.data)
+//       })
+//       .catch(error => {
+//         console.error('Error: ', error)
+//       })
 //   }
-// })
+
+//   return { 
+//     leagueRankings,
+//     getLeagueRankingByGameID,
+//   }
+// });
 
 
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
+import axios from 'axios';
 import { ref } from 'vue'
-import axios from 'axios'
-
-const GENS_API = `http://localhost:8080/newsports/league/rankings`
 
 export const useLeagueStore = defineStore('leagueInfo', () => {
-  const leagueRankings = ref([])
+  const data = ref({
+    rankings: [],
+    todayGames: []
+  });
 
-  // 특정 게임 ID에 따른 리그 랭킹
-  function getLeagueRankingByGameID(gameID) {
-    return axios.get(`${GENS_API}/${encodeURIComponent(gameID)}`) // 게임ID가 한글로 되어있어서 encode--를 붙여줌
+  // Fetches the combined data for a specific game ID
+  function getLeagueDetailsByGameID(gameID) {
+    const API_URL = `http://localhost:8080/newsports/league/rankings/${encodeURIComponent(gameID)}`;
+    return axios.get(API_URL)
       .then(response => {
-        leagueRankings.value = response.data;
-        console.log(response.data)
+        data.value.rankings = response.data.rankings;
+        data.value.todayGames = response.data.todayGames;
       })
       .catch(error => {
-        console.error('Error: ', error)
-      })
+        console.error('Failed to fetch data:', error);
+        data.value = { rankings: [], todayGames: [] };
+      });
   }
 
-  return { 
-    leagueRankings,
-    getLeagueRankingByGameID,
+  return {
+    data,
+    getLeagueDetailsByGameID
   }
 });
