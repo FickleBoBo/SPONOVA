@@ -5,21 +5,6 @@
           <input type="text" v-model="searchInfo.word" />
           <button @click="searchClubList"> 검색 </button>
       </div>
-
-      <!-- <div>
-          <label>정렬 기준 :</label>
-          <select v-model="searchInfo.orderBy">
-              <option value='none'>없음</option>
-              <option value="title">제목</option>
-          </select>
-      </div> -->
-      <!-- <div>
-          <label>정렬 방향 :</label>
-          <select v-model="searchInfo.orderByDir">
-              <option value="asc">오름차순</option>
-              <option value="desc">내림차순</option>
-          </select>
-      </div> -->
   </div>
 </template>
 
@@ -31,8 +16,6 @@ import {ref} from 'vue'
 const searchInfo = ref({
   key: 'gameID',
   word: '', 
-  // orderBy: 'none',
-  // orderByDir: 'asc'
 })
 
 const clubStore = useClubStore()
