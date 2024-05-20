@@ -88,32 +88,35 @@
 
 
 // ver3. 랭킹 + 오늘의 매치
-import { defineStore } from 'pinia';
-import axios from 'axios';
+import { defineStore } from 'pinia'
+import axios from 'axios'
 import { ref } from 'vue'
 
 export const useLeagueStore = defineStore('leagueInfo', () => {
+ // 참조형으로 한번에 (ranking + match = data)를 생성
   const data = ref({
     rankings: [],
     todayGames: []
-  });
+  })
 
-  // Fetches the combined data for a specific game ID
+  // axios 연결
   function getLeagueDetailsByGameID(gameID) {
-    const API_URL = `http://localhost:8080/newsports/league/rankings/${encodeURIComponent(gameID)}`;
+    // 기본 api는 leagueController에서 확인할 수 있듯이 gameID까지: 한글이라 앞에 'encodeURIComponent' 붙여줌
+    const API_URL = `http://localhost:8080/newsports/league/rankings/${encodeURIComponent(gameID)}`
     return axios.get(API_URL)
       .then(response => {
-        data.value.rankings = response.data.rankings;
-        data.value.todayGames = response.data.todayGames;
+        data.value.rankings = response.data.rankings
+        data.value.todayGames = response.data.todayGames
       })
       .catch(error => {
-        console.error('Failed to fetch data:', error);
-        data.value = { rankings: [], todayGames: [] };
-      });
+        console.error('Failed: error message:', error)
+        // 형태 주의
+        data.value = { rankings: [], todayGames: [] }
+      })
   }
 
   return {
     data,
     getLeagueDetailsByGameID
   }
-});
+})
