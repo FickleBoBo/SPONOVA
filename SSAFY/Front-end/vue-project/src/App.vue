@@ -4,7 +4,7 @@
         <RouterLink class="nav-tap" :to="{name: 'home'}">Home</RouterLink>
         <RouterLink class="nav-tap" :to="{name: 'intro'}">Intro</RouterLink>
         <div class="game-container">
-            <RouterLink class="nav-tap" :to="{name: 'game'}">Game</RouterLink>
+            <RouterLink class="nav-tap" :to="{name: 'gameList'}">Game</RouterLink>
             <div class="game-detail">
                 <div v-for="item in gameStore.gameInfo" :key="item.id">
                     <RouterLink :to="{name: 'gameDetail', params: { id: item.id} }">{{ item.koName }}</RouterLink>
