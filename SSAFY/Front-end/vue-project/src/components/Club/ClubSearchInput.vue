@@ -1,9 +1,11 @@
 <template>
-  <div class="search">
+  <div class="club-search">
       <div>
-          <label>종목을 검색하세요 : </label>
+          <label>종목을 검색하세요: </label>
           <input type="text" v-model="searchInfo.word" />
+          <button @click="searchClubList"> 검색 </button>
       </div>
+
       <!-- <div>
           <label>정렬 기준 :</label>
           <select v-model="searchInfo.orderBy">
@@ -18,9 +20,6 @@
               <option value="desc">내림차순</option>
           </select>
       </div> -->
-      <div>
-          <button @click="searchClubList"> 검색 </button>
-      </div>
   </div>
 </template>
 
@@ -44,7 +43,19 @@ const searchClubList = function(){
 </script>
 
 <style scoped>
-.search {
+.club-search {
   display: flex;
+  flex-direction: row;
+  margin: 1em;
+}
+
+button {
+  background-color: black;
+  color: white;
+  border-radius: 5%;
+}
+
+label, input, button{
+  margin-right: 0.2em;
 }
 </style>
