@@ -10,6 +10,7 @@ import LeagueView from '@/views/LeagueView.vue'
 import ClubView from '@/views/ClubView.vue'
 import CommunityView from '@/views/CommunityView.vue'
 
+import GameListView from '@/views/GameListView.vue'
 import GameDetailView from '@/views/GameDetailView.vue'
 import PostCreatePage from '@/components/Community/PostCreatePage.vue'
 import PostDetailPage from '@/components/Community/PostDetailPage.vue'
@@ -50,6 +51,11 @@ const router = createRouter({
       name: 'game',
       component: GameView, 
       children: [
+        {
+          path: '',
+          name: 'gameList',
+          component: GameListView
+        }, 
         {
           path: ':id',
           name: 'gameDetail',

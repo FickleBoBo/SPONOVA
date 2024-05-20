@@ -1,16 +1,20 @@
 <template>
     <div>
-    <div>
-      <h3>{{ gameStore.gameInfo[$route.params.id-1].koName }}</h3>
-    </div>
+      <div>
+        <h3>{{ gameStore.gameInfo[$route.params.id-1].koName }}</h3>
+      </div>
 
-    <div class="koName">{{ gameStore.gameInfo[$route.params.id-1].koName }}</div>
-    <div class="enName">{{ gameStore.gameInfo[$route.params.id-1].enName }}</div>
-       
-    <div class="info">{{ gameStore.gameInfo[$route.params.id-1].info }}</div>
+      <div class="koName">{{ gameStore.gameInfo[$route.params.id-1].koName }}</div>
+      <div class="enName">{{ gameStore.gameInfo[$route.params.id-1].enName }}</div>
+        
+      <div class="info1">{{ gameStore.gameInfo[$route.params.id-1].info1 }}</div>
+      <div class="info2">{{ gameStore.gameInfo[$route.params.id-1].info2 }}</div>
+      <div class="info3">{{ gameStore.gameInfo[$route.params.id-1].info3 }}</div>
 
-    <button @click="showRules(gameStore.gameInfo[$route.params.id-1].rulesUrl)" :disabled="!gameStore.gameInfo[$route.params.id-1].rulesUrl">경기 규칙</button>
-    <button @click="showVideo(gameStore.gameInfo[$route.params.id-1].videoUrl)" :disabled="!gameStore.gameInfo[$route.params.id-1].videoUrl">경기 영상</button>
+      <div class="photo"><img :src="gameStore.gameInfo[$route.params.id-1].photo"></div>
+
+      <button @click="showRules(gameStore.gameInfo[$route.params.id-1].rulesUrl)" :disabled="!gameStore.gameInfo[$route.params.id-1].rulesUrl">경기 규칙</button>
+      <button @click="showVideo(gameStore.gameInfo[$route.params.id-1].videoUrl)" :disabled="!gameStore.gameInfo[$route.params.id-1].videoUrl">경기 영상</button>
     </div>
   </template>
   
