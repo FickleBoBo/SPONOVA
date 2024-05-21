@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- 시네마 감성으로 정보를 렌더링 -->
         <div class="header">
             <div>
                 <h1>New Sports</h1>
@@ -14,8 +15,15 @@
                 뉴스포츠는 크게 육상형, 해양형, 산악형, 항공형 등으로 분류되며, 이 중 티볼, 츄크볼, 킨볼등이 가장 대중적인 종목으로 알려져 있습니다.
             </div>
         </div>
+
+        <!-- 구분선 -->
+        <div class="block"></div>
+
+        <!-- 스크롤을 인식해서 컴포넌트 렌더링 -->
+        <!-- 홀수번, 짝수번 컴포넌트를 다르게 렌더링 -->
         <div class="scroll-container">
             <div v-for="(game, index) in gameStore.gameInfo" :key="game.id" class="game-item-container animated-text" ref="refs">
+                <!-- 짝수번 컴포넌트 -->
                 <div v-if="index%2==0">
                     <div class="game-item">
                         <div class="game-photo">
@@ -27,6 +35,7 @@
                             <div class="game-info2">{{ game.info2 }}</div>
                             <div class="game-info3">{{ game.info3 }}</div>
                             <div class="option">
+                                <!-- 경기 규칙 버튼과 경기 영상 버튼은 상세 페이지에서만 보여주기로 변경 -->
                                 <!-- <div class="game-rules-url">
                                     <button @click="showRules(game.rulesUrl)" :disabled="!game.rulesUrl">경기 규칙</button>
                                 </div>
@@ -40,6 +49,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 홀수번 컴포넌트 -->
                 <div v-else>
                     <div class="game-item">
                         <div class="game-content">
@@ -48,6 +58,7 @@
                             <div class="game-info2">{{ game.info2 }}</div>
                             <div class="game-info3">{{ game.info3 }}</div>
                             <div class="option">
+                                <!-- 경기 규칙 버튼과 경기 영상 버튼은 상세 페이지에서만 보여주기로 변경 -->
                                 <!-- <div class="game-rules-url">
                                     <button @click="showRules(game.rulesUrl)" :disabled="!game.rulesUrl">경기 규칙</button>
                                 </div>
@@ -79,13 +90,15 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useGameStore } from '@/stores/game'
 const gameStore = useGameStore()
 
-const showRules = ((url) => {
-  window.location.href = url
-})
+// 경기 규칙 버튼 메서드
+// const showRules = ((url) => {
+//   window.location.href = url
+// })
 
-const showVideo = ((url) => {
-  window.location.href = url
-})
+// 경기 영상 버튼 메서드
+// const showVideo = ((url) => {
+//   window.location.href = url
+// })
 
 const refs = ref([])
 onMounted(() => {
@@ -113,12 +126,15 @@ onMounted(() => {
 <style scoped>
 
 .header {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
     text-align: center;
-    margin: 10rem;
+    font-weight: bold;
 }
 
 .header > * {
     margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 .header h1 {
@@ -129,6 +145,14 @@ onMounted(() => {
 .header div {
     opacity: 0;
     animation: fadeIn 3s forwards;
+}
+
+.block {
+    background-color: black;
+    height: 5em;
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+    animation-delay: 2.5s;
 }
 
 @keyframes fadeIn {
@@ -156,12 +180,13 @@ onMounted(() => {
     animation-delay: 2.0s;
 }
 
+/* 각각의 종목에 대한 컨테이너 */
 .game-item-container {
     width: 1400px;
     margin: 0 auto;
     margin-top: 15rem;
     margin-bottom: 15rem;
-    border: 3px solid black;
+    border: 5px solid black;
     text-align: center;
 }
 
@@ -179,7 +204,6 @@ onMounted(() => {
 .game-photo {
     position: relative;
 }
-
 
 .game-photo img {
     height: 500px;
