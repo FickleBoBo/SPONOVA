@@ -7,26 +7,29 @@
               <option value="title">제목</option>
           </select>
       </div> -->
-      <div>
-          <label>제목을 검색하세요 : </label>
-          <input type="text" v-model="searchInfo.word" />
+      <div class="search-title">
+          <!-- <label>제목을 검색하세요 : </label> -->
+          <input type="text" v-model="searchInfo.word" placeholder="제목을 검색하세요"/>
       </div>
-      <div>
-          <label>정렬 기준 :</label>
-          <select v-model="searchInfo.orderBy">
-              <option value='postID'>작성일</option>
-              <option value="postViewCnt">조회수</option>
-          </select>
-      </div>
-      <div>
-          <label>정렬 방향 :</label>
-          <select v-model="searchInfo.orderByDir">
-              <option value="asc">오름차순</option>
-              <option value="desc">내림차순</option>
-          </select>
-      </div>
-      <div>
-          <button @click="searchPostList"> 검색 </button>
+      <div class="search-order">
+          <div>
+              <!-- <label>정렬 기준 :</label> -->
+              <select v-model="searchInfo.orderBy">
+                  <option value='postID'>작성일</option>
+                  <option value="postViewCnt">조회수</option>
+              </select>
+          </div>
+          <div>
+              <!-- <label>정렬 방향 :</label> -->
+              <select v-model="searchInfo.orderByDir">
+                  <option value="asc">오름차순</option>
+                  <option value="desc">내림차순</option>
+              </select>
+          </div>
+          <div>
+              <button @click="searchPostList"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/afd2765d-7a27-4e6b-b1d1-3a0b8034da68/desmh0p-9c96145b-d4c9-47bc-a5ec-ce3d205a4e30.png/v1/fill/w_1280,h_442/logo_png___aespa___savage_logo_png_by_kloorer_desmh0p-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDQyIiwicGF0aCI6IlwvZlwvYWZkMjc2NWQtN2EyNy00ZTZiLWIxZDEtM2EwYjgwMzRkYTY4XC9kZXNtaDBwLTljOTYxNDViLWQ0YzktNDdiYy1hNWVjLWNlM2QyMDVhNGUzMC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.PQ3H3I8DGs1s0mWbAOI0LAzDU96A3B-7PwYyK5TeIjk"></button>
+              <!-- <button @click="searchPostList"><img src="https://littledeep.com/wp-content/uploads/2020/01/littledeep_peach_main.png"></button> -->
+            </div>
       </div>
   </div>
 </template>
@@ -53,7 +56,51 @@ const searchPostList = function(){
 </script>
 
 <style scoped>
+
 .search {
   display: flex;
+  flex-direction: column;
+  margin-right: 2em;
+}
+
+input[type="text"] , select{
+  width: 100%; 
+  padding: 0.8em;
+  margin-bottom: 1em;
+}
+
+.search-order{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    /* margin-right: 0; */
+}
+
+.search-order > div{
+    margin-right: 1em;
+}
+.search-order >div:last-child{
+    margin-right: 0;
+}
+
+
+button, img {
+    /* background-color: black;
+    color: white;
+    border-radius: 5%;
+    cursor: pointer;  */
+    height: 3em;
+    width: auto;
+}
+
+label, input, option, button, select {
+    margin-right: 0.5em;
+    text-align: center;
+    align-items: center;
+}
+
+option{
+    margin-right: 1em;
 }
 </style>
