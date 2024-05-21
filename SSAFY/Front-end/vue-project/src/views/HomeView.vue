@@ -57,6 +57,7 @@
         <div>모루모루 사진 한 2개</div>
         <div>상품 이름 + 밑줄</div>
     </div>
+    <Shop />
 
 
     </div>
@@ -74,6 +75,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import Shop from '../components/Home/Shop.vue'
 
 const videoRef = ref(null)
 
