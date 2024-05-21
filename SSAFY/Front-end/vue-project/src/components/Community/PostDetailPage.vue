@@ -5,27 +5,28 @@
         <hr>
         <div class="post-meta">
           <div><strong>글쓴이:</strong> {{ communityStore.post.post.userNickname }}</div>
-          <div><strong>내용:</strong> {{ communityStore.post.post.postContent }}</div>
           <div><strong>조회수:</strong> {{ communityStore.post.post.postViewCnt + 1 }}</div>
-          <div><strong>댓글수:</strong> {{ communityStore.post.comments.length }}</div>
           <div><strong>작성일:</strong> {{ formatDate(communityStore.post.post.postRegDate) }}</div>
         </div>
         <hr>
-  
+
+        <div><strong></strong> {{ communityStore.post.post.postContent }}</div>
+        
         <div v-if="isAuthenticated" class="post-actions">
-          <button @click="updatePost" class="btn">수정</button>
-          <button @click="deletePost" class="btn">삭제</button>
+          <button @click="updatePost" class="btn-post-update">수정</button>
+          <button @click="deletePost" class="btn-post-delete">삭제</button>
         </div>
         <hr>
-  
+        
         <!-- 댓글 폼 -->
         <form @submit.prevent="createComment(comment.commentContent)" class="comment-form">
           <div class="form-group">
-            <label for="comment">댓글</label>
+            <!-- <label for="comment">댓글</label> -->
+            <div><strong>댓글 </strong> ({{ communityStore.post.comments.length }})</div>
             <input type="text" id="comment" v-model="comment.commentContent" class="form-control">
           </div>
           <div class="form-group">
-            <button class="btn">등록</button>
+            <button class="btn-comment-submit">등록</button>
           </div>
         </form>
   
@@ -33,7 +34,7 @@
         <div v-for="comment in communityStore.post.comments" :key="comment.commentID" class="comment">
           <div class="comment-content">
             <span><strong>{{ comment.userNickname }}</strong> | {{ comment.commentContent }}</span>
-            <span v-if="userStore.loginInfo.userID === comment.userID"><button @click="deleteComment(comment.commentID)" class="btn">삭제</button></span>
+            <span v-if="userStore.loginInfo.userID === comment.userID"><button @click="deleteComment(comment.commentID)" class="btn-comment-delete">X</button></span>
           </div>
         </div>
       </div>
@@ -102,8 +103,13 @@
   
   <style scoped>
   .post-detail-container {
+    margin-top: 2em;
     display: flex;
     justify-content: center;
+  }
+
+  h2{
+    font-weight: 700;
   }
   
   .post-detail {
@@ -121,7 +127,12 @@
   }
   
   .comment-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* text-align: center; */
     margin-bottom: 20px;
+    width: 100%;
   }
   
   .comment {
@@ -142,7 +153,22 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
+  .btn-post-update, .btn-post-delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: black;
+    color: white;
+    border-radius: 10%;
+    margin: 0.2em;
+  }
+  .btn-comment-submit{
+    background-color: black;
+    color: white;
+    border-radius: 10%;
+    margin: 0.2em;
+  }
   .btn:hover {
     background-color: #0056b3;
   }
@@ -152,6 +178,13 @@
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
+  }
+  .btn-comment-delete{
+    background-color: black;
+    color: white;
+    width: 2em;
+    border-radius: 10%;
+
   }
   </style>
   

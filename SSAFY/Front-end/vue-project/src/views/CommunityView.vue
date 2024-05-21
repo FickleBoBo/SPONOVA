@@ -4,7 +4,7 @@
             <div>
                 <h1>자유게시판</h1>
             </div>
-            <div>
+            <div class="community-search-area">
                 <PostSearchInput/>
             </div>
         </div>
@@ -145,6 +145,13 @@ onBeforeMount(() => {
     text-align: center; /* 텍스트도 중앙 정렬 */
     margin-bottom: 20px; /* 아래 여백 추가 */
 }
+
+/* .community-search-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+} */
 
 
 .commutnity-container {
