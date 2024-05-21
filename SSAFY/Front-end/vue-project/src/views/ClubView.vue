@@ -44,13 +44,11 @@ onMounted(() => {
   
 <style scoped>
 
-/* 클럽 페이지 전체 영역 */
-.club-view{
-  margin-top: 3em;
-}
+
 
 /* CLUB LIST */
 h1{
+  margin-top: 1em;
   font-size: xx-large;
   font-family: "LA28 Display";
   text-align: center;
@@ -115,7 +113,9 @@ h1{
   font-size: small;
 }
 
+/* 각 로고 이미지 */
 img {
+  background-color: none;
   width: 10em; /* em은 부모 기준. rem은 root 기준 (html에서 root는 <html>) */
   height: auto;
 }
