@@ -16,6 +16,24 @@
             </div>
         </div>
 
+        <div class="image-container">
+            <img class="imgEven" :src="images[0]" />
+            <img class="imgOdd" :src="images[1]" />
+            <img class="imgEven" :src="images[2]" />
+            <img class="imgOdd" :src="images[3]" />
+            <img class="imgEven" :src="images[4]" />
+            <img class="imgEven" :src="images[0]" />
+            <img class="imgOdd" :src="images[1]" />
+            <img class="imgEven" :src="images[2]" />
+            <img class="imgOdd" :src="images[3]" />
+            <img class="imgEven" :src="images[4]" />
+            <img class="imgEven" :src="images[0]" />
+            <img class="imgOdd" :src="images[1]" />
+            <img class="imgEven" :src="images[2]" />
+            <img class="imgOdd" :src="images[3]" />
+            <img class="imgEven" :src="images[4]" />
+        </div>
+
         <!-- 구분선 -->
         <div class="block"></div>
 
@@ -100,6 +118,14 @@ const gameStore = useGameStore()
 //   window.location.href = url
 // })
 
+const images = ref([
+    'public/morumoru1.png', 
+    'public/morumoru2.png', 
+    'public/morumoru3.png', 
+    'public/morumoru4.png', 
+    'public/morumoru5.png', 
+])
+
 const refs = ref([])
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -125,16 +151,51 @@ onMounted(() => {
 
 <style scoped>
 
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    width: 100px;
+    height: 100px;
+}
+
+.image-container .imgEven {
+    animation: rotateClockwise 1s linear infinite alternate;
+}
+
+.image-container .imgOdd {
+    animation: rotateCounterClockwise 1s linear infinite alternate;
+}
+
+@keyframes rotateClockwise {
+    0% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+
+@keyframes rotateCounterClockwise {
+    0% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(20deg);
+    }
+}
+
 .header {
     margin-top: 10rem;
     margin-bottom: 10rem;
     text-align: center;
-    font-weight: bold;
+    font-family: 'LA28 Display', sans-serif;
 }
 
 .header > * {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
 }
 
 .header h1 {
