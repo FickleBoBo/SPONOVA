@@ -15,8 +15,9 @@
           <label for="content">내용</label>
           <textarea id="content" cols="30" rows="10" v-model="post.postContent" class="form-control"></textarea>
         </div>
-        <div class="form-group">
-          <button @click="createPost(post.postTitle, post.postContent)" class="btn btn-primary">등록</button>
+        <div class="form-group button-group">
+          <!-- <button @click="createPost(post.postTitle, post.postContent)" class="btn btn-primary">등록</button> -->
+          <button @click="createPost(post.postTitle, post.postContent)">등록</button>
         </div>
       </fieldset>
     </div>
@@ -78,6 +79,10 @@ legend {
 .form-group {
   margin-bottom: 20px;
 }
+.button-group {
+  text-align: right;
+  
+}
 
 label {
   display: block;
@@ -97,13 +102,13 @@ button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #000000;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #007bff;
 }
 </style>
