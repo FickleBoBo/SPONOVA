@@ -204,7 +204,7 @@ button {
     </div>
     
     <div class="league-view-sponsers">
-      <div class="sponser-title"> Out Partners </div>
+      <div class="sponser-title"> Official Partners </div>
       <div class="sponser-logo-section">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/7051px-Samsung_wordmark.svg.png"/>
         <img src="https://avatars.githubusercontent.com/u/144643944?s=280&v=4"/>

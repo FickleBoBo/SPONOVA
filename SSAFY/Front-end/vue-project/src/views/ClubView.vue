@@ -4,6 +4,7 @@
       <h1>Club List</h1>
     </div>
 
+    <div class="screen-edge-text">Moving Text Here . 이 문구가 움직였으면 좋겠어요 제발 ~~ 검은색 배경에 흰색글씨로 할거야</div>
     <div>
       <div class="club-view-search">
         <ClubSearchInput/>
@@ -44,6 +45,11 @@ onMounted(() => {
   
 <style scoped>
 
+.club-view{
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}
 
 
 /* CLUB LIST */
@@ -65,15 +71,19 @@ h1{
 
 /* 전체 카드 섹션 */
 .club-view-all{
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
+  justify-content: center;
+  text-align: center;
 }
 
 /* 개별 카드 섹션 */
 .club-view-individual{
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,8 +93,8 @@ h1{
   border: 2px solid black;
   padding: 1em;
   margin: 1em;
-  height: 13em;
-  width: 13em;
+  height: 15em;
+  width: 15em;
 
   transition: transform 0.5s ease-in-out;
 }
@@ -94,6 +104,21 @@ h1{
   color: white;
   background-color: black;
   
+}
+
+/* 움직임 test */
+.screen-edge-text {
+  position: fixed;
+  white-space: nowrap;
+  width: max-content; /* 글씨의 실제 너비만큼 너비를 설정 */
+  animation: move-around-screen 10s linear infinite;
+}
+@keyframes move-around-screen {
+  0% { top: 0; left: 0; transform: translate(0, 0); }
+  25% { top: 0; left: 100%; transform: translate(-100%, 0); } /* 상단 가로 이동 */
+  50% { top: 100%; left: 100%; transform: translate(-100%, -100%); } /* 오른쪽 세로 이동 */
+  75% { top: 100%; left: 0; transform: translate(0, -100%); } /* 하단 가로 이동 */
+  100% { top: 0; left: 0; transform: translate(0, 0); } /* 왼쪽 세로 이동 */
 }
 
 /* 로고 이미지 */

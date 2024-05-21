@@ -2,28 +2,28 @@
     <div class="top-container">
         <!-- 네비게이션 바 고정 영역 -->
         <nav>
-            <RouterLink class="nav-tap" :to="{name: 'home'}">Home</RouterLink>
-            <RouterLink class="nav-tap" :to="{name: 'intro'}">Intro</RouterLink>
+            <RouterLink class="nav-tap" :to="{name: 'home'}">HOME</RouterLink>
+            <!-- <RouterLink class="nav-tap" :to="{name: 'intro'}">INTRO</RouterLink> -->
             <div class="game-container">
-                <RouterLink class="nav-tap" :to="{name: 'gameList'}">Game</RouterLink>
+                <RouterLink class="nav-tap" :to="{name: 'gameList'}">GAME</RouterLink>
                 <div class="game-detail">
                     <div v-for="item in gameStore.gameInfo" :key="item.id">
                         <RouterLink :to="{name: 'gameDetail', params: { id: item.id} }">{{ item.koName }}</RouterLink>
                     </div>
                 </div>
             </div>
-            <RouterLink class="nav-tap" :to="{name: 'community'}">Community</RouterLink>
-            <RouterLink class="nav-tap" :to="{name: 'club'}">Club</RouterLink>
-            <RouterLink class="nav-tap" :to="{name: 'league'}">League</RouterLink>
+            <RouterLink class="nav-tap" :to="{name: 'community'}">COMMUNITY</RouterLink>
+            <RouterLink class="nav-tap" :to="{name: 'club'}">CLUB</RouterLink>
+            <RouterLink class="nav-tap" :to="{name: 'league'}">LEAGUE</RouterLink>
     
     
             <!-- 네비게이션 바 동적 영역 -->
             <div class="loginArea">
                 <!-- 로그인 안했으면 "로그인" / "회원가입" -->
                 <!-- 로그인 했으면 "로그아웃" / "닉네임"-->
-                <RouterLink class="login-margin" v-if="!userStore.loginStatus" :to="{name: 'login'}">Login </RouterLink>
-                <RouterLink v-if="!userStore.loginStatus" :to="{name: 'signup'}">Sign up</RouterLink>
-                <RouterLink class="login-margin" v-if="userStore.loginStatus" :to="{name: 'home'}">{{ userStore.loginInfo.userNickname }}</RouterLink>
+                <RouterLink class="login-margin" v-if="!userStore.loginStatus" :to="{name: 'login'}">Login  |</RouterLink>
+                <RouterLink v-if="!userStore.loginStatus" :to="{name: 'signup'}">Sign up</RouterLink> 
+                <RouterLink class="login-margin" v-if="userStore.loginStatus" :to="{name: 'home'}">{{ userStore.loginInfo.userNickname }}  |</RouterLink>
                 <RouterLink v-if="userStore.loginStatus" :to="{name: 'logout'}">Logout </RouterLink>
             </div>
         </nav>
@@ -66,8 +66,9 @@ const userStore = useUserStore()
 nav {
     /* position: relative; */
     font-family: 'LA28 Text', sans-serif;
+    font-size: large;
     display: flex;
-    justify-content: space-around;
+    justify-content: right;
     align-items: center;
 
     position: fixed; /**fixed로 하면 여백 없음 */
@@ -109,7 +110,7 @@ nav {
 
 .router-link-active { /* 현재 위치 알림 */
     font-size: 700;
-    color: rgb(0, 225, 255);
+    color: rgb(167, 215, 255);
 }
 
 .game-container {
