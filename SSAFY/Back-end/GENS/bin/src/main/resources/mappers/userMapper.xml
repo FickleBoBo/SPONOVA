@@ -19,8 +19,8 @@
 	
 	<!--회원가입-->
 	<insert id="insertUser" parameterType="User">
-		INSERT INTO user (userID, userPW, username, userRRN, userPhonenumber, userNickname,userProfilePath)
-		VALUES(#{userID}, #{userPW}, #{username}, #{userRRN}, #{userPhonenumber}, #{userNickname}, #{userProfilePath})
+		INSERT INTO user (userID, userPW, username, userRRN, userPhonenumber, userNickname)
+		VALUES(#{userID}, #{userPW}, #{username}, #{userRRN}, #{userPhonenumber}, #{userNickname})
 	</insert>	
 	
 	<!--중복 조회-->
@@ -29,6 +29,19 @@
 	    FROM user 
 	    WHERE userID = #{userId}
 	</select>
-
 	
+		<!--중복 조회-->
+	<select id="findByPhonenumber" resultType="User">
+	    SELECT * 
+	    FROM user 
+	    WHERE userPhonenumber = #{userPhonenumber}
+	</select>
+	
+		<!--중복 조회-->
+	<select id="findByNickname" resultType="User">
+	    SELECT * 
+	    FROM user 
+	    WHERE userNickname = #{userNickname}
+	</select>
+
 </mapper>
