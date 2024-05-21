@@ -181,8 +181,8 @@ button {
             </tr>
         </table>
     </div>
-    <div class="league-view-rank" v-else>
-      <p>종목을 선택해주세요.</p>
+    <div class="league-view-rank-unselected" v-else>
+      <p>Select the Games.</p>
     </div>
 
     
@@ -193,26 +193,24 @@ button {
         <div class="league-view-match">
           <div v-for="game in data.todayGames" :key="game.matchId">
             <div class="match-individual">
-              {{ game.clubID }} vs {{ game.oppClubID }} at {{ game.location }}
+              {{ game.clubID }} vs {{ game.oppClubID }} <span class="game-location">at {{ game.location }}</span>
             </div>
           </div>
         </div>
       </div>
-      <div v-else>
-        <p>오늘 예정된 경기가 없습니다.</p>
+      <div class="league-view-rank-unselected" v-else>
+        <p>No Matches Today.</p>
       </div>
     </div>
     
     <div class="league-view-sponsers">
       <div class="sponser-title"> Out Partners </div>
-      <div class="sponser-individual">
-        <img src="https://images.samsung.com/kdp/aboutsamsung/brand_identity/logo/256_144_3.png?$512_288_PNG$"/>
+      <div class="sponser-logo-section">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/7051px-Samsung_wordmark.svg.png"/>
         <img src="https://avatars.githubusercontent.com/u/144643944?s=280&v=4"/>
         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png"/>
         <img src="https://i.namu.wiki/i/MTTnomx6sFT5B65wu0au0LOozk78rvq_5VFyPEspyndNBMvSWfWZlSSokOnIyGoFeLduV-WR-quvrwd412wQzg.webp"/>
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Aespa_logo.jpg"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/1024px-Samsung_Logo.svg.png"/>
-        <img src=""/>
         <img src=""/>
         <img src=""/>
         <img src=""/>
@@ -239,7 +237,8 @@ function selectGameID(gameID) {
 
 /* 페이지 전체 */
 .league-view{
-  margin-top: 2em;
+  height: auto;
+  min-height: 100%;
   /* display: flex;
   flex-direction: column;
   align-items: center; */
@@ -281,6 +280,47 @@ button {
   color: white;
 }
 
+/* 종목 미선택 시 */
+.league-view-rank-unselected {
+  width: 100%;
+  margin-top: 3em;
+  margin-bottom: 2em;
+  
+  overflow: visible; /* 내용이 넘칠 경우 숨김 */
+  white-space: nowrap; /* 텍스트를 한 줄에 표시 */
+  position: relative;
+  
+  /* border: 1px solid gray; */
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-family: "LA28 Text";
+  
+  text-align: center;
+  justify-items: center;
+  align-content: center;
+}
+
+/* 종목 미선택시 나타나는 문구 */
+.league-view-rank-unselected p {
+  position: absolute; /* 절대적 위치 지정으로 애니메이션 적용 */
+  left: 100%;
+  right: 100%;
+  /* width: 100%; */
+  width: auto;
+  height: 100%;
+  margin: 0;
+
+  font-size: larger;
+  line-height: 3em; /* 세로 중앙 정렬을 위해 높이 맞춤 */
+  animation: marquee 15s linear infinite; /* 애니메이션 추가 */
+}
+
+/* 애니메이션 효과 */
+@keyframes marquee {
+  from { left: 0%; } /* 시작 위치 */
+  to { left: 90%; } /* 끝 위치, 텍스트 전체가 화면 왼쪽 끝을 지나도록 설정할 수도 있음 */
+}
+
 table{
   font-family: "LA28 Text";
   width: 100%;
@@ -314,6 +354,7 @@ th{
 
 /* 오늘의 경기 영역 */
 .today-match{
+  /* margin-top: 1em; */
   margin-bottom: 2em;
 }
 /* 오늘의 날짜 */
@@ -337,6 +378,11 @@ th{
 
   transition: font-size 0.3s ease; /* 호버링 시 스르르ㅡㄱ */
 }
+.game-location{
+  font-size: small;
+  font-style: oblique;
+  margin-left: 1em;
+}
 /* 호버링 */
 .match-individual:hover{
   background-color: black;
@@ -354,8 +400,8 @@ th{
   flex-direction: column;
   align-items: center; /**얘가 가운데 정렬 */
   background-color: rgb(0, 0, 0);
-  padding: 3em 1em;
-  /* min-height: 500px; */
+  margin-top: 5em;
+  padding: 2em 1em;
   width: 100%;
 
   /* margin-bottom: 1px; */
@@ -364,23 +410,25 @@ th{
 .sponser-title{
   color: white;
   font-family: "LA28 Display";
-  font-size: x-large;
+  font-size: xx-large;
   width: 100%;
   margin-bottom: 2em;
   text-align: center; /** 제목 중앙 정렬 */
+  
 }
 /* 개별 로고 */
-.sponser-individual{
+.sponser-logo-section {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  gap: 3em;
-  height: 5em;
-  width: auto;
+  gap: 1em;
+  width: 100%;
 }
-.sponser-individual img {
-  height: 100%; /* 이미지 높이를 컨테이너 높이에 맞춤 */
- 
+.sponser-logo-section img {
+  height: 5em; /* 이미지 높이를 컨테이너 높이에 맞춤 */
+  /* height: auto; */
+  margin: 0.5em;
 }
 </style>

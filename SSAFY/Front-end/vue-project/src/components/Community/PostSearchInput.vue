@@ -27,7 +27,8 @@
               </select>
           </div>
           <div>
-              <button @click="searchPostList"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/afd2765d-7a27-4e6b-b1d1-3a0b8034da68/desmh0p-9c96145b-d4c9-47bc-a5ec-ce3d205a4e30.png/v1/fill/w_1280,h_442/logo_png___aespa___savage_logo_png_by_kloorer_desmh0p-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDQyIiwicGF0aCI6IlwvZlwvYWZkMjc2NWQtN2EyNy00ZTZiLWIxZDEtM2EwYjgwMzRkYTY4XC9kZXNtaDBwLTljOTYxNDViLWQ0YzktNDdiYy1hNWVjLWNlM2QyMDVhNGUzMC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.PQ3H3I8DGs1s0mWbAOI0LAzDU96A3B-7PwYyK5TeIjk"></button>
+              <button @click="searchPostList">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/afd2765d-7a27-4e6b-b1d1-3a0b8034da68/desmh0p-9c96145b-d4c9-47bc-a5ec-ce3d205a4e30.png/v1/fill/w_1280,h_442/logo_png___aespa___savage_logo_png_by_kloorer_desmh0p-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDQyIiwicGF0aCI6IlwvZlwvYWZkMjc2NWQtN2EyNy00ZTZiLWIxZDEtM2EwYjgwMzRkYTY4XC9kZXNtaDBwLTljOTYxNDViLWQ0YzktNDdiYy1hNWVjLWNlM2QyMDVhNGUzMC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.PQ3H3I8DGs1s0mWbAOI0LAzDU96A3B-7PwYyK5TeIjk"></button>
               <!-- <button @click="searchPostList"><img src="https://littledeep.com/wp-content/uploads/2020/01/littledeep_peach_main.png"></button> -->
             </div>
       </div>
@@ -90,8 +91,13 @@ button, img {
     color: white;
     border-radius: 5%;
     cursor: pointer;  */
-    height: 3em;
+    background-color: black;
+}
+img{
+    height: 2.5em;
     width: auto;
+    background-color: black;
+
 }
 
 label, input, option, button, select {

@@ -1,24 +1,25 @@
 <template>
     <div class="container">
-      <form @submit.prevent="createUser" class="form">
-        <div class="form-group">
-          <label for="id">ID:</label>
+      <h1>Sign Up</h1>
+      <form @submit.prevent="createUser" class="signup-form">
+        <div class="form-group id-form">
+          <label for="id">ID</label><br>
           <input id="id" type="text" name="userID" v-model="userID" maxlength="30" required>
         </div>
         <div class="form-group">
-          <label for="pw">Password:</label>
+          <label for="pw">Password</label><br>
           <input id="pw" type="password" name="userPW" v-model="userPW" maxlength="20" required>
         </div>
         <div class="form-group">
-          <label for="name">Name:</label>
+          <label for="name">Name</label><br>
           <input id="name" type="text" name="username" v-model="username" maxlength="20" required>
         </div>
         <div class="form-group">
-          <label for="nickName">Nickname:</label>
+          <label for="nickName">Nickname</label><br>
           <input id="nickName" type="text" name="userNickname" v-model="userNickname" maxlength="10" required>
         </div>
         <div class="form-group">
-          <label for="RRN1">RRN:</label>
+          <label for="RRN1">RRN (주민등록번호 7자리)</label>
           <div class="rrn-inputs">
             <input id="RRN1" type="text" name="userRRN1" v-model="userRRN1" maxlength="6" required>
             <span>-</span>
@@ -26,7 +27,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="phoneNumber">Phone Number:</label>
+          <label for="phoneNumber">Phone Number</label>
           <div class="phone-inputs">
             <input id="phoneNumber1" type="text" name="userPhonenumber1" v-model="userPhonenumber1" maxlength="3" required>
             <span>-</span>
@@ -110,11 +111,34 @@ const createUser = function(){
 
 <style scoped>
 
-/* CSS */
 .container {
+    font-family: "LA28 Text";
+    font-size: smaller;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     max-width: 400px; /* 폼의 최대 너비 설정 */
-    margin: 0 auto; /* 가운데 정렬 */
+    margin: 0 auto; 
 }
+
+h1{
+  font-family: "LA28 Text";
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.signup-form {
+    justify-content: center;
+    width: 34rem;
+    /* margin: 0 auto;  */
+    border-radius: 10px;
+    background-color: #cfe7ffc4; 
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* CSS */
 
 .form {
     display: flex;
@@ -123,7 +147,7 @@ const createUser = function(){
 }
 
 .form-group {
-    margin-bottom: 15px; /* 각 그룹 아래 간격 */
+    margin-bottom: 15px; 
 }
 
 .label {
@@ -131,12 +155,28 @@ const createUser = function(){
     margin-right: 10px; /* 라벨과 인풋 필드 사이 간격 */
 }
 
-.input-field {
-    flex: 1; /* 나머지 공간을 인풋 필드가 채우도록 설정 */
-    padding: 8px; /* 내부 여백 */
-    border: 1px solid #ccc; /* 테두리 스타일 */
-    border-radius: 4px; /* 테두리 둥글게 */
-    box-sizing: border-box; /* 내부 여백을 포함한 전체 너비 설정 */
+/* input[type="id"],
+input[type="pw"],
+input[type="name"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+} */
+/* input{
+  border-radius: 5px;
+  border: 0.5px solid gray;
+} */
+.form-group input {
+    flex: 1; 
+    padding: 8px; 
+    border: none;
+    background-color: #cfe7ff00; 
+    border-bottom: 1px solid #000000; 
+    border-radius: 0; 
+    box-sizing: border-box; 
 }
 
 /* RRN, PhoneNumber 입력 폼의 레이아웃 설정 */
@@ -144,25 +184,29 @@ const createUser = function(){
 .phone-inputs {
     display: flex;
     align-items: center;
+    width: 50%;
 }
 
 .rrn-inputs input,
 .phone-inputs input {
+    margin-right: 0.3em;
+    margin-left: 0.3em;
     flex: 1; /* 동일한 너비의 입력 필드 */
 }
 
 /* Submit 버튼 스타일링 */
 button {
-    padding: 10px 20px; /* 버튼 내부 여백 */
-    background-color: #4CAF50; /* 배경색 */
-    color: white; /* 글자색 */
-    border: none; /* 테두리 없음 */
-    border-radius: 4px; /* 둥글게 */
+    width: 100%;
+    padding: 10px 20px; 
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer; /* 커서 모양 변경 */
 }
 
 button:hover {
-    background-color: #45a049; /* 호버 시 배경색 변경 */
+    background-color: #000000; 
 }
 
 

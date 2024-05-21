@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>LoginView</h1>
+    <div class="login-view">
+        <h1>SIGN IN</h1>
 
         <!-- 로그인 폼 양식 -->
         <form @submit.prevent>
@@ -11,7 +11,7 @@
                 <div>
                     <input type="password" name="pw" placeholder="비밀번호" v-model="pw" required>
                 </div>
-                <button @click="submitToPinia">로그인</button>
+                <button @click="submitToPinia">Login</button>
             </div>
         </form>
     </div>
@@ -42,14 +42,22 @@ const submitToPinia = (() => {
 
 
 <style scoped>
+h1{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1em;
+}
 
-/* chatGPT로 함 */
+.login-view {
+    font-family: "LA28 Text";
+}
 
 .loginForm {
     width: 30rem;
-    margin: 0 auto; /* 가운데 정렬 */
+    margin: 0 auto;
     border-radius: 10px;
-    background-color: #f8f9fa; /* 배경색 */
+    background-color: #cfe7ffc4; 
     padding: 2rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
@@ -59,7 +67,7 @@ input {
     height: 3rem;
     margin-bottom: 1rem; /* 각 input 사이 간격 */
     padding: 0.5rem;
-    border: 1px solid #ced4da; /* 테두리 */
+    border: 1px solid #ced4da; 
     border-radius: 5px;
     font-size: 1rem;
 }
@@ -67,17 +75,17 @@ input {
 button {
     width: 100%;
     height: 3rem;
-    background-color: #007bff; /* 배경색 */
+    background-color: #000000;
     color: #fff; /* 글자색 */
     border: none;
     border-radius: 5px;
     font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s; /* hover 효과 */
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3; /* hover 시 배경색 변경 */
+    background-color: #000000; 
 }
 
 </style>

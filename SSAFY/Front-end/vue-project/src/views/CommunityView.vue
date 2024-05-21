@@ -2,7 +2,7 @@
     <div class="commutnity-container">
         <div class="header">
             <div>
-                <h1>자유게시판</h1>
+                <h1>Community</h1>
             </div>
             <div class="community-search-area">
                 <PostSearchInput/>
@@ -144,19 +144,19 @@ onBeforeMount(() => {
     justify-content: center;
     text-align: center; /* 텍스트도 중앙 정렬 */
     margin-bottom: 20px; /* 아래 여백 추가 */
+    
 }
 
-/* .community-search-area{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-} */
+
+h1{
+    font-family: "LA28 Display";
+}
 
 
 .commutnity-container {
     padding: 20px;
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    width: 1200px;
     margin: auto;
 }
 
@@ -173,11 +173,14 @@ onBeforeMount(() => {
 }
 
 .post-table th {
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
+    background-color: #000000;
+    color: white;
 }
 
 .post-table tr:hover {
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
+    background-color: #00000036;
 }
 
 /* 수정 시작 */
@@ -223,7 +226,7 @@ onBeforeMount(() => {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-decoration: none;
-    color: #007bff;
+    color: #000000;
     text-align: left;
 }
 
@@ -236,8 +239,16 @@ onBeforeMount(() => {
 
 .page-item.active .page-link {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #000000;
+    border-color: #000000;
+}
+.page-item.active:hover {
+    transform: scale(1.1);
+}
+.page-link:hover{
+    transform: scale(1.1);
+    background-color: rgb(97, 97, 97);
+    color: white;
 }
 
 .write-post-button {
@@ -246,7 +257,7 @@ onBeforeMount(() => {
     margin: 20px auto;
     padding: 10px;
     text-align: center;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 5px;

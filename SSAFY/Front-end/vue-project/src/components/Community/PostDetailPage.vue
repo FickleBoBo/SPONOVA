@@ -104,6 +104,7 @@
   <style scoped>
   .post-detail-container {
     margin-top: 2em;
+    height: 100%;
     display: flex;
     justify-content: center;
   }
