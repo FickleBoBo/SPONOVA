@@ -1,40 +1,48 @@
 <template>
     <div class="top-container">
         <!-- 네비게이션 바 고정 영역 -->
-        <nav>
-            <RouterLink class="nav-tap" :to="{name: 'home'}">HOME</RouterLink>
-            <!-- <RouterLink class="nav-tap" :to="{name: 'intro'}">INTRO</RouterLink> -->
-            <div class="game-container">
-                <RouterLink class="nav-tap" :to="{name: 'gameList'}">GAME</RouterLink>
-                <div class="game-detail">
-                    <div v-for="item in gameStore.gameInfo" :key="item.id">
-                        <RouterLink :to="{name: 'gameDetail', params: { id: item.id} }">{{ item.koName }}</RouterLink>
+        <header>
+            <nav>
+                <RouterLink class="nav-tap" :to="{name: 'home'}">HOME</RouterLink>
+                <!-- <RouterLink class="nav-tap" :to="{name: 'intro'}">INTRO</RouterLink> -->
+                <div class="game-container">
+                    <RouterLink class="nav-tap" :to="{name: 'gameList'}">GAME</RouterLink>
+                    <div class="game-detail">
+                        <div v-for="item in gameStore.gameInfo" :key="item.id">
+                            <RouterLink :to="{name: 'gameDetail', params: { id: item.id} }">{{ item.koName }}</RouterLink>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <RouterLink class="nav-tap" :to="{name: 'community'}">COMMUNITY</RouterLink>
-            <RouterLink class="nav-tap" :to="{name: 'club'}">CLUB</RouterLink>
-            <RouterLink class="nav-tap" :to="{name: 'league'}">LEAGUE</RouterLink>
-    
-    
-            <!-- 네비게이션 바 동적 영역 -->
-            <div class="loginArea">
-                <!-- 로그인 안했으면 "로그인" / "회원가입" -->
-                <!-- 로그인 했으면 "로그아웃" / "닉네임"-->
-                <RouterLink class="login-margin" v-if="!userStore.loginStatus" :to="{name: 'login'}">Login  |</RouterLink>
-                <RouterLink v-if="!userStore.loginStatus" :to="{name: 'signup'}">Sign up</RouterLink> 
-                <RouterLink class="login-margin" v-if="userStore.loginStatus" :to="{name: 'home'}">{{ userStore.loginInfo.userNickname }}  |</RouterLink>
-                <RouterLink v-if="userStore.loginStatus" :to="{name: 'logout'}">Logout </RouterLink>
-            </div>
-        </nav>
+                <RouterLink class="nav-tap" :to="{name: 'community'}">COMMUNITY</RouterLink>
+                <RouterLink class="nav-tap" :to="{name: 'club'}">CLUB</RouterLink>
+                <RouterLink class="nav-tap" :to="{name: 'league'}">LEAGUE</RouterLink>
+        
+        
+                <!-- 네비게이션 바 동적 영역 -->
+                <div class="loginArea">
+                    <!-- 로그인 안했으면 "로그인" / "회원가입" -->
+                    <!-- 로그인 했으면 "로그아웃" / "닉네임"-->
+                    <RouterLink class="login-margin" v-if="!userStore.loginStatus" :to="{name: 'login'}">Login  |</RouterLink>
+                    <RouterLink v-if="!userStore.loginStatus" :to="{name: 'signup'}">Sign up</RouterLink> 
+                    <RouterLink class="login-margin" v-if="userStore.loginStatus" :to="{name: 'home'}">{{ userStore.loginInfo.userNickname }}  |</RouterLink>
+                    <RouterLink v-if="userStore.loginStatus" :to="{name: 'logout'}">Logout </RouterLink>
+                </div>
+            </nav>
+        </header>
         <div class="nav-bottom"></div> <!--nav바와 다른 컴포넌트가 겹치는 것을 방지하기 위해 만든 영역, 해당 영역에 padding이나 margin 값을 일관적으로 적용-->
         <RouterView />
     
+        <!-- footer 영역 -->
         <footer>
-            <div>로고는 왼쪽에</div>
-            <div>오시는 길: 멀티캠퍼스 주소</div>
-            <div>문의 contact us: 누군가의 이메일 주소</div>
-            &copy; 2024. All Rights Reserved
+            <div class="footer-logo">
+                <!-- 웹사이드 로고로 대체 -->
+                <img src="../public/morumoru1.png">
+            </div>
+            <div class="footer-info">
+                <div>오시는 길: 서울 강남구 테헤란로 212</div>
+                <div>문의 contact us: SSAFY@gmail.com</div>
+                <div>&copy; 2024. All Rights Reserved</div>
+            </div>
         </footer>
     </div>
 </template>
@@ -144,11 +152,37 @@ nav {
     display: block; /* 블록 레벨 요소로 만든다 */
 }
 
+
+/* footer 디자인 */
 footer {
+    display: flex;
     position: relative;
     width: 100%;
     background-color: black;
     color: gray;
+}
+
+/* footer 로고를 감싼 태그의 크기를 지정(이미지는 이것만으로 크기 조절이 안됐음) */
+.footer-logo {
+    width: 200px;
+    height: 100px;
+    margin: 1em;
+}
+
+/* footer 로고의 크기를 부모 태그에 맞춤 */
+.footer-logo img {
+    width: 100%;
+    height: 100%;
+    background-color: white;  /* 크기 표시용 */
+}
+
+/* footer에 들어갈 웹사이트 관련 정보 스타일 */
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 1em;
+    background-color: yellow;  /* 크기 표시용 */
 }
 
 </style>

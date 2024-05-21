@@ -4,11 +4,47 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gens.dao.post.PostDao">
 	
-	<!-- 전체 게시글 조회 -->
+	<!-- 전체 게시글 조회 
 	<select id="selectAll" resultType="Post">
 		SELECT *
 		From post
+	</select>-->
+	
+	<!--댓글 수 함께 출력
+		댓글 수는 IFNULL을 사용하여 default 값을 0으로, commentCnt로 dto와 변수명 맞춰줌
+		postID를 기준으로 post table과 comment table 결합
+		resultMap은 기존의 Post객체가 아닌 바로 아래와 연결됨-->
+	<!--parameterType은 조회수 정렬을 위함-->
+	<!-- Order By => 기본값은 최신글이 맨 위로 나올 수 있도록 한다-->
+	<select id="selectAll" resultMap="PostResultMap" parameterType="map">
+	    SELECT p.PostID, p.UserID, p.UserNickname, p.PostTitle, p.PostContent, p.PostViewCnt,
+	           p.PostRegDate, IFNULL(c.comment_count, 0) AS commentCnt
+	    FROM Post p
+	    LEFT JOIN (
+	        SELECT PostID, COUNT(*) AS comment_count
+	        FROM Comment
+	        GROUP BY PostID
+	    ) c ON p.PostID = c.PostID
+	    
+       	ORDER BY postID desc
 	</select>
+	
+	<resultMap id="PostResultMap" type="Post">
+		<!--id태그: 기본키인 postID에 매핑한다-->
+	    <id property="postID" column="PostID" />
+	    <!--result요소는 특정 컬럼을 Post 객체의 해당 속성에 매핑-->
+	    <!--column 속성은 sql 쿼리의 컬럼 이름 + property는 post객체의 필드 이름을 저장-->
+	    <result property="userID" column="UserID" />
+	    <result property="userNickname" column="UserNickname" />
+	    <result property="postTitle" column="PostTitle" />
+	    <result property="postContent" column="PostContent" />
+	    <result property="postViewCnt" column="PostViewCnt" />
+	    <result property="postLikeCnt" column="PostLikeCnt" />
+	    <result property="postRegDate" column="PostRegDate" />
+	    <result property="postFilePath" column="PostFilePath" />
+	    <result property="commentCnt" column="commentCnt" />
+	</resultMap>
+
 	
 	<!-- 상세 개시글 조회 -->
 	<select id="selectOne" resultType="Post" parameterType="int">
@@ -40,13 +76,21 @@
 	</delete>
 	
 	<!-- 게시글 검색 -->
+	<!-- 전체 게시글 조회와 마찬가지로 각 게시물에 대한 댓글 수를 함께 출력하기 위해 comment table을 join함
+		기본값은 최신순으로 정렬될 수 있도록 한다.-->
 	<select id="searchPost" resultType="Post" parameterType="SearchCondition">
-		SELECT * 
-		FROM post
+	    SELECT p.PostID, p.UserID, p.UserNickname, p.PostTitle, p.PostContent, p.PostViewCnt,
+        p.PostRegDate, IFNULL(c.comment_count, 0) AS commentCnt
+	    FROM Post p
+	    LEFT JOIN (
+	        SELECT PostID, COUNT(*) AS comment_count
+	        FROM Comment
+	        GROUP BY PostID
+	    ) c ON p.PostID = c.PostID
 		
-		<if test="key != null">
-			WHERE postTitle LIKE concat('%', #{word}, '%')
-		</if>
+		WHERE postTitle LIKE concat('%', #{word}, '%')
+		
+	    ORDER BY ${orderBy} ${orderByDir}, p.PostID DESC
 	</select>
 	
 	<!-- 조회수 증가 -->
