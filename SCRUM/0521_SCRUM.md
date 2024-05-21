@@ -26,16 +26,25 @@
   - intro 탭 삭제 찬반 토론
 
 #### 민우
-
+  - homeView에 모루모루로 캐러셀 적용
+  - gameList 페이지 디자인 수정
+  - gameDetail 페이지 디자인 수정
+  - nav-bar game탭에서 호버링 디자인 수정
 
 
 #### 가현
-
-
+  - 모루모루 누끼
+  - header(navbar)와 footer에 대한 css 겹침 현상 수정
+  - league 페이지의 스폰서 이미지 버그 수정
+  - community 페이지에서 PostDetailView의 디자인
+  - 로그인 페이지 디자인
+  - 회원가입 페이지 디자인 
 
 #### collaboration
-
-
+  - 프로젝트명 결정
+  - homeView에 올릴 동영상 교체
+  - 한글에 적용할 폰트 고민
+  - 프로젝트 로고/아이콘 생성
 
 ## WRAP-UP
 
