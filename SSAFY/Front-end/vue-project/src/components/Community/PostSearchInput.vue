@@ -112,6 +112,6 @@ label, input, option, button, select {
 }
 
 option{
-    margin-right: 1em;
+    text-align: center;
 }
 </style>

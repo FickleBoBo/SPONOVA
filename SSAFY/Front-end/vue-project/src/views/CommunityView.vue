@@ -2,7 +2,7 @@
     <div class="commutnity-container">
         <div class="header">
             <div>
-                <h1>Community</h1>
+                <h1><button @click="reload" style="background: none;border: none;padding: 0;margin: 0;">Community</button></h1>
             </div>
             <div class="community-search-area">
                 <PostSearchInput/>
@@ -99,6 +99,9 @@ const nextPage = () => {
   }
 }
 
+const reload = (() => {
+    window.location.reload()
+})
 
 // 페이지네이션에서 페이지가 너무 많으면 이쁘게 정리하기(chatGPT 사용)
 const pagination = computed(() => {
@@ -143,10 +146,13 @@ onBeforeMount(() => {
     flex-direction: column; /* 요소들을 세로로 배열 */
     justify-content: center;
     text-align: center; /* 텍스트도 중앙 정렬 */
-    margin-bottom: 20px; /* 아래 여백 추가 */
-    
+    margin-top: 5rem;
+    margin-bottom: 1rem; /* 아래 여백 추가 */  
 }
 
+.header > * {
+    margin: 1rem;
+}
 
 h1{
     font-family: "LA28 Display";
