@@ -2,7 +2,7 @@
   <div class="club-search">
       <div>
           <!-- <label>종목을 검색하세요: </label> -->
-          <input type="text" v-model="searchInfo.word" placeholder="종목을 검색하세요"/>
+          <input type="text" v-model="searchInfo.word" placeholder="종목을 검색하세요" @keydown.enter.prevent="handleEnter"/>
           <button @click="searchClubList"> 검색 </button>
       </div>
   </div>
@@ -21,6 +21,11 @@ const searchInfo = ref({
 const clubStore = useClubStore()
 const searchClubList = function(){
   clubStore.searchClubList(searchInfo.value)
+}
+
+// 검색어를 입력하고 엔터를 누르면 버튼을 누른 것과 동일한 이벤트 수행
+const handleEnter = () => {
+  searchClubList()
 }
 
 </script>
