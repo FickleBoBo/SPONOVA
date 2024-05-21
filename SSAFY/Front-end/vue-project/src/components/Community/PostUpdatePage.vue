@@ -1,7 +1,7 @@
 <template>
     <div class="post-form-container">
         <div class="post-form">
-            <h4>게시글 수정</h4>
+            <h3>게시글 수정</h3>
             <fieldset>
                 <legend>수정</legend>
                 <div class="form-group">
@@ -16,7 +16,7 @@
                     <label for="content">내용 : </label>
                     <textarea id="content" cols="30" rows="10" v-model="post.postContent" class="form-control"></textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group button-group">
                     <button @click="updatePost(post.postTitle, post.postContent)" class="btn btn-primary">수정</button>
                 </div>
             </fieldset>
@@ -77,6 +77,10 @@ legend {
     margin-bottom: 20px;
 }
 
+.button-group {
+  text-align: right;
+}
+
 label {
     display: block;
     font-size: 1.1rem;
@@ -95,13 +99,13 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #000000;
 }
 </style>

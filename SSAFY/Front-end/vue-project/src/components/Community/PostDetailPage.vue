@@ -1,32 +1,36 @@
 <template>
     <div class="post-detail-container">
       <div v-if="isDataLoaded" class="post-detail">
-        <h2>{{ communityStore.post.post.postTitle }}</h2>
+        <div class="post-detail-top">
+          <h2>{{ communityStore.post.post.postTitle }}</h2>
+          <div v-if="isAuthenticated" class="post-actions">
+            <button @click="updatePost" class="btn-post-update">수정</button>
+            <button @click="deletePost" class="btn-post-delete">삭제</button>
+          </div>
+        </div>
         <hr>
         <div class="post-meta">
-          <div><strong>글쓴이:</strong> {{ communityStore.post.post.userNickname }}</div>
-          <div><strong>조회수:</strong> {{ communityStore.post.post.postViewCnt + 1 }}</div>
-          <div><strong>작성일:</strong> {{ formatDate(communityStore.post.post.postRegDate) }}</div>
+          <div><strong>작성자 | </strong> {{ communityStore.post.post.userNickname }}</div>
+          <div><strong>조회수 | </strong> {{ communityStore.post.post.postViewCnt + 1 }}</div>
+          <div><strong>작성일 | </strong> {{ formatDate(communityStore.post.post.postRegDate) }}</div>
         </div>
         <hr>
 
-        <div><strong></strong> {{ communityStore.post.post.postContent }}</div>
-        
-        <div v-if="isAuthenticated" class="post-actions">
-          <button @click="updatePost" class="btn-post-update">수정</button>
-          <button @click="deletePost" class="btn-post-delete">삭제</button>
-        </div>
+        <div class="post-detail-content">{{ communityStore.post.post.postContent }}</div>
+
         <hr>
         
         <!-- 댓글 폼 -->
         <form @submit.prevent="createComment(comment.commentContent)" class="comment-form">
-          <div class="form-group">
-            <!-- <label for="comment">댓글</label> -->
-            <div><strong>댓글 </strong> ({{ communityStore.post.comments.length }})</div>
-            <input type="text" id="comment" v-model="comment.commentContent" class="form-control">
-          </div>
-          <div class="form-group">
-            <button class="btn-comment-submit">등록</button>
+          <div><strong>댓글 </strong> ({{ communityStore.post.comments.length }})</div>
+          <div class="comment-write">
+            <!-- <div class="form-group"> -->
+              <!-- <label for="comment">댓글</label> -->
+              <input type="text" id="comment" v-model="comment.commentContent" class="form-control">
+            <!-- </div> -->
+            <div class="form-group">
+              <button class="btn-comment-submit">등록</button>
+            </div>
           </div>
         </form>
   
@@ -102,6 +106,7 @@
   </script>
   
   <style scoped>
+  /* 전체 영역 */
   .post-detail-container {
     margin-top: 2em;
     height: 100%;
@@ -109,28 +114,47 @@
     justify-content: center;
   }
 
+  /** 제목 */
   h2{
     font-weight: 700;
   }
   
+  /**얘도 전체 */
   .post-detail {
     width: 80%;
     max-width: 1000px;
     margin-top: 20px;
   }
+
+  /*첫번째 밑줄 위 */
+  .post-detail-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   
+  /* 작성자, 조회수, 작성일 */
   .post-meta {
     margin-bottom: 20px;
   }
+
+  /* 글 내용 영역 */
+  .post-detail-content{
+    min-height: 8em;
+  }
   
   .post-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     margin-bottom: 20px;
   }
+
   
   .comment-form {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    /* align-items: center; */
     /* text-align: center; */
     margin-bottom: 20px;
     width: 100%;
@@ -145,6 +169,11 @@
     justify-content: space-between;
   }
   
+  .comment-write{
+    display: flex;
+    width: 100%;
+  }
+
   .btn {
     padding: 8px 16px;
     background-color: #007bff;
@@ -164,14 +193,16 @@
     border-radius: 10%;
     margin: 0.2em;
   }
+  /* 댓글 등록 버튼 */
   .btn-comment-submit{
     background-color: black;
     color: white;
     border-radius: 10%;
     margin: 0.2em;
+    padding: 0.4em;
   }
   .btn:hover {
-    background-color: #0056b3;
+    background-color: #000000;
   }
   
   .form-control {
