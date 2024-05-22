@@ -23,7 +23,7 @@
           <div class="rrn-inputs">
             <input id="RRN1" type="text" name="userRRN1" v-model="userRRN1" maxlength="6" required>
             <span>-</span>
-            <input id="RRN2" type="text" name="userRRN2" v-model="userRRN2" maxlength="7" required>
+            <input id="RRN2" type="text" name="userRRN2" maxlength="7" required :value="maskedRRN2" @input="handleRRN2Input">
           </div>
         </div>
         <div class="form-group">
@@ -46,7 +46,7 @@
 
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import axios from 'axios'
 import router from '@/router'
 import Swal from 'sweetalert2'
@@ -60,6 +60,24 @@ const userRRN2 = ref('')
 const userPhonenumber1 = ref('')
 const userPhonenumber2 = ref('')
 const userPhonenumber3 = ref('')
+
+// 아래 두 메서드는 주민등록번호 뒷자리 * 처리하는 역할
+// Method to handle input and update userRRN2
+const handleRRN2Input = (event) => {
+  const value = event.target.value;
+  // Only update userRRN2 if it's not empty
+  if (value.length > 0) {
+    userRRN2.value = value.charAt(0) + '*'.repeat(value.length - 1);
+  } else {
+    userRRN2.value = value;
+  }
+};
+
+// Computed property for masked RRN2
+const maskedRRN2 = computed(() => {
+  if (userRRN2.value.length === 0) return '';
+  return userRRN2.value.charAt(0) + '*'.repeat(userRRN2.value.length - 1);
+});
 
 
 
