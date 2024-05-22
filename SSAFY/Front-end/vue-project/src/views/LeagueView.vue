@@ -146,12 +146,12 @@ button {
   <div class="league-view">
     <h1>League Rankings</h1>
     <div class="league-view-buttons">
-      <button class="league-view-buttons-individual" @click="selectGameID('티볼')">Teeball</button>
-      <button class="league-view-buttons-individual" @click="selectGameID('빅발리볼')">Vic-volleyball</button>
-      <button class="league-view-buttons-individual" @click="selectGameID('인디아카')">Indiaca</button>
-      <button class="league-view-buttons-individual" @click="selectGameID('츄크볼')">Tchouball</button>
-      <button class="league-view-buttons-individual" @click="selectGameID('플로어볼')">Floorball</button>
-      <button class="league-view-buttons-individual" @click="selectGameID('스포츠스태킹')">Sport Stacking</button>
+      <button class="league-view-buttons-individual" :class="{'active': $route.params.id === '1' }" @click="selectGameID('티볼')">Teeball</button>
+      <button class="league-view-buttons-individual" :class="{'active': $route.params.id === '2' }" @click="selectGameID('빅발리볼')">Vic-volleyball</button>
+      <button class="league-view-buttons-individual" :class="{'active': $route.params.id === '3' }" @click="selectGameID('인디아카')">Indiaca</button>
+      <button class="league-view-buttons-individual" :class="{'active': $route.params.id === '4' }" @click="selectGameID('츄크볼')">Tchouball</button>
+      <button class="league-view-buttons-individual" :class="{'active': $route.params.id === '5' }" @click="selectGameID('플로어볼')">Floorball</button>
+      <button class="league-view-buttons-individual" :class="{'active': $route.params.id === '6' }" @click="selectGameID('스포츠스태킹')">Sport Stacking</button>
     </div>
 
     <!-- <div v-if="data.rankings.length">
@@ -233,25 +233,25 @@ const { data, getLeagueDetailsByGameID } = useLeagueStore();
 
 const showToday = dayjs().format('YYYY-MM-DD')
 function selectGameID(gameID) {
-  getLeagueDetailsByGameID(gameID);
-  let id = 0;
+  getLeagueDetailsByGameID(gameID)
+  let id = 0
   if(gameID === '티볼'){
-    id = 1;
+    id = 1
   }
   if(gameID === '빅발리볼'){
-    id = 2;
+    id = 2
   }
   if(gameID === '인디아카'){
-    id = 3;
+    id = 3
   }
   if(gameID === '츄크볼'){
-    id = 4;
+    id = 4
   }
   if(gameID === '플로어볼'){
-    id = 5;
+    id = 5
   }
   if(gameID === '스포츠스태킹'){
-    id = 6;
+    id = 6
   }
   router.push({name: 'leagueDetail' , params: { id: id} })
 }
@@ -286,6 +286,7 @@ h1{
   justify-content: space-evenly;
   margin: 1em;
 }
+
 .league-view-buttons-individual{
   transition: 0.3s ease;
 
@@ -463,4 +464,9 @@ th{
   /* height: auto; */
   margin: 0.5em;
 }
+
+.league-view-buttons-individual.active {
+  color: rgb(167, 215, 255);
+}
+
 </style>
