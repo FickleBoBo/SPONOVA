@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import axios from 'axios'
 import router from '@/router'
+import Swal from 'sweetalert2'
 
 
 
@@ -26,12 +27,21 @@ export const useCommunityStore = defineStore('postInfo', () => {
       data: post
     })
     .then(() => {
-      alert('게시글이 등록 되었습니다.')
+      Swal.fire({
+        icon: "success",
+        title: "게시글이 등록 되었습니다",
+        showConfirmButton: false,
+        timer: 1000
+      })
       router.push({name: 'community'})
     })
     .catch((err) => {
-      alert('게시글 등록에 실패했습니다.')
-      console.log(err)
+      Swal.fire({
+        icon: "error",
+        title: "게시글 등록에 실패했습니다",
+        showConfirmButton: false,
+        timer: 1000
+      })
     })
   }
 
@@ -42,7 +52,12 @@ export const useCommunityStore = defineStore('postInfo', () => {
       postList.value = response.data
     })
     .catch((err) => {
-      console.error(err)
+      Swal.fire({
+        icon: "error",
+        title: "게시글 조회에 실패했습니다",
+        showConfirmButton: false,
+        timer: 1000
+      })
     })
   }
 
@@ -63,33 +78,116 @@ export const useCommunityStore = defineStore('postInfo', () => {
       const response = await axios.get(`${GENS_API}/${postID}`)
       post.value = response.data
     } catch (err) {
-      console.error(err)
+      Swal.fire({
+        icon: "error",
+        title: "게시글 조회에 실패했습니다",
+        showConfirmButton: false,
+        timer: 1000
+      })
     }
   }
 
+  // // 게시글 수정 (UPDATE)
+  // const updatePost = function(post){
+  //   axios.put(GENS_API, post)
+  //   .then(() => {
+  //     alert('게시글이 수정 되었습니다.')
+  //     router.push({name: 'community'})
+  //   })
+  //   .catch((err) => {
+  //     alert('게시글 수정에 실패했습니다.')
+  //     console.log(err)
+  //   })
+  // }
+
   // 게시글 수정 (UPDATE)
   const updatePost = function(post){
-    axios.put(GENS_API, post)
-    .then(() => {
-      alert('게시글이 수정 되었습니다.')
-      router.push({name: 'community'})
-    })
-    .catch((err) => {
-      alert('게시글 수정에 실패했습니다.')
-      console.log(err)
+    Swal.fire({
+      title: "정말 수정하시겠습니까?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        // 여기서 update 로직 수행
+        axios.put(GENS_API, post)
+        .then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "게시글이 수정 되었습니다",
+            showConfirmButton: false,
+            timer: 1000
+          })
+          router.push({name: 'community'})
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "게시글 수정에 실패했습니다",
+            showConfirmButton: false,
+            timer: 1000
+          })
+        })
+
+      } else if (result.isDenied) {
+        Swal.fire({
+          icon: "info",
+          title: "취소 되었습니다",
+          showConfirmButton: false,
+          timer: 1000
+        })
+        router.push({name: 'community'})
+      }
     })
   }
 
+  // // 게시글 삭제 (DELETE)
+  // const deletePost = function(postID){
+  //   axios.delete(`${GENS_API}/${postID}`)
+  //   .then(() => {
+  //     alert('게시글이 삭제 되었습니다.')
+  //     router.push({name: 'community'})
+  //   })
+  //   .catch((err) => {
+  //     alert('게시글 삭제에 실패했습니다.')
+  //     console.log(err)
+  //   })
+  // }
+
   // 게시글 삭제 (DELETE)
   const deletePost = function(postID){
-    axios.delete(`${GENS_API}/${postID}`)
-    .then(() => {
-      alert('게시글이 삭제 되었습니다.')
-      router.push({name: 'community'})
-    })
-    .catch((err) => {
-      alert('게시글 삭제에 실패했습니다.')
-      console.log(err)
+
+
+    Swal.fire({
+      title: "정말 삭제하시겠습니까?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`${GENS_API}/${postID}`)
+        .then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "게시글이 삭제 되었습니다",
+            showConfirmButton: false,
+            timer: 1000
+          })
+          router.push({name: 'community'})
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "게시글 삭제에 실패했습니다",
+            showConfirmButton: false,
+            timer: 1000
+          })
+        })
+      }
     })
   }
 
@@ -107,10 +205,16 @@ export const useCommunityStore = defineStore('postInfo', () => {
     })
     .then((response) => {
       postList.value = response.data
-      console.log(postList.value)
+      // console.log(postList.value)  MW가 주석 처리
     })
      .catch((error) => {
-      console.error('Error searching posts:', error)
+      // console.error('Error searching posts:', error)  MW가 주석 처리
+      Swal.fire({
+        icon: "error",
+        title: "게시글 검색에 실패했습니다",
+        showConfirmButton: false,
+        timer: 1000
+      })
     })
   }
 
@@ -122,13 +226,22 @@ export const useCommunityStore = defineStore('postInfo', () => {
       data: comment
     })
     .then(() => {
-      alert('댓글이 등록 되었습니다.')
+      // Swal.fire({
+      //   icon: "success",
+      //   title: "댓글이 등록 되었습니다.",
+      //   showConfirmButton: false,
+      //   timer: 1000
+      // })
       router.push({name: 'PostDetailPage', params: { id: postID.toString() }})
       window.location.reload()
     })
     .catch((err) => {
-      alert('댓글 등록에 실패했습니다.')
-      console.log(err)
+      Swal.fire({
+        icon: "error",
+        title: "댓글 등록에 실패했습니다",
+        showConfirmButton: false,
+        timer: 1000
+      })
     })
   }
 
@@ -140,13 +253,22 @@ export const useCommunityStore = defineStore('postInfo', () => {
       data: commentID
     })
     .then(() => {
-      alert('댓글이 삭제 되었습니다.')
+      // Swal.fire({
+      //   icon: "success",
+      //   title: "댓글이 삭제 되었습니다.",
+      //   showConfirmButton: false,
+      //   timer: 1000
+      // })
       router.push({name: 'PostDetailPage', params: { id: postID.toString() }})
       window.location.reload()
     })
     .catch((err) => {
-      alert('댓글 삭제에 실패했습니다.')
-      console.log(err)
+      Swal.fire({
+        icon: "error",
+        title: "댓글 삭제에 실패했습니다",
+        showConfirmButton: false,
+        timer: 1000
+      })
     })
   }
 

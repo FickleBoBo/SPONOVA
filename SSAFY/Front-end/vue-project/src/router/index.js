@@ -19,6 +19,8 @@ import PostUpdatePage from '@/components/Community/PostUpdatePage.vue'
 
 import { useUserStore } from '@/stores/user'
 
+import Swal from 'sweetalert2'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -44,7 +46,13 @@ const router = createRouter({
       beforeEnter: ((to, from) => {
         const userStore = useUserStore()
         userStore.clearData()
-        alert('로그아웃 되었습니다.')
+
+        Swal.fire({
+          icon: "success",
+          title: "로그아웃 되었습니다",
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
     }, 
     {
@@ -93,7 +101,14 @@ const router = createRouter({
       beforeEnter: ((to, from) => {
         const userStore = useUserStore()
         if(!userStore.loginStatus) {
-          alert('로그인 하세요')
+
+          Swal.fire({
+            icon: "warning",
+            title: "로그인 하세요!",
+            showConfirmButton: false,
+            timer: 1500
+          })
+
           router.push({name: 'login'})
         }
       })

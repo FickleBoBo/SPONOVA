@@ -49,6 +49,7 @@
 import { ref } from 'vue';
 import axios from 'axios'
 import router from '@/router'
+import Swal from 'sweetalert2'
 
 const userID = ref('')
 const userPW = ref('')
@@ -63,7 +64,7 @@ const userPhonenumber3 = ref('')
 
 
 const createUser = function(){
-    console.log(userRRN1.value + '-' + userRRN2.value.substring(0, 1))
+    // console.log(userRRN1.value + '-' + userRRN2.value.substring(0, 1))
     const data = {
         userID: userID.value,
         userPW: userPW.value,
@@ -74,16 +75,33 @@ const createUser = function(){
     }
 
     if(isNaN(parseInt(userRRN1.value)) || isNaN(parseInt(userRRN2.value)) || userRRN1.value.length!=6 || userRRN2.value.length!=7){
-        alert("잘못된 주민등록번호 입니다.")
-        window.location.reload()
+        // alert("잘못된 주민등록번호 입니다.")
+        Swal.fire({
+          icon: "warning",
+          title: "잘못된 주민등록번호 입니다.",
+          showConfirmButton: false,
+          timer: 1500
+        })
+        router.push({name: 'signup'})
+        return
+        // window.location.reload()
     }
     else if(isNaN(parseInt(userPhonenumber1.value)) || isNaN(parseInt(userPhonenumber2.value)) || isNaN(parseInt(userPhonenumber3.value)) || 
         (userPhonenumber1.value.length!=3) || (userPhonenumber2.value.length!=4) || (userPhonenumber3.value.length!=4)){
-        alert("잘못된 핸드폰번호 입니다.")
-        window.location.reload()
+        // alert("잘못된 핸드폰번호 입니다.")
+        Swal.fire({
+          icon: "warning",
+          title: "잘못된 핸드폰번호 입니다.",
+          showConfirmButton: false,
+          timer: 1500
+        })
+        router.push({name: 'signup'})
+        return
+        // window.location.reload()
     }
 
     const url = "http://localhost:8080/newsports/signup"
+    
     axios({
         url: url,
         method: 'POST',
@@ -94,13 +112,31 @@ const createUser = function(){
     })
     .catch((err)=> {
         if(err.response.data === 'DuplicatedID'){
-            alert("이미 가입된 아이디입니다.")
+            // alert("이미 가입된 아이디입니다.")
+            Swal.fire({
+              icon: "warning",
+              title: "이미 가입된 아이디입니다.",
+              showConfirmButton: false,
+              timer: 1500
+            })
         }
         if(err.response.data === 'DuplicatedPhonenumber'){
-            alert("이미 등록된 전화번호입니다.")
+            // alert("이미 등록된 전화번호입니다.")
+            Swal.fire({
+              icon: "warning",
+              title: "이미 등록된 전화번호입니다.",
+              showConfirmButton: false,
+              timer: 1500
+            })
         }
         if(err.response.data === 'DuplicatedNickname'){
-            alert("이미 존재하는 닉네임입니다.")
+            // alert("이미 존재하는 닉네임입니다.")
+            Swal.fire({
+              icon: "warning",
+              title: "이미 존재하는 닉네임입니다.",
+              showConfirmButton: false,
+              timer: 1500
+            })
         }
     })
 }
