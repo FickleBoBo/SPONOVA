@@ -28,6 +28,7 @@
 import { useUserStore } from '@/stores/user';
 import { useCommunityStore } from '@/stores/community'
 import { ref } from 'vue'
+import Swal from 'sweetalert2'
 
 const userStore = useUserStore()
 const communityStore = useCommunityStore()
@@ -44,12 +45,23 @@ const createPost = function (title, content) {
     communityStore.createPost(post.value)
   }
   else if(!title){
-    alert("제목을 입력하세요.")
+    Swal.fire({
+        icon: "warning",
+        title: "제목을 입력하세요!",
+        showConfirmButton: false,
+        timer: 1000
+    })
   }
   else if(!content){
-    alert("내용을 입력하세요.")
+    Swal.fire({
+        icon: "warning",
+        title: "내용을 입력하세요!",
+        showConfirmButton: false,
+        timer: 1000
+    })
   }
 }
+
 </script>
 
 <style scoped>

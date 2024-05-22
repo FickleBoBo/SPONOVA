@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import axios from 'axios'
 import router from '@/router'
+import Swal from 'sweetalert2'
 
 
 
@@ -29,11 +30,24 @@ export const useUserStore = defineStore('userInfo', () => {
       if(loginInfo.value){
         loginStatus.value = true
       }
+
+      Swal.fire({
+        icon: "success",
+        title: `${loginInfo.value.userNickname} 님 반갑습니다!`,
+        showConfirmButton: false,
+        timer: 1500
+      })
       router.push({name: 'home'})
     })
     .catch((err) => {
-      alert('로그인에 실패했습니다. 다시 시도해주세요.');
-      console.log(err)
+
+      Swal.fire({
+        icon: "error",
+        title: "로그인에 실패했습니다",
+        text: "다시 시도해주세요", 
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
   }
 

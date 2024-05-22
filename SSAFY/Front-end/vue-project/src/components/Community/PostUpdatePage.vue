@@ -27,6 +27,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useCommunityStore } from '@/stores/community'
+import Swal from 'sweetalert2'
 
 const communityStore = useCommunityStore()
 
@@ -42,9 +43,19 @@ const updatePost = function (title, content) {
     if (title && content) {
         communityStore.updatePost(post.value)
     } else if (!title) {
-        alert("제목을 입력하세요.")
+        Swal.fire({
+            icon: "warning",
+            title: "제목을 입력하세요!",
+            showConfirmButton: false,
+            timer: 1000
+        })
     } else if (!content) {
-        alert("내용을 입력하세요.")
+        Swal.fire({
+            icon: "warning",
+            title: "내용을 입력하세요!",
+            showConfirmButton: false,
+            timer: 1000
+        })
     }
 }
 </script>
