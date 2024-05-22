@@ -6,8 +6,17 @@
                 <th>Club</th>
                 <th>Points</th>
             </tr>
-            <tr class="rank-individual" v-for="ranking in data.rankings" :key="ranking.clubID">
-                <td>{{ ranking.ranking }}</td>
+            <tr class="rank-individual" v-for="(ranking, index) in data.rankings" :key="ranking.clubID">
+                <td v-if="index >= 3">{{ ranking.ranking }}</td>
+                <td v-else-if="ranking.ranking==1">
+                    <i class="fa-solid fa-medal fa-lg" style="color: #FFD700;"></i>
+                </td>
+                <td v-else-if="ranking.ranking==2">
+                    <i class="fa-solid fa-medal fa-lg" style="color: #C0C0C0;"></i>
+                </td>
+                <td v-else-if="ranking.ranking==3">
+                    <i class="fa-solid fa-medal fa-lg" style="color: #CD7F32;"></i>
+                </td>
                 <td>{{ ranking.clubID }}</td>
                 <td>{{ ranking.totalPoints }}</td>
             </tr>
@@ -139,6 +148,17 @@ font-family: "LA28 Text";
 padding-top: 0.5em;
 padding-bottom: 0.5em;
 }
+
+/* MW 추가 - 리그 테이블 열 별로 너비 고정 */
+.league-view-rank th:nth-child(1),
+.league-view-rank td:nth-child(3) {
+    width: 20%;
+}
+
+.league-view-rank th:nth-child(2) {
+    width: 60%;
+}
+
 /* 리그 순위 각 행 */
 .rank-individual{
 margin: 0 auto;
