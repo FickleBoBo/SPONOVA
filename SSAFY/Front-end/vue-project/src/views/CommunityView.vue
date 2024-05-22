@@ -164,6 +164,7 @@ h1{
     /* max-width: 1200px; */
     width: 1200px;
     margin: auto;
+    margin-bottom: 3em;
 }
 
 .post-table {

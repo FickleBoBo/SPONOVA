@@ -218,7 +218,7 @@ footer {
     align-items: center;
     position: relative;
     width: 100%;
-    margin-top: 3em;
+    /* margin-top: 3em; */
     background-color: black;
     color: gray;
 }
