@@ -410,7 +410,7 @@ th{
   margin-top: 5em;
   padding: 2em 1em;
   width: 100%;
-
+  padding-bottom: 5em;
   /* margin-bottom: 1px; */
 }
 /* OUR PARTNERS */

@@ -16,46 +16,58 @@
         <div class="video-content">
             PLAY<br>
             NEW SPORTS<br>
-            LA28
+            with GENS
         </div>
         
     </div>
 
     <!--뉴스포츠 소개-->
     <div class="main-intro">
-        LOGO left| Let me introduce our page.<br>
-        BLah blah
+        <div class="main-intro-logo"><img src="../assets/indiaca.png"></div>
+        <div class="main-intro-disc">
+            <div class="main-intro-disc-vis">About GENS</div>
+            <div class="main-intro-disc-title">TItle: page name</div>
+            <div class="main-intro-disc-ription">
+                Let me introduce our page.
+                BLah blah
+            </div>
+        </div>
     </div>
 
     <!--우리의 비전, 목표-->
     <div class="main-vision">
-        운동하는 사진 오른쪽| 
-         Let me introduce our page.<br>
-        BLah blah
+        <div class="main-vision-disc">
+            <div class="main-vision-disc-vis">Our Vision</div>
+            <div class="main-vision-disc-title">TItle: page name</div>
+            <div class="main-vision-disc-ription">
+                Let me introduce our page.
+                BLah blah
+            </div>
+        </div>
+        <div class="main-vision-logo"><img src="../assets/teeballboy.jpg"></div>
     </div>
 
 
     <!--뉴스포츠 종목 아이콘 - 반응형 -->
     <div class="main-game-icon">
-        <div>GAMES, 사진 대신 아이콘</div>
+        <div class="main-game-title">GAMES</div>
         <div class="game-icon-1">
-            <div class="game-icon-individual"><img src="../assets/photo1.jpeg"></div>
-            <div class="game-icon-individual"><img src="../assets/photo1.jpeg"></div>
-            <div class="game-icon-individual"><img src="../assets/photo1.jpeg"></div>
+            <div class="game-icon-individual teeball"><img src="../assets/teeball.png"></div>
+            <div class="game-icon-individual"><img src="../assets/volleyball.png"></div>
+            <div class="game-icon-individual"><img src="../assets/indiaca.png"></div>
         </div>
         <div class="game-icon-2">
-            <div class="game-icon-individual"><img src="../assets/photo1.jpeg"></div>
-            <div class="game-icon-individual"><img src="../assets/photo1.jpeg"></div>
-            <div class="game-icon-individual"><img src="../assets/photo1.jpeg"></div>
+            <div class="game-icon-individual"><img src="../assets/tchouball.png"></div>
+            <div class="game-icon-individual"><img src="../assets/floorball.png"></div>
+            <div class="game-icon-individual"><img src="../assets/sportstacking.png"></div>
         </div>
     </div>
 
 
     <!--SHOP '사이트명'-->
     <div class="main-shop">
-        <div>SHOP GENS</div>
-        <div>모루모루 사진 한 2개</div>
-        <div>상품 이름 + 밑줄</div>
+        <div class="main-shop-title">SHOP GENS</div>
+        <div class="main-shop-disc">Gens swag for every day of the week.</div>
     </div>
     <Shop />
 
@@ -125,6 +137,7 @@ onMounted(() => {
     transform: translateY(0); /* 원래 위치로 이동 */
 }
 
+/* 동영상 위의 글씨 */
 .video-content {
     font-family: 'LA28 Text', sans-serif;
     /* font-family: 'LA28 Display', sans-serif; */
@@ -138,50 +151,161 @@ onMounted(() => {
     z-index: 5;
 }
 
+
+/**소개 영역 1 */
 .main-intro{
     position: relative;
     margin-top: 2em;
-    font-family: 'LA28 Display', sans-serif; 
-    color: black;
-    font-size: x-large;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.main-intro-logo img{
+    width: 20em;
+    height: auto;
+    margin: 1em;;
+}
+.main-intro-disc{
+    display: flex;
+    flex-direction: column;
+}
+.main-intro-disc-vis{
+    font-family: 'LA28 Text';
+    font-size: small;
+    color: rgb(29, 191, 255);
+    display: flex;
+    justify-content: flex-start;
+}
+.main-intro-disc-title{
+    font-family: 'LA28 Display';
+    font-size: 50px;
+    margin: 0.2em 0;
+    left: 0;
+}
+.main-intro-disc-ription{
+    font-family: 'LA28 Text';
+    font-size: 30px;
+    left: 0;
 }
 
+
+
+
+/**소개 영역 2 */
+.main-vision{
+    position: relative;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.main-vision-disc{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.main-vision-disc-vis{
+    font-family: 'LA28 Text';
+    font-size: small;
+    color: rgb(29, 191, 255);
+}
+.main-vision-disc-title{
+    font-family: 'LA28 Display';
+    font-size: 50px;
+    margin: 0.1em 0;
+    left: 0;
+}
+.main-vision-disc-ription{
+    font-family: 'LA28 Text';
+    font-size: 30px;
+    left: 0;
+}
+.main-vision-logo img{
+    width: 20em;
+    height: auto;
+    margin: 1em;;
+}
+
+
+
+
+
+/**games영역 전체 */
 .main-game-icon{
     position: relative;
+    width: 100%;
     margin-top: 5em;
+
     background-color: white;
     color: black;
-    font-size: x-large;
-    font-family: 'LA28 Text 700', sans-serif;
+    font-size: xx-large;
+    font-weight: 500;
+    font-family: 'LA28 Text', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/** GAMES */
+.main-game-title{
+    position: relative;
+    z-index:100;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+/**픽토그램 1열, 2열 */
 .game-icon-1, .game-icon-2 {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
 }
 
-.game-icon-individual {
-    width: 25%;
+/**개별 이미지 */
+.game-icon-individual img {
+    width: 70%;
     height: auto;
     margin: 1em;
+    transition: 0.5s ease;
 }
+/*티볼만 사진 사이즈가 다름 */
+.game-icon-individual, .teeball{
+    width: 50%;
+}
+.game-icon-individual img:hover{
+    transform: scale(1.2) rotateZ(360deg);
+}
+
+
+
 
 .main-shop{
     position: relative;
-    margin-top: 2em;
+    padding: 2em;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 3em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
     background-color: black;
-    font-family: 'LA28 Display', sans-serif; 
     color: white;
-    font-size: x-large;
     /* margin-top: 5em; */
 }
-
-/* footer {
-    position: relative;
-    bottom: 0;
-
-    width: 100%;
-    background-color: black;
-    color: gray;
-} */
+.main-shop-title{
+    font-size: 50px;
+    font-family: 'LA28 Display';
+}
+.main-shop-disc{
+    font-size: 20px;
+    font-family: 'LA28 Text';
+}
 
 </style>
