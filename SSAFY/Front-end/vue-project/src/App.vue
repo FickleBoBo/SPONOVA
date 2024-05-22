@@ -31,7 +31,7 @@
                     <RouterLink class="nav-tap" :to="{name: 'league'}">LEAGUE</RouterLink>
                     <div class="league-item">
                         <div v-for="item in gameStore.gameInfo" :key="item.id">
-                            <RouterLink :to="{name: 'league' }" @click.native="leagueStore.getLeagueDetailsByGameID(item.koName)">{{ item.enName }}</RouterLink>
+                            <RouterLink :to="{name: 'leagueDetail' , params: { id: item.id} }" @click.native="leagueStore.getLeagueDetailsByGameID(item.koName)">{{ item.enName }}</RouterLink>
                         </div>
                     </div>
                 </div>

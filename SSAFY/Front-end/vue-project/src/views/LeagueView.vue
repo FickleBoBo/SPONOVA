@@ -168,7 +168,9 @@ button {
     </div> -->
 
     <div v-if="data.rankings.length">
-      <table class="league-view-rank">
+      <LeagueDetailView />
+      <!-- MW가 주석으로 바꿈 -->
+      <!-- <table class="league-view-rank">
             <tr>
                 <th>Rank</th>
                 <th>Club</th>
@@ -179,7 +181,7 @@ button {
                 <td>{{ ranking.clubID }}</td>
                 <td>{{ ranking.totalPoints }}</td>
             </tr>
-        </table>
+        </table> -->
     </div>
     <div class="league-view-rank-unselected" v-else>
       <p>Select the Games.</p>
@@ -222,6 +224,9 @@ button {
 </template>
 
 <script setup>
+import router from '@/router'
+import LeagueDetailView from '@/views/LeagueDetailView.vue'
+
 import dayjs from "dayjs"
 import { useLeagueStore } from '@/stores/league';
 const { data, getLeagueDetailsByGameID } = useLeagueStore();
@@ -229,6 +234,26 @@ const { data, getLeagueDetailsByGameID } = useLeagueStore();
 const showToday = dayjs().format('YYYY-MM-DD')
 function selectGameID(gameID) {
   getLeagueDetailsByGameID(gameID);
+  let id = 0;
+  if(gameID === '티볼'){
+    id = 1;
+  }
+  if(gameID === '빅발리볼'){
+    id = 2;
+  }
+  if(gameID === '인디아카'){
+    id = 3;
+  }
+  if(gameID === '츄크볼'){
+    id = 4;
+  }
+  if(gameID === '플로어볼'){
+    id = 5;
+  }
+  if(gameID === '스포츠스태킹'){
+    id = 6;
+  }
+  router.push({name: 'leagueDetail' , params: { id: id} })
 }
 </script>
 
