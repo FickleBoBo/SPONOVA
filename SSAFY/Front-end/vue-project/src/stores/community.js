@@ -236,12 +236,24 @@ export const useCommunityStore = defineStore('postInfo', () => {
       window.location.reload()
     })
     .catch((err) => {
-      Swal.fire({
-        icon: "error",
-        title: "댓글 등록에 실패했습니다",
-        showConfirmButton: false,
-        timer: 1000
-      })
+      if(err.response.status == 500){
+        Swal.fire({
+          icon: "error",
+          title: "로그인 하세요!",
+          showConfirmButton: false,
+          timer: 1000
+        })
+        
+        router.push({name: 'login'})
+      }
+      else{
+        Swal.fire({
+          icon: "error",
+          title: "댓글 등록에 실패했습니다",
+          showConfirmButton: false,
+          timer: 1000
+        })
+      }
     })
   }
 
