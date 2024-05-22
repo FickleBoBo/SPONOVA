@@ -16,6 +16,8 @@
               <div class="club-view-img"><img :src="club.clubLogoPath" alt="LOGO"/></div>
               <div class="club-view-clubid">{{ club.clubID }}</div>
               <div class="club-view-game">{{ club.gameID}}</div>
+              <!-- <div>{{ club.clubContent }}</div> -->
+              <div class="club-view-modal-button"><button @click="showModal(club)">➖</button></div>
             </div>
           </div>
         </div>
@@ -42,6 +44,15 @@
   
         
       <RouterView />
+
+      <!--모달 구현 부분-->
+      <div v-if="isModalVisible" class="modal" @click.self="closeModal">
+        <div class="modal-content">
+          <span class="modal-close" @click="closeModal">&times;</span>
+          <p>{{ selectedClubContent }}</p>
+        </div>
+      </div>
+
   </div>
 </template>
   
@@ -56,9 +67,23 @@ import {ref} from 'vue'
 
 const clubStore = useClubStore()
 
+//모달 부분 아래 2줄
+const isModalVisible = ref(false)
+const selectedClubContent = ref("")
+
 onMounted(() => {
   clubStore.getClubList()
 })
+
+// 여기서부터 모달
+function showModal(club) {
+  selectedClubContent.value = club.clubContent
+  isModalVisible.value = true
+}
+
+function closeModal() {
+  isModalVisible.value = false
+}
 
 </script>
 
@@ -202,6 +227,21 @@ h1{
   
 }
 
+/* 모달 창을 여는 버튼 스타일 == 개별 카드 스타일과 일치
+  해당 코드를 적용시키기 전에는 버튼 영역의 background 컬러가 개별 카드와 따로 노는 듯한 느낌 */
+.club-view-individual button {
+  background-color: white; 
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.club-view-individual:hover button{
+  background-color: black;
+  border: none;
+}
+
 /* 움직임 test */
 /* .screen-edge-text {
   color: aliceblue;
@@ -250,5 +290,50 @@ img {
   color: white;
   font-family: "LA28 Display";
   font-size: 100px;
+}
+
+
+
+/**모달 test 코드입니다 */
+.modal {
+  position: fixed;
+  /* left: 0;
+  top: 0; */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* .club-view-modal-button button{
+  background-color: none;
+  border: none;
+} */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+
+.modal-close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* 모달 닫을 때 */
+.modal-close:hover,
+.modal-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>
