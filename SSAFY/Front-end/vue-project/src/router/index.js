@@ -13,6 +13,7 @@ import CommunityView from '@/views/CommunityView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import GameListView from '@/views/GameListView.vue'
 import GameDetailView from '@/views/GameDetailView.vue'
+import LeagueDetailView from '@/views/LeagueDetailView.vue'
 import PostCreatePage from '@/components/Community/PostCreatePage.vue'
 import PostDetailPage from '@/components/Community/PostDetailPage.vue'
 import PostUpdatePage from '@/components/Community/PostUpdatePage.vue'
@@ -80,7 +81,14 @@ const router = createRouter({
     {
       path: '/league',
       name: 'league',
-      component: LeagueView
+      component: LeagueView, 
+      children: [
+        {
+          path: ':id',
+          name: 'leagueDetail',
+          component: LeagueDetailView
+        }, 
+      ]
     }, 
     {
       path: '/club',
