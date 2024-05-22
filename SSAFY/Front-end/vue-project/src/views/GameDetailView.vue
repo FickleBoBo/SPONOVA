@@ -61,10 +61,14 @@ const showVideo = (url) => {
 }
 
 .info-item {
-  background-color: #f5f5f5;
+  /* background-color: #9c9c9c8c;
   padding: 15px;
   border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+  border: none;
+  padding: 15px;
+  /* border-left: #000000 5px solid; */
+  border-left: 3mm ridge rgba(0, 0, 0, 0.781);
 }
 
 .game-photo {
@@ -87,7 +91,7 @@ const showVideo = (url) => {
   padding: 12px 24px;
   font-size: 1em;
   color: #ffffff;
-  background-color: #3498db;
+  background-color: #000000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -100,6 +104,6 @@ const showVideo = (url) => {
 }
 
 .action-button:not(:disabled):hover {
-  background-color: #2980b9;
+  background-color: #000000;
 }
 </style>

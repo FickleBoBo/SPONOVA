@@ -4,20 +4,41 @@
       <h1>Club List</h1>
     </div>
 
-    <div class="screen-edge-text">Moving Text Here . 이 문구가 움직였으면 좋겠어요 제발 ~~ 검은색 배경에 흰색글씨로 할거야</div>
+    <!-- <div class="screen-edge-text">Moving Text Here . 이 문구가 움직였으면 좋겠어요 제발 ~~ 검은색 배경에 흰색글씨로 할거야</div> -->
     <div>
       <div class="club-view-search">
         <ClubSearchInput/>
       </div>
       
-      <div class="club-view-all">
-        <div  class="club-view-individual" v-for="club in clubStore.clubList" :key="club.clubID">
-          <div class="club-view-img"><img :src="club.clubLogoPath" alt="LOGO"/></div>
-          <div class="club-view-clubid">{{ club.clubID }}</div>
-          <div class="club-view-game">{{ club.gameID}}</div>
+      <div class="club-view-body">
+        <div class="club-view-all">
+            <div  class="club-view-individual" v-for="club in clubStore.clubList" :key="club.clubID">
+              <div class="club-view-img"><img :src="club.clubLogoPath" alt="LOGO"/></div>
+              <div class="club-view-clubid">{{ club.clubID }}</div>
+              <div class="club-view-game">{{ club.gameID}}</div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="background-text">
+          <div class="background-text-contents">
+            <div class="text-line" v-for="(line, index) in 
+              ['Explore a variety of clubs!', 
+              'Search for the sport you love!', 
+              'Compete for victory in our weekly leagues!', 
+              'Join a club and enjoy exciting experiences!', 
+              'We are the new sports clubs!', 
+              'Bored on weekends?', 
+              'New sports are easier and more fun than traditional sports!', 
+              'From toddlers to seniors, everyone can participate!', 
+              'Experience a fresh perspective on physical education!', 
+              // 'Improve your health and social skills through team sports!',
+              ]" :key="index">
+              {{ line }} Join Our Club!
+            </div>
+          </div>
         </div>
       </div>
-    </div>
   
         
       <RouterView />
@@ -49,15 +70,81 @@ onMounted(() => {
   margin: 0 auto;
   justify-content: center;
   text-align: center;
+  background-color: rgb(0, 0, 0);
+  position: relative; /*z-index를 위해서*/
+}
+
+.club-view-body {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;  /*영역을 넘어가는 내용은 숨김 처리 */
+}
+
+/*애니메이션 테스트*/
+/* 텍스트 움직임 구현 */
+.background-text {
+  color: white;
+  font-family: "LA28 Display";
+  font-size: 200px;
+  position: absolute; /* 배경 텍스트를 절대 위치에 두어 항상 보이게 함 */
+  width: 100%;
+  /* top: 60%; /**얘 조정이 까다로움 
+  transform: translateY(-50%);
+  z-index: 1; */
+  top: 1em; /* `top` 값을 조정 */
+  left: 0; /* 왼쪽 정렬을 위해 추가 */
+  transform: translateY(0); /* 기본적인 위치 조정을 제거 */
+  z-index: 1;
+}
+
+/* 홀 짝 라인 구분 */
+.background-text-contents .text-line:nth-child(odd) {
+  animation: moveRight 10s linear infinite;
+}
+
+.background-text-contents .text-line:nth-child(even) {
+  animation: moveLeft 10s linear infinite;
+}
+
+@keyframes moveRight {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes moveLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
 }
 
 
 /* CLUB LIST */
 h1{
-  margin-top: 1em;
+  color: white;
+  margin-top: 2em;
   font-size: xx-large;
   font-family: "LA28 Display";
   text-align: center;
+  position: relative;
+  z-index: 5;
+
+  /* 색상 변환 애니메이션 걸어주기 */
+  animation: colorCycle 2s linear infinite;
+}
+
+/* 색상 변환 2컬러 2초 주기 */
+@keyframes colorCycle {
+  0%, 100% {
+    color: white;
+  }
+  50% {
+    color: rgb(255, 34, 189);
+  }
 }
 
 /* 검색 영역 */
@@ -67,6 +154,8 @@ h1{
   justify-content: center;
   align-items: center;
   font-weight: 600;
+  position: relative;
+  z-index: 5;
 }
 
 /* 전체 카드 섹션 */
@@ -78,11 +167,14 @@ h1{
   overflow: hidden;
   justify-content: center;
   text-align: center;
+  position: relative;
+  z-index: 5;
 }
 
 /* 개별 카드 섹션 */
 .club-view-individual{
   position: relative;
+  background-color: white;
 
   display: flex;
   flex-direction: column;
@@ -90,36 +182,40 @@ h1{
   align-items: center;
 
   overflow: hidden;
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
   padding: 1em;
   margin: 1em;
   height: 15em;
   width: 15em;
 
-  transition: transform 0.5s ease-in-out;
+  transition: transform 1s ease-in-out, background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 /* 호버링 시 반응형 */
 .club-view-individual:hover {
-  transform: scale(1.1); 
+  /* transform: scale(1.1); 
+  transform: rotateZ(360); */
+  transform: scale(1.1) rotateY(360deg);
   color: white;
   background-color: black;
+  border: 2px solid rgb(255, 34, 189);
   
 }
 
 /* 움직임 test */
-.screen-edge-text {
+/* .screen-edge-text {
+  color: aliceblue;
   position: fixed;
   white-space: nowrap;
-  width: max-content; /* 글씨의 실제 너비만큼 너비를 설정 */
+  width: max-content; 
   animation: move-around-screen 10s linear infinite;
 }
 @keyframes move-around-screen {
   0% { top: 0; left: 0; transform: translate(0, 0); }
   25% { top: 0; left: 100%; transform: translate(-100%, 0); } /* 상단 가로 이동 */
-  50% { top: 100%; left: 100%; transform: translate(-100%, -100%); } /* 오른쪽 세로 이동 */
+ /* 50% { top: 100%; left: 100%; transform: translate(-100%, -100%); } 오른쪽 세로 이동
   75% { top: 100%; left: 0; transform: translate(0, -100%); } /* 하단 가로 이동 */
-  100% { top: 0; left: 0; transform: translate(0, 0); } /* 왼쪽 세로 이동 */
-}
+ /* 100% { top: 0; left: 0; transform: translate(0, 0); } /* 왼쪽 세로 이동 */
+ /*} */
 
 /* 로고 이미지 */
 .club-view-img{
@@ -141,7 +237,17 @@ h1{
 /* 각 로고 이미지 */
 img {
   background-color: none;
-  width: 10em; /* em은 부모 기준. rem은 root 기준 (html에서 root는 <html>) */
+  width: 10em; /*em은 부모 기준. rem은 root 기준 (html에서 root는 <html>) */
   height: auto;
+  max-height: 12em;
+  /* height: 12em;
+  width: auto; */
+}
+
+
+.background-text{
+  color: white;
+  font-family: "LA28 Display";
+  font-size: 100px;
 }
 </style>
