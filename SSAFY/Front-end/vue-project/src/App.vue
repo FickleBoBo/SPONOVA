@@ -26,9 +26,16 @@
                 <RouterLink class="nav-tap" :to="{name: 'club'}">CLUB</RouterLink>
 
                 <!-- LEAGUE 탭 -->
-                <RouterLink class="nav-tap" :to="{name: 'league'}">LEAGUE</RouterLink>
-        
-        
+                <!-- <RouterLink class="nav-tap" :to="{name: 'league'}">LEAGUE</RouterLink> -->
+                <div class="league-container">
+                    <RouterLink class="nav-tap" :to="{name: 'league'}">LEAGUE</RouterLink>
+                    <div class="league-item">
+                        <div v-for="item in gameStore.gameInfo" :key="item.id">
+                            <RouterLink :to="{name: 'league' }" @click.native="leagueStore.getLeagueDetailsByGameID(item.koName)">{{ item.enName }}</RouterLink>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 네비게이션 바 동적 영역 -->
                 <div class="login-area">
                     <!-- 로그인 안했으면 "로그인" / "회원가입" -->
@@ -73,6 +80,9 @@ const userStore = useUserStore()
 
 import { useGameStore } from '@/stores/game'
 const gameStore = useGameStore()
+
+import { useLeagueStore } from '@/stores/league'
+const leagueStore = useLeagueStore()
 
 </script>
 
@@ -140,7 +150,28 @@ nav {
     text-align: center;
 }
 
+.league-container {
+    position: relative;
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
 .game-item { /* game의 하위 탭 */
+    display: none; /* 존재하지 않는 것처럼 안보임 */
+    position: absolute;
+    /* left: 0;  /* MW가 주석으로 바꿈 */
+    top:100%;  /* MW가 주석으로 바꿈 */
+
+    background-color: #4d4d4d;
+    /* min-width: 100px; */  /* MW가 주석으로 바꿈 */
+    font-size: small;
+
+    /* z-index: 1; */  /* MW가 주석으로 바꿈 */
+}
+
+.league-item { /* game의 하위 탭 */
     display: none; /* 존재하지 않는 것처럼 안보임 */
     position: absolute;
     /* left: 0;  /* MW가 주석으로 바꿈 */
@@ -164,7 +195,22 @@ nav {
     display: block;
 }
 
+.league-item a {
+    /* margin: 1em auto;  /* MW가 주석으로 바꿈 */
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
 .game-container:hover .game-item {
+    display: block; /* 블록 레벨 요소로 만든다 */
+}
+
+.league-container:hover .league-item{
     display: block; /* 블록 레벨 요소로 만든다 */
 }
 
@@ -173,6 +219,9 @@ nav {
     background-color: #2e2e2e;
 }
 
+.league-item a:hover {
+    background-color: #2e2e2e;
+}
 
 
 .router-link-active { /* 현재 위치 알림 */
