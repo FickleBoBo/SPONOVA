@@ -16,7 +16,7 @@
         <div class="video-content">
             PLAY<br>
             NEW SPORTS<br>
-            with GENS
+            with US
         </div>
         
     </div>
@@ -38,10 +38,9 @@
     <div class="main-vision">
         <div class="main-vision-disc">
             <div class="main-vision-disc-vis">Our Vision</div>
-            <div class="main-vision-disc-title">TItle: page name</div>
+            <div class="main-vision-disc-title">Explore What's Next Generation's Sport</div>
             <div class="main-vision-disc-ription">
-                Let me introduce our page.
-                BLah blah
+                우리가 이 사이트를 제작하게 된 이유
             </div>
         </div>
         <div class="main-vision-logo"><img src="../assets/teeballboy.jpg"></div>
