@@ -57,15 +57,24 @@
     
         <!-- footer 영역 -->
         <footer>
-            <div class="footer-logo">
-                <!-- 웹사이드 로고로 대체 -->
-                <img src="../public/morumoru1.png">
+            <div class="footer-minus-copy">
+                <div class="footer-logo">
+                    <!-- 웹사이드 로고로 대체 -->
+                    <img src="../public/morumoru1.png">
+                </div>
+                <div class="footer-info">
+                    <div class="footer-info-1">
+                        <div class="footer-info-title">오시는 길</div>
+                        <div class="footer-info-disc">서울 강남구 테헤란로 212</div>
+                    </div>
+                    <div class="footer-info-2">
+                        <div class="footer-info-title">문의 contact us</div>
+                        <div class="footer-info-disc"> SSAFY11@gmail.com</div>
+                        <div class="footer-info-disc"> 02-168-3222s</div>
+                    </div>
+                </div>
             </div>
-            <div class="footer-info">
-                <div>오시는 길: 서울 강남구 테헤란로 212</div>
-                <div>문의 contact us: SSAFY11@gmail.com</div>
-                <div>&copy; 2024. All Rights Reserved</div>
-            </div>
+            <div class="footer-info-copy">&copy; 2024. PJT-J All Rights Reserved</div>
         </footer>
     </div>
 </template>
@@ -264,6 +273,7 @@ nav {
 /* footer 디자인 */
 footer {
     display: flex;
+    flex-direction: column;
     align-items: center;
     position: relative;
     width: 100%;
@@ -271,30 +281,57 @@ footer {
     background-color: black;
     color: gray;
 }
+.footer-minus-copy{
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1em;
+}
 
 /* footer 로고를 감싼 태그의 크기를 지정(이미지는 이것만으로 크기 조절이 안됐음) */
 .footer-logo {
     width: 200px;
     height: 100px;
-    margin: 1em;
+    /* margin: 1em; */
 }
 
 /* footer 로고의 크기를 부모 태그에 맞춤 */
 .footer-logo img {
     width: 100%;
     height: 100%;
-    background-color: white;  /* 크기 표시용 */
+    background-color: none;  /* 크기 표시용 */
 }
 
 /* footer에 들어갈 웹사이트 관련 정보 스타일 */
-.footer-info {
-    margin: 1em;
-    background-color: yellow;  /* 크기 표시용 */
+.footer-info {/* 
+    margin: 1em;*/
+    background-color: none; 
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly; /* 균등 분포 */
+}
+.footer-info-title{
+    font-size: medium;
+    margin-bottom: 0.5em;
+}
+.footer-info-disc{
+    font-size: small;
 }
 
+.footer-info-copy{
+    width: 100%;
+    font-size: small;
+    margin-top: 2em;
+    text-align: center;
+}
+/* 
 .footer-info > * {
     margin: 1em;
-    background-color: blue;  /* 크기 표시용 */
-}
+    background-color: blue;  /* 크기 표시용 
+} */
 
 </style>

@@ -72,6 +72,7 @@ onMounted(() => {
   text-align: center;
   background-color: rgb(0, 0, 0);
   position: relative; /*z-index를 위해서*/
+  padding-bottom: 5em;
 }
 
 .club-view-body {
