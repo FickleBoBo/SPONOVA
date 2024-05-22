@@ -3,7 +3,7 @@
         <h1>SIGN IN</h1>
 
         <!-- 로그인 폼 양식 -->
-        <form @submit.prevent>
+        <form @submit.prevent="submitToPinia">
             <div class="loginForm">
                 <div>
                     <input type="text" name="id" placeholder="아이디" v-model="id" required>
@@ -11,7 +11,7 @@
                 <div>
                     <input type="password" name="pw" placeholder="비밀번호" v-model="pw" required>
                 </div>
-                <button @click="submitToPinia">Login</button>
+                <button>Login</button>
             </div>
         </form>
     </div>
