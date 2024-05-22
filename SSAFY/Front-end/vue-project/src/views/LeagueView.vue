@@ -255,6 +255,7 @@ function selectGameID(gameID) {
   }
   router.push({name: 'leagueDetail' , params: { id: id} })
 }
+
 </script>
 
 <style scoped>
@@ -263,6 +264,7 @@ function selectGameID(gameID) {
 /* 페이지 전체 */
 .league-view{
   height: auto;
+  margin-top: 4em;
   min-height: 100%;
   /* display: flex;
   flex-direction: column;
@@ -271,7 +273,7 @@ function selectGameID(gameID) {
 
 /* LEAGUE RANKINGS, TODAY'S MATCHES */
 h1{
-  margin-top: 2em;
+  margin: 2em;
   font-size: xx-large;
   font-family: "LA28 Display";
   text-align: center;
