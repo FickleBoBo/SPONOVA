@@ -34,21 +34,30 @@ const handleEnter = () => {
 .club-search {
   display: flex;
   flex-direction: row;
-  margin: 1em;
+  margin: 1.5em;
 }
 
 input[type="text"] {
   /* width: 100%;  */
-  padding-left: 0.8em;
-  padding-right: 0.8em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
   margin-bottom: 1em;
+  margin-right: 1em;
   text-align: center;
 }
 
 button {
-  background-color: black;
-  color: white;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: rgb(0, 0, 0);
   border-radius: 5%;
+  padding: 1em;
+  transition: 1s ease;
+}
+button:hover{
+  background-color: rgb(255, 34, 189);
 }
 
 label, input, button{
