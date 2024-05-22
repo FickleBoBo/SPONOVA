@@ -51,7 +51,7 @@
                             <div class="game-name"><h2>{{ game.koName }}({{ game.enName }})</h2></div>
                             <div class="game-info1">{{ game.info1 }}</div>
                             <div class="game-info2">{{ game.info2 }}</div>
-                            <div class="game-info3">{{ game.info3 }}</div>
+                            <!-- <div class="game-info3">{{ game.info3 }}</div> -->
                             <div class="option">
                                 <!-- 경기 규칙 버튼과 경기 영상 버튼은 상세 페이지에서만 보여주기로 변경 -->
                                 <!-- <div class="game-rules-url">
