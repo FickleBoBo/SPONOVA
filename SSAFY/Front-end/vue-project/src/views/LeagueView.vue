@@ -146,12 +146,12 @@ button {
   <div class="league-view">
     <h1>League Rankings</h1>
     <div class="league-view-buttons">
-      <button @click="selectGameID('티볼')">Teeball</button>
-      <button @click="selectGameID('빅발리볼')">Vic-volleyball</button>
-      <button @click="selectGameID('인디아카')">Indiaca</button>
-      <button @click="selectGameID('츄크볼')">Tchouball</button>
-      <button @click="selectGameID('플로어볼')">Floorball</button>
-      <button @click="selectGameID('스포츠스태킹')">Sport Stacking</button>
+      <button class="league-view-buttons-individual" @click="selectGameID('티볼')">Teeball</button>
+      <button class="league-view-buttons-individual" @click="selectGameID('빅발리볼')">Vic-volleyball</button>
+      <button class="league-view-buttons-individual" @click="selectGameID('인디아카')">Indiaca</button>
+      <button class="league-view-buttons-individual" @click="selectGameID('츄크볼')">Tchouball</button>
+      <button class="league-view-buttons-individual" @click="selectGameID('플로어볼')">Floorball</button>
+      <button class="league-view-buttons-individual" @click="selectGameID('스포츠스태킹')">Sport Stacking</button>
     </div>
 
     <!-- <div v-if="data.rankings.length">
@@ -261,11 +261,18 @@ h1{
   justify-content: space-evenly;
   margin: 1em;
 }
+.league-view-buttons-individual{
+  transition: 0.3s ease;
+
+}
+.league-view-buttons-individual:hover{
+  transform: translateY(-10px);
+}
 
 /* 종목 선택 개별 버튼 */
 button {
   padding: 10px;
-  margin: 1em;
+  margin: 2em 1em;
   background-color: rgb(0, 0, 0);
   color: white;
   border: none;
