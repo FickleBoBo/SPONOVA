@@ -93,6 +93,8 @@ function closeModal() {
 
 .club-view{
   margin: 0 auto;
+  width: 100%;
+  height: auto;
   justify-content: center;
   text-align: center;
   background-color: rgb(0, 0, 0);

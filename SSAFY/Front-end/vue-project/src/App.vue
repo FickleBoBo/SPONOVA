@@ -60,7 +60,7 @@
             <div class="footer-minus-copy">
                 <div class="footer-logo">
                     <!-- 웹사이드 로고로 대체 -->
-                    <img src="../public/morumoru1.png">
+                    <img src="./assets/logo3.png">
                 </div>
                 <div class="footer-info">
                     <div class="footer-info-1">
@@ -69,8 +69,9 @@
                     </div>
                     <div class="footer-info-2">
                         <div class="footer-info-title">문의 contact us</div>
-                        <div class="footer-info-disc"> SSAFY11@gmail.com</div>
-                        <div class="footer-info-disc"> 02-168-3222s</div>
+                        <div class="footer-info-disc"> 이메일 문의: ssafy@ssafy.com</div>
+                        <div class="footer-info-disc"> 대표전화: 02-3429-5100</div>
+                        <div class="footer-info-disc"> Tel. 010-8422-8393</div>
                     </div>
                 </div>
             </div>
@@ -280,6 +281,7 @@ footer {
     /* margin-top: 3em; */
     background-color: black;
     color: gray;
+    padding-bottom: 0.5em;
 }
 .footer-minus-copy{
     /* background-color: aqua; */
@@ -292,8 +294,9 @@ footer {
 
 /* footer 로고를 감싼 태그의 크기를 지정(이미지는 이것만으로 크기 조절이 안됐음) */
 .footer-logo {
-    width: 200px;
-    height: 100px;
+    padding: 2em 1em;
+    width: 30em;
+    height: auto;
     /* margin: 1em; */
 }
 
@@ -307,6 +310,7 @@ footer {
 /* footer에 들어갈 웹사이트 관련 정보 스타일 */
 .footer-info {/* 
     margin: 1em;*/
+    margin-top: 2em;
     background-color: none; 
 
     display: flex;
@@ -325,7 +329,7 @@ footer {
 .footer-info-copy{
     width: 100%;
     font-size: small;
-    margin-top: 2em;
+    /* margin-top: 1em; */
     text-align: center;
 }
 /* 

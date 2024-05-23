@@ -115,15 +115,13 @@ onMounted(async () => {
 /* 전체 영역 */
 .post-detail-container {
   display: flex;
-  margin-top: 2em;
-  padding-top: 3em;
-  padding-bottom: 3em;
-  margin: 0 auto;
+  padding: 3em 0;
+  margin: 10em auto;
   height: 100%;
   justify-content: center;
   border: 1px solid black;
-  border-radius: 5%;
-  width: 60%;
+  border-radius: 10%;
+  width: 50%;
   
 }
 

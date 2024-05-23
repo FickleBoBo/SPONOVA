@@ -37,7 +37,7 @@ const showVideo = (url) => {
 
 <style scoped>
 .game-container {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'NanumSquareBold';
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
@@ -58,6 +58,7 @@ const showVideo = (url) => {
   grid-template-columns: 1fr;
   gap: 15px;
   margin-bottom: 20px;
+  font-size: large;
 }
 
 .info-item {
