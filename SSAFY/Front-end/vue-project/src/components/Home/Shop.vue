@@ -26,23 +26,23 @@ export default {
       currentIndex: 0,
       images: [
         {
-          imagePath: 'public/morumoru1.png', 
+          imagePath: '/morumoru1.png', 
           isFavorite: false
         }, 
         {
-          imagePath: 'public/morumoru2.png', 
+          imagePath: '/morumoru2.png', 
           isFavorite: false
         }, 
         {
-          imagePath: 'public/morumoru3.png', 
+          imagePath: '/morumoru3.png', 
           isFavorite: false
         }, 
         {
-          imagePath: 'public/morumoru4.png', 
+          imagePath: '/morumoru4.png', 
           isFavorite: false
         }, 
         {
-          imagePath: 'public/morumoru5.png', 
+          imagePath: '/morumoru5.png', 
           isFavorite: false
         }, 
       ]

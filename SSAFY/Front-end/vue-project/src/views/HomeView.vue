@@ -2,7 +2,7 @@
     <div class="whole-main-page">
         <!-- <h1>HomeView</h1> -->
         <!--동영상 area-->
-        <div class="video" ref="videoRef" style="position: relative; width: 100%;  padding-top: 56.25%;"> //56.25는 화면 비율 웹에 맞춘 것
+        <div class="video" ref="videoRef" style="position: relative; width: 100%;  padding-top: 56.25%;"> <!-- 56.25는 화면 비율 웹에 맞춘 것 -->
             <iframe 
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
             src="https://www.youtube.com/embed/phuiiNCxRMg?autoplay=1&mute=1&controls=0&loop=1&playlist=phuiiNCxRMg" 
@@ -122,7 +122,8 @@ onMounted(() => {
     opacity: 0;
 
     overflow: hidden;
-    animation: revealVideo 5s ease-out forwards;
+    /* animation: revealVideo 5s ease-out forwards; */ /* MW가 주석 처리 */
+    animation: revealVideo 5.2s ease-out forwards;
     /* transform: translateY(100%); 원래 위치보다 아래에서 시작 */
     /* transition: all 50s ease-out;위치와 투명도에 대한 전환 효과  */
   
@@ -144,7 +145,8 @@ onMounted(() => {
     font-family: 'LA28 Text', sans-serif;
     /* font-family: 'LA28 Display', sans-serif; */
     position: absolute;
-    top: 60%;
+    /* top: 60%; */ /* MW가 주석 처리 */
+    top: 55%;
     left:10%;
 
     color:white;
