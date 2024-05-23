@@ -48,7 +48,7 @@
                             <img :src="game.photo">
                         </div>
                         <div class="game-content">
-                            <div class="game-name"><h2>{{ game.koName }}({{ game.enName }})</h2></div>
+                            <div class="game-name"><h2>{{ game.koName }} ({{ game.enName }})</h2></div>
                             <div class="game-info1">{{ game.info1 }}</div>
                             <div class="game-info2">{{ game.info2 }}</div>
                             <!-- <div class="game-info3">{{ game.info3 }}</div> -->
@@ -71,7 +71,7 @@
                 <div v-else>
                     <div class="game-item">
                         <div class="game-content">
-                            <div class="game-name"><h2>{{ game.koName }}({{ game.enName }})</h2></div>
+                            <div class="game-name"><h2>{{ game.koName }} ({{ game.enName }})</h2></div>
                             <div class="game-info1">{{ game.info1 }}</div>
                             <div class="game-info2">{{ game.info2 }}</div>
                             <div class="game-info3">{{ game.info3 }}</div>
@@ -190,7 +190,7 @@ onMounted(() => {
     margin-top: 10rem;
     margin-bottom: 10rem;
     text-align: center;
-    font-family: 'LA28 Display', sans-serif;
+    font-family: 'LA28 Display';
 }
 
 .header > * {
@@ -231,14 +231,20 @@ onMounted(() => {
 
 .header div:nth-child(2) {
     animation-delay: 1.0s;
+    font-size: large;
+    font-family: 'NanumSquareBold';
 }
 
 .header div:nth-child(3) {
     animation-delay: 1.5s;
+    font-size: large;
+    font-family: 'NanumSquareBold';
 }
 
 .header div:nth-child(4) {
     animation-delay: 2.0s;
+    font-size: large;
+    font-family: 'NanumSquareBold';
 }
 
 /* 각각의 종목에 대한 컨테이너 */
@@ -249,6 +255,7 @@ onMounted(() => {
     margin-bottom: 15rem;
     border: 5px solid black;
     text-align: center;
+    font-family: 'NanumSquareBold';
 }
 
 .game-item {
@@ -260,6 +267,7 @@ onMounted(() => {
 
 .game-photo, .game-content {
     flex: 1;
+    font-size: large;
 }
 
 .game-photo {

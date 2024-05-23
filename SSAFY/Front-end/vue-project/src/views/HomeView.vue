@@ -14,33 +14,36 @@
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent;"></div>
         
         <div class="video-content">
-            PLAY<br>
-            NEW SPORTS<br>
-            with US
+            <div class="video-content-title">
+                <div>PLAY</div>
+                <div>NEW SPORTS</div>
+            </div>
+            with SPONOVA
         </div>
         
     </div>
 
     <!--뉴스포츠 소개-->
     <div class="main-intro">
-        <div class="main-intro-logo"><img src="../assets/indiaca.png"></div>
+        <div class="main-intro-logo"><img src="../assets/logo1.png"></div>
         <div class="main-intro-disc">
-            <div class="main-intro-disc-vis">About GENS</div>
-            <div class="main-intro-disc-title">TItle: page name</div>
+            <div class="main-intro-disc-vis">About SPONOVA</div>
+            <div class="main-intro-disc-title">Introducing SPONOVA</div>
             <div class="main-intro-disc-ription">
-                Let me introduce our page.
-                BLah blah
+                SPONOVA는 Sport와 Innovation의 합성어로, 스포츠의 새로운 지평을 열고자 하는 스포츠 네트워크입니다.
+                뉴스포츠 종목들을 소개하고, 클럽 커뮤니티와 리그 시스템을 통해 기존의 스포츠 팬들과 새로운 스포츠에 관심 있는 이들 모두에게 독특하고 즐거운 경험을 제공합니다.
             </div>
         </div>
     </div>
-
+    
     <!--우리의 비전, 목표-->
     <div class="main-vision">
         <div class="main-vision-disc">
             <div class="main-vision-disc-vis">Our Vision</div>
             <div class="main-vision-disc-title">Explore What's Next Generation's Sport</div>
             <div class="main-vision-disc-ription">
-                우리가 이 사이트를 제작하게 된 이유
+                전통적인 스포츠 경계를 넘어서 새로운 형태의 스포츠인 뉴스포츠를 통해
+                세대를 아우르는 건강하고 활동적인 커뮤니티를 만들어가는 것을 목표로 합니다.
             </div>
         </div>
         <div class="main-vision-logo"><img src="../assets/teeballboy.jpg"></div>
@@ -65,8 +68,8 @@
 
     <!--SHOP '사이트명'-->
     <div class="main-shop">
-        <div class="main-shop-title">SHOP GENS</div>
-        <div class="main-shop-disc">Gens swag for every day of the week.</div>
+        <div class="main-shop-title">SHOP Sponova</div>
+        <div class="main-shop-disc">Sponova swag for every day of the week.</div>
     </div>
     <Shop />
 
@@ -125,7 +128,7 @@ onMounted(() => {
   
     z-index: 1;
 
-    padding-bottom: 2em;
+    padding-bottom: 0em;
   
     /*opacity: 1;
   transform: translateY(0); 원래 위치로 이동*/
@@ -149,12 +152,18 @@ onMounted(() => {
     /* font-weight: 200; */
     z-index: 5;
 }
+.video-content-title div{
+    font-family: "LA28 Display";
+    font-size: 80px;
+    line-height: 1;
+    /* margin-bottom:0; */
+}
 
 
 /**소개 영역 1 */
 .main-intro{
     position: relative;
-    margin-top: 2em;
+    margin: 20em 5em;
 
     display: flex;
     flex-direction: row;
@@ -163,7 +172,8 @@ onMounted(() => {
 .main-intro-logo img{
     width: 20em;
     height: auto;
-    margin: 1em;;
+    margin: 0 4em;
+    border-radius: 5%;
 }
 .main-intro-disc{
     display: flex;
@@ -181,11 +191,14 @@ onMounted(() => {
     font-size: 50px;
     margin: 0.2em 0;
     left: 0;
+    margin-bottom: 0.5em;
 }
 .main-intro-disc-ription{
-    font-family: 'LA28 Text';
+    /* font-family: 'LA28 Text'; */
+    font-family: 'NanumSquareBold';
     font-size: 30px;
     left: 0;
+    line-height: 2;
 }
 
 
@@ -194,7 +207,8 @@ onMounted(() => {
 /**소개 영역 2 */
 .main-vision{
     position: relative;
-    margin-top: 2em;
+    margin: 20em 5em;
+    margin-left: 9em;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -214,16 +228,19 @@ onMounted(() => {
     font-size: 50px;
     margin: 0.1em 0;
     left: 0;
+    margin-bottom: 0.5em;
 }
 .main-vision-disc-ription{
-    font-family: 'LA28 Text';
+    font-family: 'NanumSquareBold';
     font-size: 30px;
+    font-weight: bold;
     left: 0;
+    line-height: 2;
 }
 .main-vision-logo img{
     width: 20em;
     height: auto;
-    margin: 1em;;
+    margin: 0 4em;
 }
 
 
@@ -240,7 +257,7 @@ onMounted(() => {
     color: black;
     font-size: xx-large;
     font-weight: 500;
-    font-family: 'LA28 Text', sans-serif;
+    font-family: 'LA28 Display', sans-serif;
 
     display: flex;
     flex-direction: column;
