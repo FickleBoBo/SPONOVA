@@ -134,4 +134,13 @@ const router = createRouter({
   ]
 })
 
+// 스크롤 즉시 이동
+router.beforeEach((to, from, next) => {
+  window.scroll({
+    top: 0,
+    behavior: 'instant'
+  });
+  next(); // 다음 단계 진행
+});
+
 export default router
