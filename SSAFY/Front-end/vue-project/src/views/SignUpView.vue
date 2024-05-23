@@ -180,7 +180,7 @@ const createUser = function(){
     justify-content: center;
     align-items: center;
     max-width: 400px; /* 폼의 최대 너비 설정 */
-    margin: 0 auto; 
+    margin: 5em auto; 
 }
 
 h1{
