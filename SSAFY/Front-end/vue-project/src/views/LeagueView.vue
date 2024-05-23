@@ -194,7 +194,7 @@ button {
       <div v-if="data.todayGames.length">
         <div class="league-view-match">
           <div v-for="game in data.todayGames" :key="game.matchId">
-            <div class="match-individual">
+            <div class="match-individual" @click="showModal(game.location)">
               {{ game.clubID }} vs {{ game.oppClubID }} <span class="game-location">at {{ game.location }}</span>
             </div>
           </div>
@@ -220,10 +220,21 @@ button {
     </div>
 
 
+
+    <!--모달 구현 부분-->
+    <div v-if="isModalVisible" class="modal" @click.self="closeModal">
+      <div class="modal-content">
+        <!-- <span class="modal-close" @click="closeModal">&times;</span> -->
+        <KakaoMap :selected-game-map="selectedGameMap" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
+import KakaoMap from '@/components/kakao/KakaoMap.vue'
+
+import { ref } from 'vue'
 import router from '@/router'
 import LeagueDetailView from '@/views/LeagueDetailView.vue'
 
@@ -255,6 +266,24 @@ function selectGameID(gameID) {
   }
   router.push({name: 'leagueDetail' , params: { id: id} })
 }
+
+
+
+
+
+
+// 모달
+const isModalVisible = ref(false)
+const selectedGameMap = ref("")
+
+function closeModal() {
+  isModalVisible.value = false
+}
+
+const showModal = ((location) => {
+  selectedGameMap.value = location
+  isModalVisible.value = true
+})
 
 </script>
 
@@ -469,6 +498,44 @@ th{
 
 .league-view-buttons-individual.active {
   color: rgb(167, 215, 255);
+}
+
+
+
+.modal {
+  position: fixed;
+  /* left: 0;
+  top: 0; */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 640px;
+}
+
+.modal-close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 </style>

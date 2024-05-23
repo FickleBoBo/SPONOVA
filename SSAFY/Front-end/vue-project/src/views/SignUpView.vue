@@ -19,7 +19,7 @@
           <input id="nickName" type="text" name="userNickname" v-model="userNickname" maxlength="10" required>
         </div>
         <div class="form-group">
-          <label for="RRN1">RRN (주민등록번호 7자리)</label>
+          <label for="RRN1">RRN (주민등록번호)</label>
           <div class="rrn-inputs">
             <input id="RRN1" type="text" name="userRRN1" v-model="userRRN1" maxlength="6" required>
             <span>-</span>
