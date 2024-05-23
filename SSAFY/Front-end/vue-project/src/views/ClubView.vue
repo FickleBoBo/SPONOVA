@@ -119,7 +119,7 @@ function closeModal() {
 .background-text {
   color: white;
   font-family: "LA28 Display";
-  font-size: 200px;
+  font-size: 10px;
   position: absolute; /* 배경 텍스트를 절대 위치에 두어 항상 보이게 함 */
   width: 100%;
   /* top: 60%; /**얘 조정이 까다로움 
@@ -139,10 +139,12 @@ function closeModal() {
 /* 홀 짝 라인 구분 */
 .background-text-contents .text-line:nth-child(odd) {
   animation: moveRight 10s linear infinite;
+  white-space: nowrap;
 }
 
 .background-text-contents .text-line:nth-child(even) {
   animation: moveLeft 10s linear infinite;
+  white-space: nowrap;
 }
 
 @keyframes moveRight {
@@ -296,7 +298,7 @@ img {
 .background-text{
   color: white;
   font-family: "LA28 Display";
-  font-size: 100px;
+  font-size: 230px;
 }
 
 
