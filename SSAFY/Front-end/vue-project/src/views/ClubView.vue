@@ -95,6 +95,7 @@ function closeModal() {
   margin: 0 auto;
   width: 100%;
   height: auto;
+  min-height: 3500px;
   justify-content: center;
   text-align: center;
   background-color: rgb(0, 0, 0);
@@ -119,7 +120,8 @@ function closeModal() {
 .background-text {
   color: white;
   font-family: "LA28 Display";
-  font-size: 10px;
+  font-size: 8em;
+
   position: absolute; /* 배경 텍스트를 절대 위치에 두어 항상 보이게 함 */
   width: 100%;
   /* top: 60%; /**얘 조정이 까다로움 
@@ -134,17 +136,64 @@ function closeModal() {
 /* MW 추가 코드 */
 .background-text-contents {
   overflow: hidden;
+  width: 100%;
 }
+
+/**0523 수정 */
+.background-text-contents .text-line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;  /*최대 라인 수를 2로 설정*/
+  overflow: hidden;
+  /* text-overflow: ellipsis;  */
+  font-size: 125px; /**맨 처음의 글자 크기 */
+}
+
+@media (max-width: 1800px) {
+  .background-text-contents .text-line {
+    /* overflow: hidden; */
+    font-size: 110px;
+  }
+}
+@media (max-width: 1500px) {
+  .background-text-contents .text-line {
+    /* overflow: hidden; */
+    font-size: 100px;
+  }
+}
+@media (max-width: 1200px) {
+  .background-text-contents .text-line {
+    /* overflow: hidden; */
+    font-size: 80px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+@media (max-width: 800px) {
+  .background-text-contents .text-line {
+    /* overflow: hidden; */
+    font-size: 80px;
+  }
+}@media (max-width: 500px) {
+  .background-text-contents .text-line {
+    /* overflow: hidden; */
+    font-size: 80px;
+  }
+}
+
+
+/**여기까지 수정 */
 
 /* 홀 짝 라인 구분 */
 .background-text-contents .text-line:nth-child(odd) {
-  animation: moveRight 10s linear infinite;
-  white-space: nowrap;
+  animation: moveRight 15s linear infinite;
+  /* white-space: nowrap; */
 }
 
 .background-text-contents .text-line:nth-child(even) {
-  animation: moveLeft 10s linear infinite;
-  white-space: nowrap;
+  animation: moveLeft 15s linear infinite;
+  /* white-space: nowrap; */
 }
 
 @keyframes moveRight {
@@ -295,15 +344,9 @@ img {
 }
 
 
-.background-text{
-  color: white;
-  font-family: "LA28 Display";
-  font-size: 230px;
-}
 
 
-
-/**모달 test 코드입니다 */
+/**모달 코드입니다(bootstrap) */
 .modal {
   position: fixed;
   /* left: 0;

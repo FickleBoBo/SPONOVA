@@ -2,6 +2,9 @@
     <div class="top-container">
         <!-- 네비게이션 바 고정 영역 -->
         <header>
+            <!-- <div class="nav-logo">
+                <img src="./assets/logo3.png">
+            </div> -->
             <nav>
                 <!-- HOME 탭 -->
                 <RouterLink class="nav-tap" :to="{name: 'home'}">HOME</RouterLink>
@@ -109,8 +112,20 @@ const leagueStore = useLeagueStore()
 
 /* MW가 추가 */
 header {
-    margin-bottom: 3em;  /* 컨텐츠들이랑 붙는거 방지 */
+    margin-bottom: 0em;  /* 컨텐츠들이랑 붙는거 방지 */
+    display: flex;
+    flex-direction: row;
 }
+
+/* .nav-logo img{
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+    position: relative;
+    z-index: 2000;
+    width: 4em;
+    height: auto;
+} */
 
 nav {
     /* position: relative; */
