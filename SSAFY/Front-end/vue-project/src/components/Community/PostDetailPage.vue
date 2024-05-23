@@ -1,46 +1,51 @@
 <template>
-  <div class="post-detail-container">
-    <div v-if="isDataLoaded" class="post-detail">
-      <div class="post-detail-top">
-        <h2>{{ communityStore.post.post.postTitle }}</h2>
-        <div v-if="isAuthenticated" class="post-actions">
-          <button @click="updatePost" class="btn-post-update">수정</button>
-          <button @click="deletePost" class="btn-post-delete">삭제</button>
-        </div>
-      </div>
-      <hr>
-      <div class="post-meta">
-        <div><strong>작성자 | </strong> {{ communityStore.post.post.userNickname }}</div>
-        <div><strong>조회수 | </strong> {{ communityStore.post.post.postViewCnt + 1 }}</div>
-        <div><strong>작성일 | </strong> {{ formatDate(communityStore.post.post.postRegDate) }}</div>
-      </div>
-      <hr>
-
-      <div class="post-detail-content">{{ communityStore.post.post.postContent }}</div>
-
-      <hr>
-      
-      <!-- 댓글 폼 -->
-      <form @submit.prevent="createComment(comment.commentContent)" class="comment-form">
-        <div><strong>댓글 </strong> ({{ communityStore.post.comments.length }})</div>
-        <div class="comment-write">
-          <!-- <div class="form-group"> -->
-            <!-- <label for="comment">댓글</label> -->
-            <input type="text" id="comment" v-model="comment.commentContent" class="form-control">
-          <!-- </div> -->
-          <div class="form-group">
-            <button class="btn-comment-submit">등록</button>
+  <div>
+    <div class="post-detail-container">
+      <div v-if="isDataLoaded" class="post-detail">
+        <div class="post-detail-top">
+          <h2>{{ communityStore.post.post.postTitle }}</h2>
+          <div v-if="isAuthenticated" class="post-actions">
+            <button @click="updatePost" class="btn-post-update">수정</button>
+            <button @click="deletePost" class="btn-post-delete">삭제</button>
           </div>
         </div>
-      </form>
+        <hr>
+        <div class="post-meta">
+          <div><strong>작성자 | </strong> {{ communityStore.post.post.userNickname }}</div>
+          <div><strong>조회수 | </strong> {{ communityStore.post.post.postViewCnt + 1 }}</div>
+          <div><strong>작성일 | </strong> {{ formatDate(communityStore.post.post.postRegDate) }}</div>
+        </div>
+        <hr>
 
-      <!-- 댓글 목록 -->
-      <div v-for="comment in communityStore.post.comments" :key="comment.commentID" class="comment">
-        <div class="comment-content">
-          <span><strong>{{ comment.userNickname }}</strong> | {{ comment.commentContent }}</span>
-          <span v-if="userStore.loginInfo.userID === comment.userID"><button @click="deleteComment(comment.commentID)" class="btn-comment-delete">X</button></span>
+        <div class="post-detail-content">{{ communityStore.post.post.postContent }}</div>
+
+        <hr>
+        
+        <!-- 댓글 폼 -->
+        <form @submit.prevent="createComment(comment.commentContent)" class="comment-form">
+          <div><strong>댓글 </strong> ({{ communityStore.post.comments.length }})</div>
+          <div class="comment-write">
+            <!-- <div class="form-group"> -->
+              <!-- <label for="comment">댓글</label> -->
+              <input type="text" id="comment" v-model="comment.commentContent" class="form-control">
+            <!-- </div> -->
+            <div class="form-group">
+              <button class="btn-comment-submit">등록</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- 댓글 목록 -->
+        <div v-for="comment in communityStore.post.comments" :key="comment.commentID" class="comment">
+          <div class="comment-content">
+            <span><strong>{{ comment.userNickname }}</strong> | {{ comment.commentContent }}</span>
+            <span v-if="userStore.loginInfo.userID === comment.userID"><button @click="deleteComment(comment.commentID)" class="btn-comment-delete">X</button></span>
+          </div>
         </div>
       </div>
+    </div>
+    <div>
+      <button @click="goToPostList" class="btn-post-list">게시글 목록</button>
     </div>
   </div>
 </template>
@@ -109,6 +114,12 @@ onMounted(async () => {
 
   isDataLoaded.value = true
 })
+
+// 게시글 상세에서 게시글 목록으로 보내주는 기능
+const goToPostList = (() => {
+  router.push({ name: 'community' })
+})
+
 </script>
 
 <style scoped>
@@ -117,12 +128,12 @@ onMounted(async () => {
   display: flex;
   padding: 3em 0;
   margin: 10em auto;
+  margin-bottom: 3em;
   height: 100%;
   justify-content: center;
   border: 1px solid black;
   border-radius: 10%;
   width: 50%;
-  
 }
 
 /** 제목 */
@@ -204,6 +215,7 @@ h2{
   border-radius: 10%;
   margin: 0.2em;
 }
+
 /* 댓글 등록 버튼 */
 .btn-comment-submit{
   background-color: black;
@@ -212,6 +224,17 @@ h2{
   margin: 0.2em;
   padding: 0.4em;
 }
+
+.btn-post-list {
+  display: block;
+  background-color: black;
+  color: white;
+  border-radius: 10%;
+  margin: auto;
+  margin-bottom: 10em;
+  padding: 0.4em;
+}
+
 .btn:hover {
   background-color: #000000;
 }
