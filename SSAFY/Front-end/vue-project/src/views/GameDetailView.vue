@@ -40,7 +40,7 @@ const showVideo = (url) => {
   font-family: 'NanumSquareBold';
   padding: 20px;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 10em auto;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

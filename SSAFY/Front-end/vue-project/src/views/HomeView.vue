@@ -280,8 +280,13 @@ onMounted(() => {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100%;
     margin: 0 auto;
     align-items: center;
+}
+.game-icon-individual{
+    display: flex;
+    justify-content: center;
 }
 
 /**개별 이미지 */
