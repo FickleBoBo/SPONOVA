@@ -36,15 +36,30 @@
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li class="page-item" :class="{ disabled: pageNum === 0 }">
-                    <a class="page-link" href="#" aria-label="Previous" @click.prevent="prevPage">
+                    <a class="page-link" href="#" aria-label="Previous" @click.prevent="prevPageMax">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
+                <li class="page-item" :class="{ disabled: pageNum === 0 }">
+                    <a class="page-link" href="#" aria-label="Previous" @click.prevent="prevPage">
+                        <span aria-hidden="true">&lt;</span>
+                    </a>
+                </li>
                 <li v-for="n in pagination" :key="n" class="page-item" :class="{ active: pageNum === n - 1 }">
-                    <a class="page-link" href="#" @click="movePage(n)">{{ n }}</a>
+                    <div v-if="n==='...'">
+                        <a class="page-link" href="#" @click.prevent>{{ n }}</a>
+                    </div>
+                    <div v-else>
+                        <a class="page-link" href="#" @click="movePage(n)">{{ n }}</a>
+                    </div>
                 </li>
                 <li class="page-item" :class="{ disabled: pageNum === (totalPages - 1) }">
                     <a class="page-link" href="#" aria-label="Next" @click.prevent="nextPage">
+                        <span aria-hidden="true">&gt;</span>
+                    </a>
+                </li>
+                <li class="page-item" :class="{ disabled: pageNum === (totalPages - 1) }">
+                    <a class="page-link" href="#" aria-label="Next" @click.prevent="nextPageMax">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
@@ -99,6 +114,18 @@ const nextPage = () => {
   }
 }
 
+const prevPageMax = () => {
+  if (pageNum.value > 0) {
+    pageNum.value = 0
+  }
+}
+
+const nextPageMax = () => {
+  if (pageNum.value < communityStore.pages - 1) {
+    pageNum.value = communityStore.pages - 1
+  }
+}
+
 const reload = (() => {
     window.location.reload()
 })
@@ -111,18 +138,18 @@ const pagination = computed(() => {
   if (total <= 10) {
     for (let i = 1; i <= total; i++) pages.push(i)
   } else {
-    if (pageNum.value < 5) {
+    if (pageNum.value < 4) {
       for (let i = 1; i <= 5; i++) pages.push(i)
       pages.push('...')
       pages.push(total)
-    } else if (pageNum.value >= total - 5) {
+    } else if (pageNum.value >= total - 4) {
       pages.push(1)
       pages.push('...')
       for (let i = total - 4; i <= total; i++) pages.push(i)
     } else {
       pages.push(1)
       pages.push('...')
-      for (let i = pageNum.value; i <= pageNum.value + 2; i++) pages.push(i)
+      for (let i = pageNum.value-1; i <= pageNum.value + 3; i++) pages.push(i)
       pages.push('...')
       pages.push(total)
     }
