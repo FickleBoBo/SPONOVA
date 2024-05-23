@@ -75,6 +75,7 @@
                         <div class="footer-info-disc"> 이메일 문의: ssafy@ssafy.com</div>
                         <div class="footer-info-disc"> 대표전화: 02-3429-5100</div>
                         <div class="footer-info-disc"> Tel. 010-8422-8393</div>
+                        <div class="footer-info-disc"> Tel. 010-4471-6266</div>
                     </div>
                 </div>
             </div>
@@ -262,6 +263,7 @@ nav {
 
 .login-area {
     font-size: x-small;
+    margin-left: 1em;
 }
 
 /* RouterLink컴포넌트가 내부적으로 <a> 태그로 렌더링, 이미 text-deco가 설정되어 있어서 직접 적용해야 함 */
