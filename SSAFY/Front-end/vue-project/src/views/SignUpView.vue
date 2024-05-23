@@ -126,7 +126,14 @@ const createUser = function(){
         data: data,
     })
     .then((response)=> {
-        router.push({name: 'login'})
+
+      Swal.fire({
+        icon: "success",
+        title: `회원가입이 되었습니다!`,
+        showConfirmButton: false,
+        timer: 1500
+      })
+      router.push({name: 'login'})
     })
     .catch((err)=> {
         if(err.response.data === 'DuplicatedID'){
