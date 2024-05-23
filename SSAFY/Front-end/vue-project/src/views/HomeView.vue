@@ -252,7 +252,8 @@ onMounted(() => {
 /**games영역 전체 */
 .main-game-icon{
     position: relative;
-    width: 100%;
+    width: 90%;
+    margin: auto;
     margin-top: 5em;
 
     background-color: white;
