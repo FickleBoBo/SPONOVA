@@ -129,6 +129,11 @@ function closeModal() {
   z-index: 1;
 }
 
+/* MW 추가 코드 */
+.background-text-contents {
+  overflow: hidden;
+}
+
 /* 홀 짝 라인 구분 */
 .background-text-contents .text-line:nth-child(odd) {
   animation: moveRight 10s linear infinite;
