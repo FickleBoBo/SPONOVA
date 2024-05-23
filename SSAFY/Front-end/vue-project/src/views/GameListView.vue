@@ -119,11 +119,11 @@ const gameStore = useGameStore()
 // })
 
 const images = ref([
-    'public/morumoru1.png', 
-    'public/morumoru2.png', 
-    'public/morumoru3.png', 
-    'public/morumoru4.png', 
-    'public/morumoru5.png', 
+    '/morumoru1.png', 
+    '/morumoru2.png', 
+    '/morumoru3.png', 
+    '/morumoru4.png', 
+    '/morumoru5.png', 
 ])
 
 const refs = ref([])
